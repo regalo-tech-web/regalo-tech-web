@@ -32,16 +32,36 @@
         .product-card:hover { border-color: #7fc6df; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(63, 81, 115, 0.1); }
         .btn-buy { background-color: #437ea7; color: white; transition: all 0.3s ease; }
         .btn-buy:hover { background-color: #3f5173; }
-        /* Animación suave para el logo */
-        .logo-fade { animation: fadeIn 1s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* Botón WhatsApp Flotante */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #437ea7; /* Color de tu marca */
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-btn:hover {
+            background-color: #25d366; /* Verde WhatsApp al hover */
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="bg-rtLtBlue font-sans text-rtDarkBlue">
 
     <header class="bg-white px-6 py-3 shadow-sm sticky top-0 z-50">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="#" class="flex items-center logo-fade">
+            <a href="#" class="flex items-center">
                 <img src="logo-regalo-tech.png.png" alt="Regalo Tech" class="h-16 w-auto object-contain">
             </a>
             
@@ -53,94 +73,44 @@
 
             <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-rtMainBlue">
                 <span class="hover:text-rtDarkBlue cursor-pointer">Mi Cuenta</span>
-                <div class="relative cursor-pointer group">
-                    <i class="fas fa-shopping-cart text-lg text-rtDarkBlue"></i>
-                    <span class="absolute -top-2 -right-2 bg-rtMidBlue text-white text-[10px] rounded-full px-1.5">0</span>
-                </div>
+                <i class="fas fa-shopping-cart text-lg text-rtDarkBlue cursor-pointer"></i>
             </div>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-10">
-        
         <div class="w-full h-64 bg-rtDarkBlue rounded-3xl flex items-center justify-center shadow-2xl mb-12 overflow-hidden relative border border-rtMainBlue">
             <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(#7fc6df 1px, transparent 1px); background-size: 30px 30px;"></div>
             <div class="z-10 text-center text-white p-6">
-                <h2 class="font-serif text-5xl md:text-6xl font-bold tracking-tight">ENVÍOS GRATIS</h2>
-                <p class="text-lg mt-4 font-light text-rtLtBlue tracking-widest uppercase">Tecnología · Regalos · Y más</p>
-                <button class="mt-8 bg-rtLtBlue text-rtDarkBlue px-10 py-3 rounded-full font-bold uppercase text-xs hover:bg-white transition shadow-lg">Ver Catálogo</button>
+                <h2 class="font-serif text-5xl md:text-6xl font-bold tracking-tight uppercase">Regalo Tech</h2>
+                <p class="text-lg mt-4 font-light text-rtLtBlue tracking-widest">TECNOLOGÍA · REGALOS · Y MÁS</p>
             </div>
         </div>
 
-        <h2 class="text-2xl font-bold mb-10 text-rtDarkBlue flex items-center gap-4">
-            <span class="h-[2px] w-12 bg-rtMidBlue"></span> PRODUCTOS DESTACADOS
-        </h2>
-
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            
             <div class="bg-white p-6 rounded-2xl product-card border flex flex-col group">
                 <div class="relative overflow-hidden rounded-xl h-56 bg-white mb-6 flex items-center justify-center">
-                    <img src="https://ar.jbl.com/dw/image/v2/AAXW_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw7695325b/JBL_TUNE_760BT_Product%20Image_Hero_Black-1605x1605px.png?sw=535&sh=535" 
-                         alt="JBL Tune 760 BT" 
-                         class="h-full object-contain group-hover:scale-110 transition duration-500">
-                    <span class="absolute top-0 left-0 bg-rtMidBlue text-white font-bold text-[10px] px-3 py-1 rounded-br-lg shadow">DESTACADO</span>
+                    <img src="https://ar.jbl.com/dw/image/v2/AAXW_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw7695325b/JBL_TUNE_760BT_Product%20Image_Hero_Black-1605x1605px.png?sw=535&sh=535" class="h-full object-contain group-hover:scale-110 transition duration-500">
+                    <span class="absolute top-0 left-0 bg-rtMidBlue text-white font-bold text-[10px] px-3 py-1 rounded-br-lg shadow">TOP VENTAS</span>
                 </div>
-                
-                <h3 class="text-sm font-semibold text-rtDarkBlue group-hover:text-rtMainBlue transition mb-2 line-clamp-2">Auriculares Inalámbricos JBL Tune 760 BT - Black</h3>
-                <p class="text-[11px] text-gray-400 mb-4 italic">Cancelación de ruido activa</p>
-                
+                <h3 class="text-sm font-semibold text-rtDarkBlue group-hover:text-rtMainBlue mb-2">JBL Tune 760 BT</h3>
                 <div class="mt-auto">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl font-bold text-rtDarkBlue">$ 59.999</span>
-                        <span class="text-green-500 text-xs font-bold">14% OFF</span>
-                    </div>
-                    <p class="text-[10px] text-green-600 font-bold uppercase mt-1">Llega gratis mañana</p>
-                    <button class="btn-buy w-full mt-5 py-3 rounded-xl font-bold text-xs uppercase tracking-widest shadow-md">Comprar Ahora</button>
+                    <span class="text-2xl font-bold text-rtDarkBlue">$ 59.999</span>
+                    <button class="btn-buy w-full mt-5 py-3 rounded-xl font-bold text-xs uppercase tracking-widest">Comprar Ahora</button>
                 </div>
             </div>
-
-            <div class="bg-white/50 p-6 rounded-2xl border border-dashed border-rtMidBlue flex flex-col items-center justify-center text-center opacity-60">
-                <div class="w-16 h-16 bg-rtLtBlue rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-couch text-2xl text-rtMainBlue"></i>
-                </div>
-                <p class="font-bold text-rtDarkBlue">HOGAR</p>
-                <p class="text-[10px] text-gray-500 mt-1 uppercase tracking-tighter">Próximo Ingreso</p>
-            </div>
-
-            <div class="bg-white/50 p-6 rounded-2xl border border-dashed border-rtMidBlue flex flex-col items-center justify-center text-center opacity-60">
-                <div class="w-16 h-16 bg-rtLtBlue rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-paw text-2xl text-rtMainBlue"></i>
-                </div>
-                <p class="font-bold text-rtDarkBlue">MASCOTAS</p>
-                <p class="text-[10px] text-gray-500 mt-1 uppercase tracking-tighter">Próximo Ingreso</p>
-            </div>
-
-            <div class="bg-white/50 p-6 rounded-2xl border border-dashed border-rtMidBlue flex flex-col items-center justify-center text-center opacity-60">
-                <div class="w-16 h-16 bg-rtLtBlue rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-gift text-2xl text-rtMainBlue"></i>
-                </div>
-                <p class="font-bold text-rtDarkBlue">REGALOS</p>
-                <p class="text-[10px] text-gray-500 mt-1 uppercase tracking-tighter">Próximo Ingreso</p>
-            </div>
-
         </div>
     </main>
 
+    <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20un%20producto%20de%20Regalo%20Tech" 
+       class="whatsapp-btn" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <footer class="mt-24 bg-rtDarkBlue py-16 px-6 text-center text-white">
-        <div class="container mx-auto">
-            <img src="logo-regalo-tech.png.png" alt="Regalo Tech" class="h-20 w-auto mx-auto mb-6 brightness-0 invert">
-            <p class="text-[10px] tracking-[0.3em] text-rtMidBlue mb-8 uppercase">Tecnología · Regalos · Y más</p>
-            
-            <div class="flex justify-center gap-8 mb-10 text-xl">
-                <a href="#" class="hover:text-rtMidBlue transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-rtMidBlue transition"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="hover:text-rtMidBlue transition"><i class="fas fa-envelope"></i></a>
-            </div>
-            
-            <div class="border-t border-rtMainBlue pt-8 opacity-50">
-                <p class="text-[10px]">© 2024 REGALO TECH ARGENTINA. TODOS LOS DERECHOS RESERVADOS.</p>
-            </div>
-        </div>
+        <img src="logo-regalo-tech.png.png" alt="Regalo Tech" class="h-20 w-auto mx-auto mb-6 brightness-0 invert">
+        <p class="text-[10px] tracking-[0.3em] text-rtMidBlue mb-8">TECNOLOGÍA · REGALOS · Y MÁS</p>
     </footer>
 
 </body>
