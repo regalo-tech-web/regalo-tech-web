@@ -30,15 +30,14 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .product-card { border-color: #dceef3; transition: all 0.3s ease; }
         .product-card:hover { border-color: #7fc6df; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(63, 81, 115, 0.1); }
-        .btn-buy { background-color: #437ea7; color: white; transition: all 0.3s ease; }
+        .btn-buy { background-color: #437ea7; color: white; transition: all 0.3s ease; border-radius: 12px; }
         .btn-buy:hover { background-color: #3f5173; }
         
-        /* Botón WhatsApp Flotante */
         .whatsapp-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            background-color: #437ea7; /* Color de tu marca */
+            background-color: #437ea7;
             color: white;
             width: 60px;
             height: 60px;
@@ -52,7 +51,7 @@
             transition: all 0.3s ease;
         }
         .whatsapp-btn:hover {
-            background-color: #25d366; /* Verde WhatsApp al hover */
+            background-color: #25d366;
             transform: scale(1.1);
         }
     </style>
@@ -83,20 +82,24 @@
             <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(#7fc6df 1px, transparent 1px); background-size: 30px 30px;"></div>
             <div class="z-10 text-center text-white p-6">
                 <h2 class="font-serif text-5xl md:text-6xl font-bold tracking-tight uppercase">Regalo Tech</h2>
-                <p class="text-lg mt-4 font-light text-rtLtBlue tracking-widest">TECNOLOGÍA · REGALOS · Y MÁS</p>
+                <div class="h-1 w-24 bg-rtMidBlue mx-auto my-4"></div>
+                <p class="text-lg font-light text-rtLtBlue tracking-widest uppercase">Tecnología · Regalos · Y más</p>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="bg-white p-6 rounded-2xl product-card border flex flex-col group">
-                <div class="relative overflow-hidden rounded-xl h-56 bg-white mb-6 flex items-center justify-center">
-                    <img src="https://ar.jbl.com/dw/image/v2/AAXW_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw7695325b/JBL_TUNE_760BT_Product%20Image_Hero_Black-1605x1605px.png?sw=535&sh=535" class="h-full object-contain group-hover:scale-110 transition duration-500">
-                    <span class="absolute top-0 left-0 bg-rtMidBlue text-white font-bold text-[10px] px-3 py-1 rounded-br-lg shadow">TOP VENTAS</span>
+                <div class="relative overflow-hidden rounded-xl h-56 bg-white mb-6 flex items-center justify-center p-4">
+                    <img src="https://www.jbl.com.ar/dw/image/v2/AAXW_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw7695325b/JBL_TUNE_760BT_Product%20Image_Hero_Black-1605x1605px.png?sw=535&sh=535" 
+                         alt="JBL Tune 760 BT" 
+                         class="h-full object-contain group-hover:scale-110 transition duration-500"
+                         onerror="this.src='https://images.philips.com/is/image/PhilipsConsumer/TAH4205BK_00-IMS-es_AR?$jpglarge$&wid=1250'">
+                    <span class="absolute top-2 left-2 bg-rtMidBlue text-white font-bold text-[10px] px-3 py-1 rounded-full shadow-sm">DESTACADO</span>
                 </div>
-                <h3 class="text-sm font-semibold text-rtDarkBlue group-hover:text-rtMainBlue mb-2">JBL Tune 760 BT</h3>
+                <h3 class="text-sm font-semibold text-rtDarkBlue group-hover:text-rtMainBlue mb-2">Auriculares JBL Tune 760 BT</h3>
                 <div class="mt-auto">
                     <span class="text-2xl font-bold text-rtDarkBlue">$ 59.999</span>
-                    <button class="btn-buy w-full mt-5 py-3 rounded-xl font-bold text-xs uppercase tracking-widest">Comprar Ahora</button>
+                    <button class="btn-buy w-full mt-5 py-3 font-bold text-xs uppercase tracking-widest shadow-md">Comprar Ahora</button>
                 </div>
             </div>
         </div>
@@ -110,7 +113,7 @@
 
     <footer class="mt-24 bg-rtDarkBlue py-16 px-6 text-center text-white">
         <img src="logo-regalo-tech.png.png" alt="Regalo Tech" class="h-20 w-auto mx-auto mb-6 brightness-0 invert">
-        <p class="text-[10px] tracking-[0.3em] text-rtMidBlue mb-8">TECNOLOGÍA · REGALOS · Y MÁS</p>
+        <p class="text-[10px] tracking-[0.3em] text-rtMidBlue mb-8 uppercase">Tecnología · Regalos · Y más</p>
     </footer>
 
 </body>
