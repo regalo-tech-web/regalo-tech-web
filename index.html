@@ -63,34 +63,20 @@
         </div>
     </div>
 
-    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-[100] border-b border-gray-100 py-8">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center">
-                
-                <div class="flex flex-col items-center mb-8">
-                    <img src="logo.png" alt="Logo" class="w-20 h-20 object-contain mb-3">
-                    <h1 class="font-serif text-4xl font-bold tracking-tighter text-rtDarkBlue leading-none">REGALO TECH</h1>
-                    <span class="text-[10px] uppercase tracking-[0.5em] text-rtMidBlue font-bold mt-3">Tecnología · Regalos · Y más</span>
+    <header class="bg-white sticky top-0 z-[100] py-4">
+        <div class="container mx-auto px-6 flex flex-col items-center">
+            <div class="flex flex-col items-center mb-4">
+                <img src="logo.png" alt="Logo" class="w-16 h-16 object-contain mb-1">
+                <h1 class="font-serif text-3xl font-bold tracking-tighter text-rtDarkBlue">REGALO TECH</h1>
+            </div>
+
+            <div class="relative w-full max-w-md">
+                <div class="relative">
+                    <input id="mainSearch" type="search" placeholder="¿Qué buscas?" 
+                        class="w-full bg-gray-100 rounded-full py-2 pl-10 pr-4 text-xs focus:ring-2 focus:ring-rtMidBlue/20">
+                    <i class="fas fa-search absolute left-4 top-2.5 text-gray-400 text-xs"></i>
                 </div>
-
-                <div class="relative w-full max-w-lg mb-8">
-                    <div class="relative">
-                        <input id="mainSearch" type="search" placeholder="¿Qué buscas hoy?" 
-                            class="w-full bg-gray-50 border border-gray-200 rounded-full py-3.5 pl-12 pr-4 text-sm focus:ring-2 focus:ring-rtMidBlue/20 transition-all shadow-sm">
-                        <i class="fas fa-search absolute left-5 top-4 text-gray-400 text-sm"></i>
-                    </div>
-                    <div id="searchResults" class="absolute top-full left-0 w-full bg-white shadow-2xl rounded-b-2xl border border-gray-100 z-[300] hidden max-h-80 overflow-y-auto"></div>
-                </div>
-
-                <nav class="flex flex-wrap justify-center gap-x-4 gap-y-3">
-                    <a href="#tecnologia" class="px-6 py-2 border border-rtMidBlue/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-rtDarkBlue hover:bg-rtDarkBlue hover:text-white hover:border-rtDarkBlue transition-all">Tecnología</a>
-                    <a href="#cotillon" class="px-6 py-2 border border-rtMidBlue/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-rtDarkBlue hover:bg-rtDarkBlue hover:text-white hover:border-rtDarkBlue transition-all">Cotillón</a>
-                    <a href="#hogar" class="px-6 py-2 border border-rtMidBlue/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-rtDarkBlue hover:bg-rtDarkBlue hover:text-white hover:border-rtDarkBlue transition-all">Hogar</a>
-                    <a href="#mascotas" class="px-6 py-2 border border-rtMidBlue/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-rtDarkBlue hover:bg-rtDarkBlue hover:text-white hover:border-rtDarkBlue transition-all">Mascotas</a>
-                    <a href="#infantil" class="px-6 py-2 border border-rtMidBlue/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-rtDarkBlue hover:bg-rtDarkBlue hover:text-white hover:border-rtDarkBlue transition-all">Infantil</a>
-                    <a href="#personal" class="px-6 py-2 border border-rtMidBlue/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-rtDarkBlue hover:bg-rtDarkBlue hover:text-white hover:border-rtDarkBlue transition-all">Uso Personal</a>
-                </nav>
-
+                <div id="searchResults" class="absolute top-full left-0 w-full bg-white shadow-xl z-[300] hidden max-h-60 overflow-y-auto rounded-b-lg"></div>
             </div>
         </div>
     </header>
