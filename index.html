@@ -238,18 +238,40 @@
             track.setAttribute('data-current', currentSlide);
         }
 
+        let currentZoomImages = [];
+        let currentZoomIndex = 0;
+
         function zoomImg(src) {
+            // Buscamos todas las imágenes del carrusel donde hiciste clic
+            const track = event.target.closest('.carousel-track');
+            const imgs = Array.from(track.querySelectorAll('img'));
+            
+            currentZoomImages = imgs.map(img => img.src);
+            currentZoomIndex = currentZoomImages.indexOf(src);
+
             const modal = document.getElementById('modalZoom');
             const img = document.getElementById('imgZoomed');
-            img.src = src; 
-            modal.classList.remove('hidden'); 
-            document.body.style.overflow = 'hidden'; 
+            
+            img.src = currentZoomImages[currentZoomIndex];
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function changeZoomImg(direction) {
+            currentZoomIndex = (currentZoomIndex + direction + currentZoomImages.length) % currentZoomImages.length;
+            const img = document.getElementById('imgZoomed');
+            
+            // Efecto suave de transición
+            img.style.opacity = "0";
+            setTimeout(() => {
+                img.src = currentZoomImages[currentZoomIndex];
+                img.style.opacity = "1";
+            }, 150);
         }
 
         function closeZoom() {
-            const modal = document.getElementById('modalZoom');
-            modal.classList.add('hidden'); 
-            document.body.style.overflow = 'auto'; 
+            document.getElementById('modalZoom').classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
 
         function addToCart(name, price) {
@@ -286,9 +308,18 @@
        target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <div id="modalZoom" class="fixed inset-0 z-[200] hidden bg-black/90 flex items-center justify-center p-4 cursor-pointer" onclick="closeZoom()">
-        <span class="absolute top-5 right-8 text-white text-5xl hover:text-rtMidBlue cursor-pointer">&times;</span>
-        <img id="imgZoomed" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl" src="">
+   <div id="modalZoom" class="fixed inset-0 z-[200] hidden bg-black/95 flex items-center justify-center p-4">
+        <button onclick="closeZoom()" class="absolute top-5 right-8 text-white text-5xl z-50 hover:text-rtMidBlue">&times;</button>
+        
+        <button onclick="changeZoomImg(-1)" class="absolute left-4 text-white text-4xl p-4 hover:text-rtMidBlue z-50">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <img id="imgZoomed" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl transition-all duration-300" src="">
+
+        <button onclick="changeZoomImg(1)" class="absolute right-4 text-white text-4xl p-4 hover:text-rtMidBlue z-50">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 </body>
 </html>
