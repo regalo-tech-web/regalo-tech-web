@@ -26,8 +26,6 @@
         }
     </script>
     <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .product-card { border-color: #dceef3; transition: all 0.3s ease; }
         .product-card:hover { border-color: #7fc6df; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(63, 81, 115, 0.1); }
         .btn-buy { background-color: #437ea7; color: white; transition: all 0.3s ease; border-radius: 12px; }
@@ -50,10 +48,7 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-        .whatsapp-btn:hover {
-            background-color: #25d366;
-            transform: scale(1.1);
-        }
+        .whatsapp-btn:hover { background-color: #25d366; transform: scale(1.1); }
     </style>
 </head>
 <body class="bg-rtLtBlue font-sans text-rtDarkBlue">
@@ -63,13 +58,11 @@
             <a href="#" class="flex items-center">
                 <img src="logo-regalo-tech.png.png" alt="Regalo Tech" class="h-16 w-auto object-contain">
             </a>
-            
             <div class="relative w-full md:w-1/2">
                 <input type="text" placeholder="Buscar tecnología, regalos y más..." 
                        class="w-full bg-slate-50 border border-rtLtBlue rounded-full py-2 px-6 focus:outline-none focus:border-rtMidBlue text-sm">
                 <i class="fas fa-search absolute right-5 top-3 text-rtMidBlue"></i>
             </div>
-
             <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-rtMainBlue">
                 <span class="hover:text-rtDarkBlue cursor-pointer">Mi Cuenta</span>
                 <i class="fas fa-shopping-cart text-lg text-rtDarkBlue cursor-pointer"></i>
@@ -78,51 +71,48 @@
     </header>
 
     <main class="container mx-auto px-6 py-10">
-       <div class="w-full h-auto min-h-[450px] bg-rtDarkBlue rounded-3xl flex items-center justify-center shadow-2xl mb-12 overflow-hidden relative border border-rtMainBlue py-20">
+        <div class="w-full h-auto min-h-[350px] bg-rtDarkBlue rounded-3xl flex items-center justify-center shadow-2xl mb-12 overflow-hidden relative border border-rtMainBlue py-12">
             <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(#7fc6df 1px, transparent 1px); background-size: 30px 30px;"></div>
             
-            <div class="z-10 text-center text-white p-6 w-full max-w-7xl">
-                
-                <div class="mb-4">
-                    <h2 class="font-serif text-6xl md:text-8xl font-bold tracking-wider uppercase inline-block">
+            <div class="z-10 text-center text-white p-6 w-full max-w-5xl">
+                <div class="mb-2">
+                    <h2 class="font-serif text-5xl md:text-6xl font-bold tracking-[0.15em] uppercase inline-block">
                         Regalo Tech
                     </h2>
                 </div>
                 
-                <div class="h-[3px] w-64 bg-rtMidBlue mx-auto mb-14 opacity-90"></div>
+                <div class="h-[2px] w-40 bg-rtMidBlue mx-auto mb-10 opacity-80"></div>
                 
-                <div class="flex flex-wrap justify-center gap-4 md:gap-8 mt-10">
-                    <a href="#tecnologia" class="px-10 py-4 border-2 border-rtMidBlue/50 rounded-full text-sm md:text-lg font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-md">
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                    <a href="#tecnologia" class="px-6 py-2.5 border border-rtMidBlue/50 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-sm">
                         Tecnología
                     </a>
-                    <a href="#cotillon" class="px-10 py-4 border-2 border-rtMidBlue/50 rounded-full text-sm md:text-lg font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-md">
+                    <a href="#cotillon" class="px-6 py-2.5 border border-rtMidBlue/50 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-sm">
                         Cotillón
                     </a>
-                    <a href="#hogar" class="px-10 py-4 border-2 border-rtMidBlue/50 rounded-full text-sm md:text-lg font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-md">
+                    <a href="#hogar" class="px-6 py-2.5 border border-rtMidBlue/50 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-sm">
                         Hogar
                     </a>
-                    <a href="#mascotas" class="px-10 py-4 border-2 border-rtMidBlue/50 rounded-full text-sm md:text-lg font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-md">
+                    <a href="#mascotas" class="px-6 py-2.5 border border-rtMidBlue/50 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-sm">
                         Mascotas
                     </a>
-                    <a href="#infantil" class="px-10 py-4 border-2 border-rtMidBlue/50 rounded-full text-sm md:text-lg font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-md">
+                    <a href="#infantil" class="px-6 py-2.5 border border-rtMidBlue/50 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-sm">
                         Infantil
                     </a>
-                    <a href="#uso-personal" class="px-10 py-4 border-2 border-rtMidBlue/50 rounded-full text-sm md:text-lg font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-md">
+                    <a href="#uso-personal" class="px-6 py-2.5 border border-rtMidBlue/50 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/60 backdrop-blur-sm">
                         Uso Personal
                     </a>
-                    <a href="#otros" class="px-10 py-4 border-2 border-rtMidBlue/50 rounded-full text-sm md:text-lg font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/40">
+                    <a href="#otros" class="px-6 py-2.5 border border-rtMidBlue/50 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-rtMidBlue hover:text-rtDarkBlue transition-all duration-300 bg-rtDarkBlue/40">
                         Otros
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div id="tecnologia" class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="bg-white p-6 rounded-2xl product-card border flex flex-col group">
                 <div class="relative overflow-hidden rounded-xl h-56 bg-white mb-6 flex items-center justify-center p-4">
-                    <img src="jbl-760bt-black.png" 
-                         alt="JBL Tune 760 BT" 
-                         class="h-full object-contain group-hover:scale-110 transition duration-500">
+                    <img src="jbl-760bt-black.webp" alt="JBL Tune 760 BT" class="h-full object-contain group-hover:scale-110 transition duration-500">
                     <span class="absolute top-2 left-2 bg-rtMidBlue text-white font-bold text-[10px] px-3 py-1 rounded-full shadow-sm">DESTACADO</span>
                 </div>
                 <h3 class="text-sm font-semibold text-rtDarkBlue group-hover:text-rtMainBlue mb-2">Auriculares JBL Tune 760 BT Black</h3>
@@ -134,9 +124,7 @@
         </div>
     </main>
 
-    <a href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20un%20producto%20de%20Regalo%20Tech" 
-       class="whatsapp-btn" 
-       target="_blank">
+    <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20un%20producto%20de%20Regalo%20Tech" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
