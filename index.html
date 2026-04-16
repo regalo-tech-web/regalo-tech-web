@@ -81,12 +81,40 @@
                 <div class="h-[2px] w-40 bg-rtMidBlue mx-auto mb-10 opacity-80"></div>
                 <div class="flex flex-wrap justify-center gap-3 md:gap-4 text-xs font-bold tracking-widest uppercase">
                     <a href="#tecnologia" class="px-5 py-2.5 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-all">Tecnología</a>
-                    <a href="#cotillon" class="px-5 py-2.5 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-all">Cotillón</a>
+                    <a href="#personal" class="px-5 py-2.5 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-all">Uso Personal</a>
                     <a href="#hogar" class="px-5 py-2.5 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-all">Hogar</a>
                     <a href="#mascotas" class="px-5 py-2.5 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-all">Mascotas</a>
                 </div>
             </div>
         </div>
+
+        <section id="personal" class="mb-20">
+            <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-8 flex items-center gap-4">
+                <span class="h-[2px] w-12 bg-rtMidBlue"></span> Uso Personal
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-2xl product-card border">
+                    <div class="relative overflow-hidden rounded-xl h-64 bg-white mb-6">
+                        <button class="carousel-btn left-2" onclick="moveCarousel('trackAnti', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2" onclick="moveCarousel('trackAnti', 1)"><i class="fas fa-chevron-right"></i></button>
+                        <div class="carousel-container">
+                            <div id="trackAnti" class="carousel-track" data-current="0">
+                                <div class="carousel-item"><img src="antifaz-1.png" class="max-h-full object-contain p-4" onclick="openLightbox('trackAnti', 0)"></div>
+                                <div class="carousel-item"><img src="antifaz-2.png" class="max-h-full object-contain p-4" onclick="openLightbox('trackAnti', 1)"></div>
+                                <div class="carousel-item"><img src="antifaz-3.png" class="max-h-full object-contain p-4" onclick="openLightbox('trackAnti', 2)"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-semibold text-rtDarkBlue mb-2">Antifaz Para Dormir Hedwig</h3>
+                    <p class="text-[10px] text-gray-400 mb-4 uppercase tracking-tighter">Harry Potter · Relax</p>
+                    <div class="mt-auto">
+                        <span class="text-2xl font-bold text-rtDarkBlue">$ 30.499</span>
+                        <button onclick="openModal('modalAnti')" class="w-full mt-4 py-2 border border-rtMainBlue text-rtMainBlue rounded-xl font-bold text-[10px] uppercase tracking-widest">Características</button>
+                        <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20antifaz%20de%20Hedwig" target="_blank" class="btn-buy w-full mt-2 py-3 font-bold text-xs uppercase shadow-md flex items-center justify-center">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="tecnologia" class="mb-20">
             <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-8 flex items-center gap-4">
@@ -180,6 +208,46 @@
 
                 <div class="bg-white p-6 rounded-2xl product-card border">
                     <div class="relative overflow-hidden rounded-xl h-64 bg-white mb-6">
+                        <button class="carousel-btn left-2" onclick="moveCarousel('trackCarAut', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2" onclick="moveCarousel('trackCarAut', 1)"><i class="fas fa-chevron-right"></i></button>
+                        <div class="carousel-container">
+                            <div id="trackCarAut" class="carousel-track" data-current="0">
+                                <div class="carousel-item"><img src="car-auto-1.png" class="max-h-full object-contain p-4" onclick="openLightbox('trackCarAut', 0)"></div>
+                                <div class="carousel-item"><img src="car-auto-2.png" class="max-h-full object-contain p-4" onclick="openLightbox('trackCarAut', 1)"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-semibold text-rtDarkBlue mb-2">Cargador Para Auto + Cable 3 En 1</h3>
+                    <p class="text-[10px] text-gray-400 mb-4 uppercase tracking-tighter">Universal · Display Digital</p>
+                    <div class="mt-auto">
+                        <span class="text-2xl font-bold text-rtDarkBlue">$ 23.999</span>
+                        <button onclick="openModal('modalCarAut')" class="w-full mt-4 py-2 border border-rtMainBlue text-rtMainBlue rounded-xl font-bold text-[10px] uppercase tracking-widest">Características</button>
+                        <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20cargador%20de%20auto" target="_blank" class="btn-buy w-full mt-2 py-3 font-bold text-xs uppercase shadow-md flex items-center justify-center">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl product-card border">
+                    <div class="relative overflow-hidden rounded-xl h-64 bg-white mb-6">
+                        <button class="carousel-btn left-2" onclick="moveCarousel('trackJoy', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2" onclick="moveCarousel('trackJoy', 1)"><i class="fas fa-chevron-right"></i></button>
+                        <div class="carousel-container">
+                            <div id="trackJoy" class="carousel-track" data-current="0">
+                                <div class="carousel-item"><img src="Joystick-1.png" class="max-h-full object-contain p-4" onclick="openLightbox('trackJoy', 0)"></div>
+                                <div class="carousel-item"><img src="Joystick-2.png" class="max-h-full object-contain p-4" onclick="openLightbox('trackJoy', 1)"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-sm font-semibold text-rtDarkBlue mb-2">Funda Silicona Joystick Ps4</h3>
+                    <p class="text-[10px] text-gray-400 mb-4 uppercase tracking-tighter">Antideslizante · Lavable</p>
+                    <div class="mt-auto">
+                        <span class="text-2xl font-bold text-rtDarkBlue">$ 7.999</span>
+                        <button onclick="openModal('modalJoy')" class="w-full mt-4 py-2 border border-rtMainBlue text-rtMainBlue rounded-xl font-bold text-[10px] uppercase tracking-widest">Características</button>
+                        <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20la%20funda%20de%20joystick" target="_blank" class="btn-buy w-full mt-2 py-3 font-bold text-xs uppercase shadow-md flex items-center justify-center">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl product-card border">
+                    <div class="relative overflow-hidden rounded-xl h-64 bg-white mb-6">
                         <button class="carousel-btn left-2" onclick="moveCarousel('trackJBL', -1)"><i class="fas fa-chevron-left"></i></button>
                         <button class="carousel-btn right-2" onclick="moveCarousel('trackJBL', 1)"><i class="fas fa-chevron-right"></i></button>
                         <div class="carousel-container">
@@ -231,107 +299,63 @@
         <span class="lb-nav lb-next" onclick="changeLightboxImage(1)"><i class="fas fa-chevron-right"></i></span>
     </div>
 
-    <div id="modalAKG" class="modal"><div class="modal-content">
-        <button onclick="closeModal('modalAKG')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
+    <div id="modalAnti" class="modal"><div class="modal-content">
+        <button onclick="closeModal('modalAnti')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="aur-samsung-1.png" class="max-h-72 object-contain"></div>
+            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="antifaz-1.png" class="max-h-72 object-contain"></div>
             <div>
-                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Auricular Samsung AKG</h2>
-                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 15.299</p>
+                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Antifaz Hedwig</h2>
+                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 30.499</p>
                 <ul class="text-sm space-y-3 text-gray-600">
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Sonido de alta calidad con tecnología AKG.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Conector USB Tipo-C reversible.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Micrófono integrado y diseño ergonómico.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Material suave y agradable al tacto.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Ideal para dormir, viajar o relajarse.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Bloquea eficazmente la luz.</li>
                 </ul>
-                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Auricular%20Samsung%20AKG" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
+                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20antifaz%20de%20Hedwig" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
             </div>
         </div>
     </div></div>
 
-    <div id="modalCarSam" class="modal"><div class="modal-content">
-        <button onclick="closeModal('modalCarSam')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
+    <div id="modalCarAut" class="modal"><div class="modal-content">
+        <button onclick="closeModal('modalCarAut')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="car-samsung-1.png" class="max-h-72 object-contain"></div>
+            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="car-auto-1.png" class="max-h-72 object-contain"></div>
             <div>
-                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Cargador Samsung 15W</h2>
-                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 25.999</p>
+                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Cargador Auto + Cable 3 en 1</h2>
+                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 23.999</p>
                 <ul class="text-sm space-y-3 text-gray-600">
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Carga rápida eficiente de 15W.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Sistema de seguridad integrado.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Incluye cable USB-C a C de 1 metro.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Cable múltiple: Type-C, Micro USB, Lightning.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Display digital integrado.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Diseño práctico y compacto.</li>
                 </ul>
-                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Cargador%20Samsung%2015W" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
+                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20cargador%20de%20auto" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
             </div>
         </div>
     </div></div>
 
-    <div id="modalCable4" class="modal"><div class="modal-content">
-        <button onclick="closeModal('modalCable4')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
+    <div id="modalJoy" class="modal"><div class="modal-content">
+        <button onclick="closeModal('modalJoy')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="cable-4-1.png" class="max-h-72 object-contain"></div>
+            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="Joystick-1.png" class="max-h-72 object-contain"></div>
             <div>
-                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Cable 4 en 1 Flat 65W</h2>
-                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 24.499</p>
+                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Funda Joystick Ps4</h2>
+                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 7.999</p>
                 <ul class="text-sm space-y-3 text-gray-600">
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Cable multifunción 4 en 1.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Carga rápida de hasta 65W.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Compatible con USB-A y USB-C.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Material de silicona antideslizante.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Protege contra ralladuras y raspones.</li>
+                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Lavable y fácil de colocar.</li>
                 </ul>
-                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Cable%204%20en%201" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
+                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20la%20funda%20de%20joystick" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
             </div>
         </div>
     </div></div>
 
-    <div id="modalIph" class="modal"><div class="modal-content">
-        <button onclick="closeModal('modalIph')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="cable-iphone-1.png" class="max-h-72 object-contain"></div>
-            <div>
-                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Cable iPhone 2M</h2>
-                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 24.999</p>
-                <ul class="text-sm space-y-3 text-gray-600">
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> USB-C a Lightning de 2 metros.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Material resistente.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Sincronización de datos confiable.</li>
-                </ul>
-                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Cable%20iPhone%202m" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
-            </div>
-        </div>
-    </div></div>
-
-    <div id="modalJBL" class="modal"><div class="modal-content">
-        <button onclick="closeModal('modalJBL')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="jbl-760-1.png" class="max-h-72 object-contain"></div>
-            <div>
-                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">JBL Tune 760 BT</h2>
-                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 59.999</p>
-                <ul class="text-sm space-y-3 text-gray-600">
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Cancelación de ruido activa.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Gestión sencilla con botones.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Conexión multipunto y plegable.</li>
-                </ul>
-                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesan%20los%20JBL%20Tune%20760" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
-            </div>
-        </div>
-    </div></div>
-
-    <div id="modalK9" class="modal"><div class="modal-content">
-        <button onclick="closeModal('modalK9')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="k9-1.png" class="max-h-72 object-contain"></div>
-            <div>
-                <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Micrófono K9</h2>
-                <p class="text-rtMainBlue font-bold text-2xl mb-6">$ 30.999</p>
-                <ul class="text-sm space-y-3 text-gray-600">
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> 2 Micrófonos inalámbricos.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Conexión USB-C para celulares.</li>
-                    <li><i class="fas fa-check text-rtMidBlue mr-3"></i> Audio estable para redes.</li>
-                </ul>
-                <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Microfono%20K9" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a>
-            </div>
-        </div>
-    </div></div>
+    <div id="modalAKG" class="modal"><div class="modal-content"><button onclick="closeModal('modalAKG')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="aur-samsung-1.png" class="max-h-72 object-contain"></div><div><h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Auricular Samsung AKG</h2><p class="text-rtMainBlue font-bold text-2xl mb-6">$ 15.299</p><ul class="text-sm space-y-3 text-gray-600"><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Sonido AKG Alta Calidad.</li><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Conector Tipo-C.</li></ul><a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Samsung%20AKG" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a></div></div></div></div>
+    <div id="modalCarSam" class="modal"><div class="modal-content"><button onclick="closeModal('modalCarSam')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="car-samsung-1.png" class="max-h-72 object-contain"></div><div><h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Cargador Samsung 15W</h2><p class="text-rtMainBlue font-bold text-2xl mb-6">$ 25.999</p><ul class="text-sm space-y-3 text-gray-600"><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Carga Rápida 15W.</li><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Incluye Cable USB-C.</li></ul><a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Cargador%20Samsung" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a></div></div></div></div>
+    <div id="modalCable4" class="modal"><div class="modal-content"><button onclick="closeModal('modalCable4')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="cable-4-1.png" class="max-h-72 object-contain"></div><div><h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Cable 4 en 1 Flat</h2><p class="text-rtMainBlue font-bold text-2xl mb-6">$ 24.499</p><ul class="text-sm space-y-3 text-gray-600"><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Carga 65W.</li><li><i class="fas fa-check text-rtMidBlue mr-3"></i> 4 conectores en 1.</li></ul><a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Cable%204%20en%201" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a></div></div></div></div>
+    <div id="modalIph" class="modal"><div class="modal-content"><button onclick="closeModal('modalIph')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="cable-iphone-1.png" class="max-h-72 object-contain"></div><div><h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Cable iPhone 2M</h2><p class="text-rtMainBlue font-bold text-2xl mb-6">$ 24.999</p><ul class="text-sm space-y-3 text-gray-600"><li><i class="fas fa-check text-rtMidBlue mr-3"></i> 2 Metros de largo.</li><li><i class="fas fa-check text-rtMidBlue mr-3"></i> USB-C a Lightning.</li></ul><a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20Cable%20iPhone" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a></div></div></div></div>
+    <div id="modalJBL" class="modal"><div class="modal-content"><button onclick="closeModal('modalJBL')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="jbl-760-1.png" class="max-h-72 object-contain"></div><div><h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">JBL Tune 760 BT</h2><p class="text-rtMainBlue font-bold text-2xl mb-6">$ 59.999</p><ul class="text-sm space-y-3 text-gray-600"><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Noise Cancelling.</li><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Bajos Potentes.</li></ul><a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesan%20los%20JBL" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a></div></div></div></div>
+    <div id="modalK9" class="modal"><div class="modal-content"><button onclick="closeModal('modalK9')" class="absolute top-5 right-5 text-rtDarkBlue text-2xl"><i class="fas fa-times"></i></button><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div class="flex items-center justify-center bg-rtLtBlue/30 rounded-3xl p-8"><img src="k9-1.png" class="max-h-72 object-contain"></div><div><h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-2">Micrófono K9</h2><p class="text-rtMainBlue font-bold text-2xl mb-6">$ 30.999</p><ul class="text-sm space-y-3 text-gray-600"><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Dual Inalámbrico.</li><li><i class="fas fa-check text-rtMidBlue mr-3"></i> Para Celulares USB-C.</li></ul><a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20el%20K9" target="_blank" class="btn-buy w-full mt-10 py-4 font-bold uppercase flex items-center justify-center gap-3">WhatsApp</a></div></div></div></div>
 
     <a href="https://wa.me/5491139414195" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
