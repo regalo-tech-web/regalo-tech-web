@@ -77,11 +77,11 @@
         </div>
     </header>
 
- <main class="container mx-auto px-6 py-10">
+<main class="container mx-auto px-6 py-10">
         <div class="w-full h-64 bg-rtDarkBlue rounded-[2.5rem] relative flex items-center justify-center overflow-hidden border border-rtMainBlue shadow-xl mb-12">
             <div class="bg-texture"></div>
             <div class="relative z-10 text-center text-white">
-                <h1 class="font-serif text-5xl font-bold mb-4 uppercase">REGALO TECH</h1>
+                <h1 class="font-serif text-5xl font-bold mb-4 uppercase tracking-tighter">REGALO TECH</h1>
                 <div class="flex gap-4 justify-center text-[10px] font-bold uppercase tracking-widest">
                     <a href="#personal" class="px-4 py-2 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-colors">Uso Personal</a>
                     <a href="#tecnologia" class="px-4 py-2 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-colors">Tecnología</a>
@@ -94,8 +94,7 @@
                 <span class="h-[2px] w-12 bg-rtMidBlue"></span> Uso Personal
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                
-                <div class="product-card product-item" data-name="antifaz hedwig harry potter relax">
+                <div class="product-card product-item" data-name="antifaz para dormir hedwig harry potter relax">
                     <div class="carousel-container relative group">
                         <div class="carousel-track" id="track-anti" data-current="0">
                             <div class="carousel-item" onclick="zoomImg('antifaz-1.png')"><img src="antifaz-1.png"></div>
@@ -106,14 +105,11 @@
                         <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('anti', 1)"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="p-2 text-center">
-                        <h3 class="text-sm font-semibold mb-1">Antifaz Para Dormir Hedwig</h3>
+                        <h3 class="text-sm font-semibold mb-1">Antifaz Hedwig Harry Potter</h3>
                         <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 30.499</p>
-                        <button onclick="addToCart('Antifaz Hedwig', 30499)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all shadow-md">
-                            Agregar al Carrito
-                        </button>
+                        <button onclick="addToCart('Antifaz Hedwig', 30499)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all shadow-md">Agregar al Carrito</button>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -123,7 +119,7 @@
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 
-                <div class="product-card product-item" data-name="auricular samsung akg">
+                <div class="product-card product-item" data-name="auricular samsung akg tipo c con cable hifi">
                     <div class="carousel-container relative group">
                         <div class="carousel-track" id="track-aur" data-current="0">
                             <div class="carousel-item" onclick="zoomImg('aur-samsung-1.png')"><img src="aur-samsung-1.png"></div>
@@ -134,34 +130,81 @@
                         <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('aur', 1)"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="p-2 text-center">
-                        <h3 class="text-sm font-semibold mb-1">Auricular Samsung AKG</h3>
+                        <h3 class="text-sm font-semibold mb-1">Auricular Samsung AKG Tipo C</h3>
                         <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 15.299</p>
-                        <button onclick="addToCart('Auricular Samsung', 15299)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all shadow-md">
-                            Agregar al Carrito
-                        </button>
+                        <button onclick="addToCart('Auricular Samsung AKG', 15299)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all">Agregar al Carrito</button>
                     </div>
                 </div>
 
-                <div class="product-card product-item" data-name="cargador auto 3 en 1">
+                <div class="product-card product-item" data-name="cabezal cable tipo c samsung 15w carga rapida">
                     <div class="carousel-container relative group">
-                        <div class="carousel-track" id="track-carg" data-current="0">
+                        <div class="carousel-track" id="track-sam15" data-current="0">
+                            <div class="carousel-item" onclick="zoomImg('car-samsung-1.png')"><img src="car-samsung-1.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('car-samsung-2.png')"><img src="car-samsung-2.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('car-samsung-3.png')"><img src="car-samsung-3.png"></div>
+                        </div>
+                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('sam15', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('sam15', 1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="p-2 text-center">
+                        <h3 class="text-sm font-semibold mb-1">Cargador Samsung 15W + Cable</h3>
+                        <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 25.999</p>
+                        <button onclick="addToCart('Cargador Samsung 15W', 25999)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card product-item" data-name="cable de carga 4 en 1 flat wire 65w multifuncion">
+                    <div class="carousel-container relative group">
+                        <div class="carousel-track" id="track-flat" data-current="0">
+                            <div class="carousel-item" onclick="zoomImg('cable-4-1.png')"><img src="cable-4-1.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('cable-4-2.png')"><img src="cable-4-2.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('cable-4-3.png')"><img src="cable-4-3.png"></div>
+                        </div>
+                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('flat', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('flat', 1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="p-2 text-center">
+                        <h3 class="text-sm font-semibold mb-1">Cable 4 en 1 Flat Wire 65W</h3>
+                        <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 24.499</p>
+                        <button onclick="addToCart('Cable 4 en 1 65W', 24499)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card product-item" data-name="cable para iphone usb-c a lightning 2 mts apple">
+                    <div class="carousel-container relative group">
+                        <div class="carousel-track" id="track-iph" data-current="0">
+                            <div class="carousel-item" onclick="zoomImg('cable-iphone-1.png')"><img src="cable-iphone-1.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('cable-iphone-2.png')"><img src="cable-iphone-2.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('cable-iphone-3.png')"><img src="cable-iphone-3.png"></div>
+                        </div>
+                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('iph', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('iph', 1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="p-2 text-center">
+                        <h3 class="text-sm font-semibold mb-1">Cable iPhone USB-C 2 Mts</h3>
+                        <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 24.999</p>
+                        <button onclick="addToCart('Cable iPhone 2M', 24999)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card product-item" data-name="cargador para auto cable 3 en 1 display digital">
+                    <div class="carousel-container relative group">
+                        <div class="carousel-track" id="track-auto" data-current="0">
                             <div class="carousel-item" onclick="zoomImg('car-auto-1.png')"><img src="car-auto-1.png"></div>
                             <div class="carousel-item" onclick="zoomImg('car-auto-2.png')"><img src="car-auto-2.png"></div>
                             <div class="carousel-item" onclick="zoomImg('car-auto-3.png')"><img src="car-auto-3.png"></div>
                         </div>
-                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('carg', -1)"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('carg', 1)"><i class="fas fa-chevron-right"></i></button>
+                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('auto', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('auto', 1)"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="p-2 text-center">
-                        <h3 class="text-sm font-semibold mb-1">Cargador Auto 3 En 1</h3>
+                        <h3 class="text-sm font-semibold mb-1">Cargador Auto + Cable 3 en 1</h3>
                         <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 23.999</p>
-                        <button onclick="addToCart('Cargador Auto', 23999)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all shadow-md">
-                            Agregar al Carrito
-                        </button>
+                        <button onclick="addToCart('Cargador Auto 3 en 1', 23999)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase">Agregar al Carrito</button>
                     </div>
                 </div>
 
-                <div class="product-card product-item" data-name="funda joystick ps4">
+                <div class="product-card product-item" data-name="funda de silicona para joystick ps4 antideslizante">
                     <div class="carousel-container relative group">
                         <div class="carousel-track" id="track-joy" data-current="0">
                             <div class="carousel-item" onclick="zoomImg('Joystick-1.png')"><img src="Joystick-1.png"></div>
@@ -172,11 +215,9 @@
                         <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('joy', 1)"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="p-2 text-center">
-                        <h3 class="text-sm font-semibold mb-1">Funda Silicona Joystick Ps4</h3>
+                        <h3 class="text-sm font-semibold mb-1">Funda Silicona Joystick PS4</h3>
                         <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 7.999</p>
-                        <button onclick="addToCart('Funda Joystick', 7999)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all shadow-md">
-                            Agregar al Carrito
-                        </button>
+                        <button onclick="addToCart('Funda Joystick PS4', 7999)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase">Agregar al Carrito</button>
                     </div>
                 </div>
 
