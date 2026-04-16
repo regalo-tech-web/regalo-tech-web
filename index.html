@@ -285,15 +285,25 @@
             toggleCart(true);
         }
 
-        function updateCartUI() {
+       function updateCartUI() {
             const container = document.getElementById('cart-items');
             let total = 0;
             container.innerHTML = "";
+            
             cart.forEach((item, index) => {
                 total += item.price;
-                container.innerHTML += `<div class="flex justify-between p-2 border-b text-sm"><span>${item.name}</span><b>$${item.price}</b></div>`;
+                // Agregamos .toLocaleString('es-AR') al precio del producto
+                container.innerHTML += `
+                    <div class="flex justify-between p-2 border-b text-sm items-center">
+                        <div class="flex flex-col">
+                            <span class="font-medium">${item.name}</span>
+                        </div>
+                        <b class="text-rtDarkBlue whitespace-nowrap">$ ${item.price.toLocaleString('es-AR')}</b>
+                    </div>`;
             });
-            document.getElementById('cart-total').innerText = `$ ${total.toLocaleString()}`;
+            
+            // También lo aplicamos al total general
+            document.getElementById('cart-total').innerText = `$ ${total.toLocaleString('es-AR')}`;
             document.getElementById('cart-count').innerText = cart.length;
         }
 
