@@ -72,21 +72,42 @@ html {
         </div>
     </div>
 
-    <header class="bg-white py-8 border-b border-gray-100">
+    <header class="bg-white py-10 border-b border-gray-100 shadow-[0_15px_50px_-20px_rgba(0,0,0,0.05)]">
         <div class="container mx-auto px-6 flex flex-col items-center">
             
             <div class="mb-8 text-center">
                 <img src="logo-regalo-tech.png" alt="Regalo Tech" 
-                     class="w-64 h-auto object-contain mx-auto">
+                     class="w-64 h-auto object-contain mx-auto transition-transform hover:scale-105 duration-300">
             </div>
 
-            <div class="relative w-full max-w-xl">
+            <div class="relative w-full max-w-xl mb-8">
                 <div class="relative">
-                    <input id="mainSearch" type="search" placeholder="¿Qué buscas hoy?" 
-                        class="w-full bg-gray-100 border border-gray-200 rounded-full py-3.5 pl-12 pr-4 text-sm focus:ring-2 focus:ring-rtMidBlue/20 transition-all shadow-inner">
-                    <i class="fas fa-search absolute left-4.5 top-4 text-gray-400 text-sm"></i>
+                    <input id="mainSearch" type="search" placeholder="¿Qué quieres regalar hoy?" 
+                        class="w-full bg-gray-50 border border-gray-200 rounded-full py-4 pl-12 pr-4 text-sm focus:ring-2 focus:ring-rtMidBlue/20 transition-all shadow-inner">
+                    <i class="fas fa-search absolute left-4.5 top-4.5 text-gray-400 text-sm"></i>
                 </div>
                 <div id="searchResults" class="absolute top-full left-0 w-full bg-white shadow-xl z-[300] hidden max-h-60 overflow-y-auto rounded-b-lg border border-gray-100"></div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-10 text-gray-400 text-[10px] uppercase tracking-[0.2em] font-bold">
+                <div class="flex items-center gap-3 group">
+                    <div class="w-8 h-8 rounded-full bg-rtMidBlue/10 flex items-center justify-center group-hover:bg-rtMidBlue/20 transition-colors">
+                        <i class="fas fa-truck text-rtMidBlue"></i>
+                    </div>
+                    <span>Envíos a todo el país</span>
+                </div>
+                <div class="flex items-center gap-3 group">
+                    <div class="w-8 h-8 rounded-full bg-rtMidBlue/10 flex items-center justify-center group-hover:bg-rtMidBlue/20 transition-colors">
+                        <i class="fas fa-shield-alt text-rtMidBlue"></i>
+                    </div>
+                    <span>Compra 100% Segura</span>
+                </div>
+                <div class="flex items-center gap-3 group">
+                    <div class="w-8 h-8 rounded-full bg-rtMidBlue/10 flex items-center justify-center group-hover:bg-rtMidBlue/20 transition-colors">
+                        <i class="fas fa-check-circle text-rtMidBlue"></i>
+                    </div>
+                    <span>Garantía Oficial</span>
+                </div>
             </div>
 
         </div>
