@@ -63,20 +63,38 @@
         </div>
     </div>
 
-    <header class="bg-white px-6 py-3 shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <img src="logo-regalo-tech.png.png" class="h-12">
-            <div class="relative w-full md:w-1/2">
-                <input type="search" id="mainSearch" onkeyup="smartSearch()" placeholder="¿Qué buscas?" class="w-full bg-slate-50 border rounded-full py-2 px-6 focus:outline-none text-sm">
-                <div class="relative w-full">
-    <div id="searchResults" class="absolute top-full left-0 w-full bg-white shadow-xl rounded-b-xl border border-gray-200 z-[300] hidden max-h-80 overflow-y-auto">
-        </div>
-</div>
-                <div id="suggestions" class="absolute w-full bg-white mt-1 rounded-xl shadow-lg hidden z-50 border"></div>
-            </div>
-            <div class="flex gap-4">
-                <button onclick="alert('✨ Sección disponible pronto ✨')" class="text-xs font-bold uppercase text-rtMainBlue">Mi Cuenta</button>
-                <button onclick="toggleCart()" class="relative"><i class="fas fa-shopping-cart"></i><span id="cart-count" class="absolute -top-2 -right-2 bg-rtMainBlue text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">0</span></button>
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-[100] border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex flex-col items-center">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="logo.png" alt="Logo" class="w-12 h-12 object-contain">
+                    <div class="flex flex-col">
+                        <h1 class="font-serif text-3xl font-bold tracking-tighter text-rtDarkBlue leading-none">REGALO TECH</h1>
+                        <span class="text-[8px] uppercase tracking-[0.3em] text-rtMidBlue font-bold">Tecnología · Regalos · Y más</span>
+                    </div>
+                </div>
+
+                <div class="h-[1px] w-full max-w-2xl bg-gradient-to-r from-transparent via-rtMidBlue/40 to-transparent mb-4"></div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between w-full gap-4">
+                    <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-widest text-rtDarkBlue order-2 md:order-1">
+                        <a href="#tecnologia" class="hover:text-rtMidBlue transition-colors">Tecnología</a>
+                        <a href="#cotillon" class="hover:text-rtMidBlue transition-colors">Cotillón</a>
+                        <a href="#hogar" class="hover:text-rtMidBlue transition-colors">Hogar</a>
+                        <a href="#mascotas" class="hover:text-rtMidBlue transition-colors">Mascotas</a>
+                        <a href="#infantil" class="hover:text-rtMidBlue transition-colors">Infantil</a>
+                        <a href="#personal" class="hover:text-rtMidBlue transition-colors">Uso Personal</a>
+                    </nav>
+
+                    <div class="relative w-full max-w-xs order-1 md:order-2">
+                        <div class="relative">
+                            <input id="mainSearch" type="search" placeholder="¿Qué buscas hoy?" 
+                                class="w-full bg-gray-50 border-none rounded-full py-2 pl-10 pr-4 text-xs focus:ring-2 focus:ring-rtMidBlue/30 transition-all">
+                            <i class="fas fa-search absolute left-4 top-2.5 text-gray-400 text-xs"></i>
+                        </div>
+                        <div id="searchResults" class="absolute top-full left-0 w-full bg-white shadow-xl rounded-b-xl border border-gray-200 z-[300] hidden max-h-80 overflow-y-auto"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
