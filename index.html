@@ -349,6 +349,38 @@
             document.getElementById('modalSpecs').classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+        // Motor de búsqueda en tiempo real
+        const searchInput = document.querySelector('input[type="search"]'); // Busca tu barra de búsqueda
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                const products = document.querySelectorAll('.product-item');
+                const sections = document.querySelectorAll('section');
+
+                products.forEach(product => {
+                    const productName = product.getAttribute('data-name').toLowerCase();
+                    
+                    // Si el nombre del producto contiene lo que escribió el usuario
+                    if (productName.includes(term)) {
+                        product.style.display = "block"; // Lo muestra
+                        product.style.opacity = "1";
+                    } else {
+                        product.style.display = "none"; // Lo oculta
+                    }
+                });
+
+                // Ocultar secciones vacías para que no queden títulos solos
+                sections.forEach(section => {
+                    const visibleProducts = section.querySelectorAll('.product-item[style="display: block;"]');
+                    if (visibleProducts.length === 0 && term !== "") {
+                        section.style.display = "none";
+                    } else {
+                        section.style.display = "block";
+                    }
+                });
+            });
+        }
     </script>
     <a href="https://wa.me/5491139414195?text=¡Hola%20RegaloTech!%20👋%20Quisiera%20más%20información%20sobre..." 
        class="whatsapp-float" 
