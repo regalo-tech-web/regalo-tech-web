@@ -63,23 +63,79 @@
             <button onclick="checkoutWhatsApp()" class="w-full btn-buy py-4 font-bold uppercase shadow-lg">Finalizar por WhatsApp</button>
         </div>
     </div>
-
-    <header class="bg-white px-6 py-3 shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="#"><img src="logo-regalo-tech.png.png" alt="Regalo Tech" class="h-16 w-auto object-contain"></a>
-            <div class="relative w-full md:w-1/2">
-                <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="¿Qué estás buscando hoy?" class="w-full bg-slate-50 border border-rtLtBlue rounded-full py-2.5 px-6 focus:outline-none focus:border-rtMidBlue text-sm">
-                <i class="fas fa-search absolute right-5 top-3.5 text-rtMidBlue"></i>
-            </div>
-            <div class="flex gap-6 items-center">
-                <button onclick="alert('Próximamente')" class="text-[11px] font-bold uppercase tracking-widest text-rtMainBlue hover:text-rtDarkBlue">Mi Cuenta</button>
-                <button onclick="toggleCart()" class="relative">
-                    <i class="fas fa-shopping-cart text-lg"></i>
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-rtMainBlue text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center font-bold">0</span>
-                </button>
-            </div>
+<header class="bg-white px-6 py-3 shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="#"><img src="logo-regalo-tech.png.png" alt="Regalo Tech" class="h-16 w-auto object-contain"></a>
+        
+        <div class="relative w-full md:w-1/2">
+            <input type="text" id="searchInput" onkeyup="smartSearch()" placeholder="¿Qué estás buscando hoy?" 
+                class="w-full bg-slate-50 border border-rtLtBlue rounded-full py-2.5 px-6 focus:outline-none focus:border-rtMidBlue text-sm">
+            <i class="fas fa-search absolute right-5 top-3.5 text-rtMidBlue"></i>
+            
+            <div id="searchSuggestions" class="absolute w-full bg-white mt-2 rounded-2xl shadow-xl border border-rtLtBlue hidden z-[100] max-h-60 overflow-y-auto">
+                </div>
         </div>
-    </header>
+
+        <div class="flex gap-6 items-center">
+            <button onclick="showAccountAlert()" class="text-[11px] font-bold uppercase tracking-widest text-rtMainBlue hover:text-rtDarkBlue transition-all">Mi Cuenta</button>
+            <button onclick="toggleCart()" class="relative">
+                <i class="fas fa-shopping-cart text-lg"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-rtMainBlue text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center font-bold">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="w-full h-auto min-h-[300px] bg-rtDarkBlue rounded-[2.5rem] flex items-center justify-center shadow-2xl mb-12 overflow-hidden relative border border-rtMainBlue py-12">
+    <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
+    
+    <div class="z-10 text-center text-white p-6 w-full max-w-5xl">
+        <h2 class="font-serif text-5xl md:text-6xl font-bold uppercase mb-2 tracking-tight">Regalo Tech</h2>
+        <div class="h-[2px] w-40 bg-rtMidBlue mx-auto mb-10 opacity-80"></div>
+        <div class="flex flex-wrap justify-center gap-3 text-[10px] font-bold tracking-widest uppercase">
+            <a href="#personal" class="px-6 py-3 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-all">Uso Personal</a>
+            <a href="#tecnologia" class="px-6 py-3 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue transition-all">Tecnología</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Aviso elegante de Mi Cuenta
+    function showAccountAlert() {
+        alert("✨ ¡Sección exclusiva muy pronto! ✨\nEstamos trabajando para que puedas gestionar tus pedidos desde aquí.");
+    }
+
+    // Lógica de Búsqueda Inteligente (Tipo Lista)
+    function smartSearch() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const suggestions = document.getElementById('searchSuggestions');
+        const products = document.getElementsByClassName('product-item');
+        
+        suggestions.innerHTML = "";
+        
+        if (input.length > 0) {
+            let found = false;
+            for (let item of products) {
+                let name = item.getAttribute('data-name');
+                if (name.includes(input)) {
+                    found = true;
+                    let div = document.createElement('div');
+                    div.className = "p-4 hover:bg-rtLtBlue cursor-pointer border-b border-rtLtBlue last:border-0 flex items-center gap-4";
+                    div.innerHTML = `<i class="fas fa-search text-rtMidBlue text-xs"></i> <span class="text-sm">${name.toUpperCase()}</span>`;
+                    div.onclick = () => {
+                        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        suggestions.classList.add('hidden');
+                    };
+                    suggestions.appendChild(div);
+                }
+            }
+            if (found) suggestions.classList.remove('hidden');
+            else suggestions.classList.add('hidden');
+        } else {
+            suggestions.classList.add('hidden');
+        }
+    }
+</script>
 
     <main class="container mx-auto px-6 py-10">
         <div class="w-full h-auto min-h-[300px] bg-rtDarkBlue rounded-[2.5rem] flex items-center justify-center shadow-2xl mb-12 overflow-hidden relative border border-rtMainBlue py-12">
