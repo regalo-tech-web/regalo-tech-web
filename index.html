@@ -19,6 +19,28 @@
         .overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 150; }
         .product-card { border-radius: 1.5rem; transition: 0.3s; border: 1px solid #dceef3; background: white; overflow: hidden; }
         .product-card:hover { transform: translateY(-5px); border-color: #7fc6df; }
+        /* Botón de WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #437ea7; /* Azul original */
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .whatsapp-float:hover {
+            background-color: #25d366; /* Cambia a verde al pasar el mouse */
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="bg-rtLtBlue font-sans text-rtDarkBlue">
@@ -70,5 +92,10 @@
         }
         function smartSearch() { /* Lo configuraremos cuando pongamos los productos */ }
     </script>
+    <a href="https://wa.me/5491139414195?text=¡Hola%20RegaloTech!%20👋%20Quisiera%20más%20información%20sobre..." 
+       class="whatsapp-float" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 </body>
 </html>
