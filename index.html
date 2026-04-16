@@ -41,6 +41,14 @@
             background-color: #25d366; /* Cambia a verde al pasar el mouse */
             transform: scale(1.1);
         }
+        /* Estilos para el Carrusel de Imágenes */
+        .carousel-container { position: relative; overflow: hidden; width: 100%; height: 200px; border-radius: 1rem; margin-bottom: 1rem; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; height: 100%; width: 100%; }
+        .carousel-item { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; cursor: zoom-in; }
+        .carousel-track img { max-height: 100%; object-fit: contain; }
+        
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; z-index: 10; border: none; cursor: pointer; transition: 0.3s; }
+        .carousel-btn:hover { background: rgba(255,255,255,1); transform: translateY(-50%) scale(1.1); }
     </style>
 </head>
 <body class="bg-rtLtBlue font-sans text-rtDarkBlue">
@@ -81,11 +89,135 @@
             </div>
         </div>
 
-        <div id="product-grid"></div>
+     <section id="personal" class="mb-20">
+            <h2 class="text-3xl font-serif font-bold mb-8 flex items-center gap-4">
+                <span class="h-[2px] w-12 bg-rtMidBlue"></span> Uso Personal
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="product-card product-item" data-name="antifaz hedwig harry potter relax">
+                    <div class="carousel-container relative group">
+                        <div class="carousel-track" id="track-anti" data-current="0">
+                            <div class="carousel-item" onclick="zoomImg('antifaz-1.png')">
+                                <img src="antifaz-1.png">
+                            </div>
+                            <div class="carousel-item" onclick="zoomImg('antifaz-2.png')">
+                                <img src="antifaz-2.png">
+                            </div>
+                            <div class="carousel-item" onclick="zoomImg('antifaz-3.png')">
+                                <img src="antifaz-3.png">
+                            </div>
+                        </div>
+                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('anti', -1)">
+                            <i class="fas fa-chevron-left text-rtMainBlue"></i>
+                        </button>
+                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('anti', 1)">
+                            <i class="fas fa-chevron-right text-rtMainBlue"></i>
+                        </button>
+                    </div>
+                    <div class="p-2">
+                        <h3 class="text-sm font-semibold mb-1">Antifaz Para Dormir Hedwig</h3>
+                        <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 30.499</p>
+                        <button onclick="addToCart('Antifaz Hedwig', 30499)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all">
+                            Agregar al Carrito
+                        </button>
+                    </div>
+
+                    <div class="product-card product-item" data-name="auricular samsung akg tipo c hifi">
+                    <div class="carousel-container relative group">
+                        <div class="carousel-track" id="track-aur" data-current="0">
+                            <div class="carousel-item" onclick="zoomImg('aur-samsung-1.png')"><img src="aur-samsung-1.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('aur-samsung-2.png')"><img src="aur-samsung-2.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('aur-samsung-3.png')"><img src="aur-samsung-3.png"></div>
+                        </div>
+                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('aur', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('aur', 1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="p-2">
+                        <h3 class="text-sm font-semibold mb-1">Auricular Samsung AKG Tipo C</h3>
+                        <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 15.299</p>
+                        <button onclick="addToCart('Auricular Samsung AKG', 15299)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card product-item" data-name="cargador auto 3 en 1 digital universal">
+                    <div class="carousel-container relative group">
+                        <div class="carousel-track" id="track-carg" data-current="0">
+                            <div class="carousel-item" onclick="zoomImg('car-auto-1.png')"><img src="car-auto-1.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('car-auto-2.png')"><img src="car-auto-2.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('car-auto-3.png')"><img src="car-auto-3.png"></div>
+                        </div>
+                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('carg', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('carg', 1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="p-2">
+                        <h3 class="text-sm font-semibold mb-1">Cargador Auto + Cable 3 En 1</h3>
+                        <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 23.999</p>
+                        <button onclick="addToCart('Cargador Auto 3-en-1', 23999)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="product-card product-item" data-name="funda joystick ps4 silicona playstation">
+                    <div class="carousel-container relative group">
+                        <div class="carousel-track" id="track-joy" data-current="0">
+                            <div class="carousel-item" onclick="zoomImg('Joystick-1.png')"><img src="Joystick-1.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('Joystick-2.png')"><img src="Joystick-2.png"></div>
+                            <div class="carousel-item" onclick="zoomImg('Joystick-3.png')"><img src="Joystick-3.png"></div>
+                        </div>
+                        <button class="carousel-btn left-2 hidden group-hover:flex" onclick="moveSlide('joy', -1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn right-2 hidden group-hover:flex" onclick="moveSlide('joy', 1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="p-2">
+                        <h3 class="text-sm font-semibold mb-1">Funda Silicona Joystick Ps4</h3>
+                        <p class="text-2xl font-bold mb-4 text-rtDarkBlue">$ 7.999</p>
+                        <button onclick="addToCart('Funda Joystick PS4', 7999)" class="w-full bg-rtMainBlue text-white py-3 rounded-xl text-xs font-bold uppercase hover:bg-rtDarkBlue transition-all">Agregar al Carrito</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script>
         let cart = [];
+        // Función para mover las fotos
+        function moveSlide(trackId, direction) {
+            const track = document.getElementById('track-' + trackId);
+            const slides = track.querySelectorAll('.carousel-item');
+            let currentSlide = parseInt(track.getAttribute('data-current') || 0);
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            track.setAttribute('data-current', currentSlide);
+        }
+
+        function zoomImg(src) {
+            alert("Aquí se abriría el zoom de: " + src);
+            // Luego configuramos el modal de zoom para que no sea lío ahora
+        }
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            let total = 0;
+            container.innerHTML = "";
+            cart.forEach((item, index) => {
+                total += item.price;
+                container.innerHTML += `<div class="flex justify-between p-2 border-b text-sm"><span>${item.name}</span><b>$${item.price}</b></div>`;
+            });
+            document.getElementById('cart-total').innerText = `$ ${total.toLocaleString()}`;
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        function checkout() {
+            let msg = "¡Hola RegaloTech! 👋 Quisiera pedir:\n";
+            cart.forEach(i => msg += `- ${i.name}\n`);
+            window.open(`https://wa.me/5491139414195?text=${encodeURIComponent(msg)}`);
+        }
         function toggleCart(f) { 
             const d = document.getElementById('cart-drawer'); const o = document.getElementById('overlay');
             if(f) { d.classList.add('open'); o.style.display='block'; } else { d.classList.toggle('open'); o.style.display = o.style.display==='block'?'none':'block'; }
