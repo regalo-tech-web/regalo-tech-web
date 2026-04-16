@@ -242,12 +242,19 @@
         let currentZoomIndex = 0;
 
         function zoomImg(src) {
-            // Buscamos todas las imágenes del carrusel donde hiciste clic
-            const track = event.target.closest('.carousel-track');
-            const imgs = Array.from(track.querySelectorAll('img'));
+            // Buscamos la tarjeta del producto donde se hizo clic
+            const productCard = event.target.closest('.product-card');
+            // Traemos solo las imágenes reales que están dentro de ese carrusel
+            const imgs = Array.from(productCard.querySelectorAll('.carousel-track img'));
             
-            currentZoomImages = imgs.map(img => img.src);
-            currentZoomIndex = currentZoomImages.indexOf(src);
+            // Filtramos cualquier ruta vacía o rota
+            currentZoomImages = imgs.map(img => img.getAttribute('src')).filter(s => s && s !== "");
+            
+            // Buscamos cuál es la foto que activó el zoom
+            const fileName = src.split('/').pop(); // Limpiamos la ruta por si acaso
+            currentZoomIndex = currentZoomImages.findIndex(imgSrc => imgSrc.includes(fileName));
+            
+            if (currentZoomIndex === -1) currentZoomIndex = 0;
 
             const modal = document.getElementById('modalZoom');
             const img = document.getElementById('imgZoomed');
@@ -260,13 +267,11 @@
         function changeZoomImg(direction) {
             currentZoomIndex = (currentZoomIndex + direction + currentZoomImages.length) % currentZoomImages.length;
             const img = document.getElementById('imgZoomed');
-            
-            // Efecto suave de transición
-            img.style.opacity = "0";
+            img.style.opacity = "0.5"; // Efecto rápido de cambio
             setTimeout(() => {
                 img.src = currentZoomImages[currentZoomIndex];
                 img.style.opacity = "1";
-            }, 150);
+            }, 50);
         }
 
         function closeZoom() {
@@ -308,16 +313,16 @@
        target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-   <div id="modalZoom" class="fixed inset-0 z-[200] hidden bg-black/95 flex items-center justify-center p-4">
-        <button onclick="closeZoom()" class="absolute top-5 right-8 text-white text-5xl z-50 hover:text-rtMidBlue">&times;</button>
+  <div id="modalZoom" class="fixed inset-0 z-[200] hidden bg-black/95 flex items-center justify-center p-4">
+        <button onclick="closeZoom()" class="absolute top-5 right-8 text-white text-5xl z-[210] hover:text-rtMidBlue transition-colors">&times;</button>
         
-        <button onclick="changeZoomImg(-1)" class="absolute left-4 text-white text-4xl p-4 hover:text-rtMidBlue z-50">
+        <button onclick="changeZoomImg(-1)" class="absolute left-4 text-white text-5xl p-6 hover:text-rtMidBlue z-[210] transition-transform active:scale-90">
             <i class="fas fa-chevron-left"></i>
         </button>
 
-        <img id="imgZoomed" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl transition-all duration-300" src="">
+        <img id="imgZoomed" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl transition-all duration-200 object-contain" src="">
 
-        <button onclick="changeZoomImg(1)" class="absolute right-4 text-white text-4xl p-4 hover:text-rtMidBlue z-50">
+        <button onclick="changeZoomImg(1)" class="absolute right-4 text-white text-5xl p-6 hover:text-rtMidBlue z-[210] transition-transform active:scale-90">
             <i class="fas fa-chevron-right"></i>
         </button>
     </div>
