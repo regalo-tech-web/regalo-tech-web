@@ -239,8 +239,17 @@
         }
 
         function zoomImg(src) {
-            alert("Aquí se abriría el zoom de: " + src);
-            // Luego configuramos el modal de zoom para que no sea lío ahora
+            const modal = document.getElementById('modalZoom');
+            const img = document.getElementById('imgZoomed');
+            img.src = src; 
+            modal.classList.remove('hidden'); 
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeZoom() {
+            const modal = document.getElementById('modalZoom');
+            modal.classList.add('hidden'); 
+            document.body.style.overflow = 'auto'; 
         }
 
         function addToCart(name, price) {
@@ -277,5 +286,9 @@
        target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+    <div id="modalZoom" class="fixed inset-0 z-[200] hidden bg-black/90 flex items-center justify-center p-4 cursor-pointer" onclick="closeZoom()">
+        <span class="absolute top-5 right-8 text-white text-5xl hover:text-rtMidBlue cursor-pointer">&times;</span>
+        <img id="imgZoomed" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl" src="">
+    </div>
 </body>
 </html>
