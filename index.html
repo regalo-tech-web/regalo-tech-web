@@ -49,12 +49,12 @@
         
         .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; z-index: 10; border: none; cursor: pointer; transition: 0.3s; }
         .carousel-btn:hover { background: rgba(255,255,255,1); transform: translateY(-50%) scale(1.1); }
-    /* AJUSTE PARA QUE EL HEADER NO TAPE LAS CATEGORÍAS AL HACER CLIC */
+   /* Ajuste para cuando el header NO es fijo */
 section[id] {
-    scroll-margin-top: 250px;
+    scroll-margin-top: 40px; /* Un poco de aire para que no pegue contra el borde */
 }
 
-/* OPCIONAL: Suaviza el movimiento del scroll para que no sea un salto brusco */
+/* Mantenemos el scroll suave para que sea agradable */
 html {
     scroll-behavior: smooth;
 }
