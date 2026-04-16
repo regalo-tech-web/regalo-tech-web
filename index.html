@@ -49,9 +49,6 @@
             transition: all 0.3s ease;
         }
         .whatsapp-btn:hover { background-color: #25d366; transform: scale(1.1); }
-        
-        /* Asegura que las imágenes de productos no se corten */
-        .product-img { max-height: 100%; max-width: 100%; object-fit: contain; }
     </style>
 </head>
 <body class="bg-rtLtBlue font-sans text-rtDarkBlue">
@@ -79,7 +76,7 @@
             
             <div class="z-10 text-center text-white p-6 w-full max-w-5xl">
                 <div class="mb-2">
-                    <h2 class="font-serif text-5xl md:text-6xl font-bold tracking-tight uppercase inline-block">
+                    <h2 class="font-serif text-5xl md:text-6xl font-bold tracking-normal uppercase inline-block">
                         Regalo Tech
                     </h2>
                 </div>
@@ -112,15 +109,11 @@
             </div>
         </div>
 
-        <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-10 flex items-center gap-4">
-            <span class="h-[2px] w-12 bg-rtMidBlue"></span> Tecnología
-        </h2>
-        <div id="tecnologia" class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-20">
-            <div class="bg-white p-6 rounded-2xl product-card border flex flex-col group cursor-pointer">
-                <div class="relative overflow-hidden rounded-xl h-60 bg-white mb-6 flex items-center justify-center p-4">
-                    <img src="https://ar.jbl.com/dw/image/v2/AAXW_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw7695325b/JBL_TUNE_760BT_Product%20Image_Hero_Black-1605x1605px.png?sw=535&sh=535" 
-                         alt="JBL Tune 760 BT" 
-                         class="product-img group-hover:scale-110 transition duration-500">
+        <h2 class="text-3xl font-serif font-bold text-rtDarkBlue mb-8">Tecnología</h2>
+        <div id="tecnologia" class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="bg-white p-6 rounded-2xl product-card border flex flex-col group">
+                <div class="relative overflow-hidden rounded-xl h-56 bg-white mb-6 flex items-center justify-center p-4">
+                    <img src="jbl-760bt-black.png" alt="JBL Tune 760 BT" class="h-full object-contain group-hover:scale-110 transition duration-500">
                     <span class="absolute top-2 left-2 bg-rtMidBlue text-white font-bold text-[10px] px-3 py-1 rounded-full shadow-sm">DESTACADO</span>
                 </div>
                 <h3 class="text-sm font-semibold text-rtDarkBlue group-hover:text-rtMainBlue mb-2">Auriculares JBL Tune 760 BT Black</h3>
@@ -129,31 +122,10 @@
                     <button class="btn-buy w-full mt-5 py-3 font-bold text-xs uppercase tracking-widest shadow-md">Comprar Ahora</button>
                 </div>
             </div>
-            
-            <div class="bg-white/50 p-6 rounded-2xl border border-rtLtBlue flex flex-col items-center justify-center text-center opacity-70">
-                <i class="fas fa-plus text-2xl text-rtLtBlue mb-4"></i>
-                <p class="text-xs text-rtDarkBlue">Próximo Producto</p>
-            </div>
-            <div class="bg-white/50 p-6 rounded-2xl border border-rtLtBlue flex flex-col items-center justify-center text-center opacity-70">
-                <i class="fas fa-plus text-2xl text-rtLtBlue mb-4"></i>
-                <p class="text-xs text-rtDarkBlue">Próximo Producto</p>
-            </div>
-            <div class="bg-white/50 p-6 rounded-2xl border border-rtLtBlue flex flex-col items-center justify-center text-center opacity-70">
-                <i class="fas fa-plus text-2xl text-rtLtBlue mb-4"></i>
-                <p class="text-xs text-rtDarkBlue">Próximo Producto</p>
-            </div>
         </div>
-
-        <div id="cotillon" class="py-10"></div>
-        <div id="hogar" class="py-10"></div>
-        <div id="mascotas" class="py-10"></div>
-        <div id="infantil" class="py-10"></div>
-        <div id="uso-personal" class="py-10"></div>
-        <div id="otros" class="py-10"></div>
-
     </main>
 
-    <a href="https://wa.me/5491139414195?text=Hola!%20Me%20interesa%20un%20producto%20de%20Regalo%20Tech" class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20un%20producto%20de%20Regalo%20Tech" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
