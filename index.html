@@ -11,124 +11,64 @@
         tailwind.config = { theme: { extend: { colors: { rtLtBlue: '#dceef3', rtMidBlue: '#7fc6df', rtMainBlue: '#437ea7', rtDarkBlue: '#3f5173' }, fontFamily: { serif: ['Crimson Pro', 'serif'], sans: ['Inter', 'sans-serif'] } } } }
     </script>
     <style>
-        .product-card { border-color: #dceef3; background: white; border-radius: 1.5rem; padding: 1.5rem; border-width: 1px; transition: 0.3s; }
-        .product-card:hover { border-color: #7fc6df; transform: translateY(-5px); }
-        .btn-buy { background-color: #437ea7; color: white; border-radius: 12px; font-weight: bold; cursor: pointer; width: 100%; padding: 0.75rem; font-size: 0.75rem; text-transform: uppercase; }
+        /* Textura del Banner */
+        .bg-texture { background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); opacity: 0.1; position: absolute; inset: 0; }
+        /* Carrito Lateral */
         #cart-drawer { position: fixed; right: -100%; top: 0; width: 350px; height: 100%; background: white; z-index: 200; transition: 0.4s; box-shadow: -5px 0 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
         #cart-drawer.open { right: 0; }
         .overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 150; }
-        .modal { display: none; position: fixed; z-index: 300; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(63, 81, 115, 0.9); backdrop-filter: blur(4px); }
-        .modal-content { background-color: white; margin: 5% auto; padding: 40px; border-radius: 30px; width: 90%; max-width: 800px; position: relative; }
-        .carousel-container { position: relative; overflow: hidden; height: 200px; border-radius: 1rem; margin-bottom: 1rem; cursor: zoom-in; }
+        .product-card { border-radius: 1.5rem; transition: 0.3s; border: 1px solid #dceef3; background: white; overflow: hidden; }
+        .product-card:hover { transform: translateY(-5px); border-color: #7fc6df; }
     </style>
 </head>
 <body class="bg-rtLtBlue font-sans text-rtDarkBlue">
     <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+    
     <div id="cart-drawer">
-        <div class="p-6 border-b flex justify-between items-center"><h2 class="text-xl font-bold">Tu Carrito</h2><button onclick="toggleCart()" class="text-2xl">&times;</button></div>
-        <div id="cart-items-container" class="flex-grow overflow-y-auto p-6 space-y-4"></div>
-        <div class="p-6 border-t bg-gray-50"><div class="flex justify-between font-bold mb-4"><span>Total:</span><span id="cart-total">$ 0</span></div><button onclick="checkoutWhatsApp()" class="btn-buy py-4 shadow-lg">Finalizar por WhatsApp</button></div>
+        <div class="p-6 border-b flex justify-between items-center"><h2 class="text-xl font-bold">Pedido</h2><button onclick="toggleCart()" class="text-2xl">&times;</button></div>
+        <div id="cart-items" class="flex-grow p-6 overflow-y-auto space-y-4"></div>
+        <div class="p-6 border-t bg-gray-50">
+            <div class="flex justify-between font-bold mb-4"><span>Total:</span><span id="cart-total">$ 0</span></div>
+            <button onclick="checkout()" class="w-full bg-rtMainBlue text-white py-4 rounded-xl font-bold uppercase">Finalizar por WhatsApp</button>
+        </div>
     </div>
 
     <header class="bg-white px-6 py-3 shadow-sm sticky top-0 z-50">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="#"><img src="logo-regalo-tech.png.png" alt="Logo" class="h-16"></a>
+            <img src="logo-regalo-tech.png.png" class="h-12">
             <div class="relative w-full md:w-1/2">
-                <input type="text" id="searchInput" onkeyup="smartSearch()" placeholder="¿Qué buscas hoy?" class="w-full bg-slate-50 border rounded-full py-2 px-6 focus:outline-none text-sm">
-                <div id="searchSuggestions" class="absolute w-full bg-white mt-2 rounded-xl shadow-xl hidden z-[100] max-h-40 overflow-y-auto border"></div>
+                <input type="text" id="searchInput" onkeyup="smartSearch()" placeholder="¿Qué buscas?" class="w-full bg-slate-50 border rounded-full py-2 px-6 focus:outline-none text-sm">
+                <div id="suggestions" class="absolute w-full bg-white mt-1 rounded-xl shadow-lg hidden z-50 border"></div>
             </div>
-            <div class="flex gap-6 items-center">
-                <button onclick="alert('✨ ¡Sección muy pronto! ✨')" class="text-[11px] font-bold uppercase text-rtMainBlue">Mi Cuenta</button>
-                <button onclick="toggleCart()" class="relative"><i class="fas fa-shopping-cart text-lg"></i><span id="cart-count" class="absolute -top-2 -right-2 bg-rtMainBlue text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">0</span></button>
+            <div class="flex gap-4">
+                <button onclick="alert('✨ Sección disponible pronto ✨')" class="text-xs font-bold uppercase text-rtMainBlue">Mi Cuenta</button>
+                <button onclick="toggleCart()" class="relative"><i class="fas fa-shopping-cart"></i><span id="cart-count" class="absolute -top-2 -right-2 bg-rtMainBlue text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center">0</span></button>
             </div>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-10">
-        <div class="w-full h-auto min-h-[250px] bg-rtDarkBlue rounded-[2.5rem] flex items-center justify-center shadow-2xl mb-12 overflow-hidden relative border border-rtMainBlue py-8">
-            <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
-            <div class="z-10 text-center text-white p-4">
-                <h2 class="font-serif text-4xl md:text-6xl font-bold uppercase mb-4">Regalo Tech</h2>
-                <div class="flex flex-wrap justify-center gap-3 text-[10px] font-bold uppercase">
-                    <a href="#personal" class="px-5 py-2 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue">Uso Personal</a>
-                    <a href="#tecnologia" class="px-5 py-2 border border-rtMidBlue/50 rounded-full hover:bg-rtMidBlue">Tecnología</a>
+        <div class="w-full h-64 bg-rtDarkBlue rounded-[2.5rem] relative flex items-center justify-center overflow-hidden border border-rtMainBlue shadow-xl mb-12">
+            <div class="bg-texture"></div>
+            <div class="relative z-10 text-center text-white">
+                <h1 class="font-serif text-5xl font-bold mb-4">REGALO TECH</h1>
+                <div class="flex gap-4 justify-center text-[10px] font-bold uppercase tracking-widest">
+                    <a href="#personal" class="px-4 py-2 border border-rtMidBlue/50 rounded-full">Uso Personal</a>
+                    <a href="#tecnologia" class="px-4 py-2 border border-rtMidBlue/50 rounded-full">Tecnología</a>
                 </div>
             </div>
         </div>
 
-        <section id="personal" class="mb-12"><h2 class="text-2xl font-serif font-bold mb-6">Uso Personal</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="product-card product-item" data-name="antifaz hedwig harry potter">
-                    <div class="carousel-container" onclick="zoomImg('antifaz-1.png')"><img src="antifaz-1.png" class="h-full w-full object-contain"></div>
-                    <h3 class="text-sm font-semibold mb-2">Antifaz Hedwig</h3><p class="text-xl font-bold mb-4">$ 30.499</p>
-                    <button onclick="openModal('modalAnti')" class="w-full py-2 border border-rtMainBlue text-rtMainBlue rounded-xl text-[10px] font-bold uppercase mb-2">Ver Más</button>
-                    <button onclick="addToCart('Antifaz Hedwig', 30499)" class="btn-buy">Agregar al Carrito</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="tecnologia" class="mb-12"><h2 class="text-2xl font-serif font-bold mb-6">Tecnología</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="product-card product-item" data-name="auricular samsung akg">
-                    <div class="carousel-container" onclick="zoomImg('aur-samsung-1.png')"><img src="aur-samsung-1.png" class="h-full w-full object-contain"></div>
-                    <h3 class="text-sm font-semibold mb-2">Auricular Samsung AKG</h3><p class="text-xl font-bold mb-4">$ 15.299</p>
-                    <button onclick="addToCart('Auricular Samsung', 15299)" class="btn-buy">Agregar al Carrito</button>
-                </div>
-                <div class="product-card product-item" data-name="cargador auto 3 en 1">
-                    <div class="carousel-container" onclick="zoomImg('car-auto-1.png')"><img src="car-auto-1.png" class="h-full w-full object-contain"></div>
-                    <h3 class="text-sm font-semibold mb-2">Cargador Auto 3 En 1</h3><p class="text-xl font-bold mb-4">$ 23.999</p>
-                    <button onclick="addToCart('Cargador Auto', 23999)" class="btn-buy">Agregar al Carrito</button>
-                </div>
-            </div>
-        </section>
+        <div id="product-grid"></div>
     </main>
-
-    <div id="modalZoom" class="modal" onclick="this.style.display='none'"><div class="flex items-center justify-center min-h-screen"><img id="imgZoomed" class="max-w-[90%] rounded-2xl"></div></div>
-    <div id="modalAnti" class="modal"><div class="modal-content"><button onclick="closeModal('modalAnti')" class="absolute top-5 right-5 text-2xl">&times;</button><h2 class="text-2xl font-bold mb-4">Antifaz Hedwig</h2><p>Material suave premium para un descanso total.</p></div></div>
 
     <script>
         let cart = [];
-        function addToCart(n, p) { cart.push({n, p}); updateUI(); toggleCart(true); }
-        function updateUI() {
-            const container = document.getElementById('cart-items-container');
-            let total = 0; container.innerHTML = "";
-            cart.forEach((item, idx) => { total += item.p; container.innerHTML += `<div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg"><div class="text-sm font-bold">${item.n}</div><button onclick="removeItem(${idx})" class="text-red-400 text-xs">Eliminar</button></div>`; });
-            document.getElementById('cart-total').innerText = `$ ${total.toLocaleString()}`;
-            document.getElementById('cart-count').innerText = cart.length;
-        }
-        function removeItem(idx) { cart.splice(idx, 1); updateUI(); }
-        function toggleCart(open) {
+        function toggleCart(f) { 
             const d = document.getElementById('cart-drawer'); const o = document.getElementById('overlay');
-            if(open === true) { d.classList.add('open'); o.style.display = 'block'; }
-            else { d.classList.toggle('open'); o.style.display = o.style.display === 'block' ? 'none' : 'block'; }
+            if(f) { d.classList.add('open'); o.style.display='block'; } else { d.classList.toggle('open'); o.style.display = o.style.display==='block'?'none':'block'; }
         }
-        function checkoutWhatsApp() {
-            if(!cart.length) return alert("Carrito vacío");
-            let msg = "¡Hola! Pedido de Regalo Tech:\n";
-            cart.forEach(i => msg += `- ${i.n} ($${i.p})\n`);
-            window.open(`https://wa.me/5491139414195?text=${encodeURIComponent(msg)}`);
-        }
-        function smartSearch() {
-            const v = document.getElementById('searchInput').value.toLowerCase();
-            const s = document.getElementById('searchSuggestions');
-            const items = document.getElementsByClassName('product-item');
-            s.innerHTML = "";
-            if (v.length > 0) {
-                for (let i of items) {
-                    let n = i.getAttribute('data-name');
-                    if (n.includes(v)) {
-                        let d = document.createElement('div');
-                        d.className = "p-3 hover:bg-rtLtBlue cursor-pointer text-sm border-b";
-                        d.innerHTML = n.toUpperCase();
-                        d.onclick = () => { i.scrollIntoView({ behavior: 'smooth', block: 'center' }); s.classList.add('hidden'); };
-                        s.appendChild(d);
-                    }
-                }
-                s.classList.remove('hidden');
-            } else s.classList.add('hidden');
-        }
-        function zoomImg(src) { document.getElementById('imgZoomed').src = src; document.getElementById('modalZoom').style.display = 'block'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function smartSearch() { /* Lo configuraremos cuando pongamos los productos */ }
     </script>
 </body>
 </html>
