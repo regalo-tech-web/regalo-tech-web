@@ -145,119 +145,100 @@ header {
             <span class="h-[2px] w-12 bg-rtMidBlue"></span> Nuestro Catálogo
         </h2>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col h-full">
-                <div class="carousel-container relative group overflow-hidden rounded-xl mb-4">
-                    <div class="flex transition-transform duration-300" id="track-p1">
-                        <img src="aur-samsung-1.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="aur-samsung-2.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="aur-samsung-3.png" class="w-full h-48 object-contain flex-shrink-0">
-                    </div>
-                </div>
-                <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Auricular Samsung Akg Tipo C</h3>
-                <p class="text-2xl font-black text-rtMidBlue mb-4">$ 15.299</p>
-                <button onclick="addToCart({id: 'p1', name: 'Auricular Samsung Akg', price: 15299, image: 'aur-samsung-1.png'})" 
-                        class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">
-                    AGREGAR AL CARRITO
-                </button>
+    <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col" data-id="p1" data-name="Auricular Samsung Akg Tipo C con Cable">
+        <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
+            <div class="flex" id="track-p1">
+                <img src="aur-samsung-1.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="aur-samsung-2.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="aur-samsung-3.png" class="w-full h-48 object-contain flex-shrink-0">
             </div>
+        </div>
+        <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Auricular Samsung Akg Tipo C con Cable</h3>
+        <p class="text-2xl font-black text-rtMidBlue mb-4">$ 15.299</p>
+        <button onclick="addToCart({id: 'p1', name: 'Auricular Samsung Akg', price: 15299, image: 'aur-samsung-1.png'})" class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">AGREGAR AL CARRITO</button>
+    </div>
 
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col h-full">
-                <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
-                    <div class="flex transition-transform duration-300" id="track-p2">
-                        <img src="car-samsung-1.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="car-samsung-2.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="car-samsung-3.png" class="w-full h-48 object-contain flex-shrink-0">
-                    </div>
-                </div>
-                <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Cabezal + Cable Samsung 15w</h3>
-                <p class="text-2xl font-black text-rtMidBlue mb-4">$ 25.999</p>
-                <button onclick="addToCart({id: 'p2', name: 'Cargador Samsung 15w', price: 25999, image: 'car-samsung-1.png'})" 
-                        class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">
-                    AGREGAR AL CARRITO
-                </button>
+    <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col" data-id="p2" data-name="Cabezal + Cable Tipo C Samsung 15w">
+        <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
+            <div class="flex" id="track-p2">
+                <img src="car-samsung-1.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="car-samsung-2.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="car-samsung-3.png" class="w-full h-48 object-contain flex-shrink-0">
             </div>
+        </div>
+        <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Cabezal + Cable Tipo C Samsung 15w</h3>
+        <p class="text-2xl font-black text-rtMidBlue mb-4">$ 25.999</p>
+        <button onclick="addToCart({id: 'p2', name: 'Cargador Samsung 15w', price: 25999, image: 'car-samsung-1.png'})" class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">AGREGAR AL CARRITO</button>
+    </div>
 
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col h-full">
-                <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
-                    <div class="flex transition-transform duration-300" id="track-p3">
-                        <img src="cable-4-1.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="cable-4-2.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="cable-4-3.png" class="w-full h-48 object-contain flex-shrink-0">
-                    </div>
-                </div>
-                <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Cable Carga 4 en 1 65w</h3>
-                <p class="text-2xl font-black text-rtMidBlue mb-4">$ 24.499</p>
-                <button onclick="addToCart({id: 'p3', name: 'Cable 4 en 1 65w', price: 24499, image: 'cable-4-1.png'})" 
-                        class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">
-                    AGREGAR AL CARRITO
-                </button>
+    <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col" data-id="p3" data-name="Cable De Carga 4 en 1 Flat Wire 65w">
+        <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
+            <div class="flex" id="track-p3">
+                <img src="cable-4-1.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="cable-4-2.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="cable-4-3.png" class="w-full h-48 object-contain flex-shrink-0">
             </div>
+        </div>
+        <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Cable De Carga 4 en 1 Flat Wire 65w</h3>
+        <p class="text-2xl font-black text-rtMidBlue mb-4">$ 24.499</p>
+        <button onclick="addToCart({id: 'p3', name: 'Cable 4 en 1 65w', price: 24499, image: 'cable-4-1.png'})" class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">AGREGAR AL CARRITO</button>
+    </div>
 
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col h-full">
-                <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
-                    <div class="flex" id="track-p4">
-                        <img src="cable-iphone-1.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="cable-iphone-2.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="cable-iphone-3.png" class="w-full h-48 object-contain flex-shrink-0">
-                    </div>
-                </div>
-                <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Cable iPhone USB-C 2 Mts</h3>
-                <p class="text-2xl font-black text-rtMidBlue mb-4">$ 24.999</p>
-                <button onclick="addToCart({id: 'p4', name: 'Cable iPhone 2 Mts', price: 24999, image: 'cable-iphone-1.png'})" 
-                        class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">
-                    AGREGAR AL CARRITO
-                </button>
+    <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col" data-id="p4" data-name="CABLE PARA IPHONE USB-C A LIGHTNING 2 MTS">
+        <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
+            <div class="flex" id="track-p4">
+                <img src="cable-iphone-1.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="cable-iphone-2.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="cable-iphone-3.png" class="w-full h-48 object-contain flex-shrink-0">
             </div>
+        </div>
+        <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">CABLE PARA IPHONE USB-C A LIGHTNING 2 MTS</h3>
+        <p class="text-2xl font-black text-rtMidBlue mb-4">$ 24.999</p>
+        <button onclick="addToCart({id: 'p4', name: 'Cable iPhone 2m', price: 24999, image: 'cable-iphone-1.png'})" class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">AGREGAR AL CARRITO</button>
+    </div>
 
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col h-full">
-                <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
-                    <div class="flex" id="track-p5">
-                        <img src="antifaz-1.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="antifaz-2.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="antifaz-3.png" class="w-full h-48 object-contain flex-shrink-0">
-                    </div>
-                </div>
-                <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Antifaz Hedwig - Harry Potter</h3>
-                <p class="text-2xl font-black text-rtMidBlue mb-4">$ 30.499</p>
-                <button onclick="addToCart({id: 'p5', name: 'Antifaz Harry Potter', price: 30499, image: 'antifaz-1.png'})" 
-                        class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">
-                    AGREGAR AL CARRITO
-                </button>
+    <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col" data-id="p5" data-name="Antifaz Para Dormir Hedwig - Harry Potter">
+        <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
+            <div class="flex" id="track-p5">
+                <img src="antifaz-1.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="antifaz-2.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="antifaz-3.png" class="w-full h-48 object-contain flex-shrink-0">
             </div>
+        </div>
+        <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Antifaz Para Dormir Hedwig - Harry Potter</h3>
+        <p class="text-2xl font-black text-rtMidBlue mb-4">$ 30.499</p>
+        <button onclick="addToCart({id: 'p5', name: 'Antifaz Hedwig', price: 30499, image: 'antifaz-1.png'})" class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">AGREGAR AL CARRITO</button>
+    </div>
 
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col h-full">
-                <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
-                    <div class="flex" id="track-p6">
-                        <img src="car-auto-1.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="car-auto-2.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="car-auto-3.png" class="w-full h-48 object-contain flex-shrink-0">
-                    </div>
-                </div>
-                <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Cargador Auto + Cable 3 en 1</h3>
-                <p class="text-2xl font-black text-rtMidBlue mb-4">$ 23.999</p>
-                <button onclick="addToCart({id: 'p6', name: 'Cargador Auto 3 en 1', price: 23999, image: 'car-auto-1.png'})" 
-                        class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">
-                    AGREGAR AL CARRITO
-                </button>
+    <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col" data-id="p6" data-name="Cargador Para Auto + Cable 3 En 1">
+        <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
+            <div class="flex" id="track-p6">
+                <img src="car-auto-1.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="car-auto-2.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="car-auto-3.png" class="w-full h-48 object-contain flex-shrink-0">
             </div>
+        </div>
+        <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Cargador Para Auto + Cable 3 En 1</h3>
+        <p class="text-2xl font-black text-rtMidBlue mb-4">$ 23.999</p>
+        <button onclick="addToCart({id: 'p6', name: 'Cargador Auto 3 en 1', price: 23999, image: 'car-auto-1.png'})" class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">AGREGAR AL CARRITO</button>
+    </div>
 
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col h-full">
-                <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
-                    <div class="flex" id="track-p7">
-                        <img src="Joystick-1.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="Joystick-2.png" class="w-full h-48 object-contain flex-shrink-0">
-                        <img src="Joystick-3.png" class="w-full h-48 object-contain flex-shrink-0">
-                    </div>
-                </div>
-                <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Funda Silicona Joystick Ps4</h3>
-                <p class="text-2xl font-black text-rtMidBlue mb-4">$ 7.999</p>
-                <button onclick="addToCart({id: 'p7', name: 'Funda Ps4', price: 7999, image: 'Joystick-1.png'})" 
-                        class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">
-                    AGREGAR AL CARRITO
-                </button>
+    <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col" data-id="p7" data-name="Funda de Silicona Para Joystick Ps4">
+        <div class="carousel-container relative overflow-hidden rounded-xl mb-4">
+            <div class="flex" id="track-p7">
+                <img src="Joystick-1.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="Joystick-2.png" class="w-full h-48 object-contain flex-shrink-0">
+                <img src="Joystick-3.png" class="w-full h-48 object-contain flex-shrink-0">
             </div>
+        </div>
+        <h3 class="text-sm font-bold mb-2 flex-grow text-gray-800">Funda de Silicona Para Joystick Ps4</h3>
+        <p class="text-2xl font-black text-rtMidBlue mb-4">$ 7.999</p>
+        <button onclick="addToCart({id: 'p7', name: 'Funda Joystick Ps4', price: 7999, image: 'Joystick-1.png'})" class="w-full bg-rtMidBlue text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-rtDarkBlue transition-all">AGREGAR AL CARRITO</button>
+    </div>
+
+</div>
 
         </div>
     </div>
