@@ -99,6 +99,51 @@
     opacity: 0.5;    /* Lo hace más tenue/sutil */
     margin-left: 2px;
 }
+/* Contenedor del carrusel */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.track-container {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    scroll-behavior: smooth;
+}
+
+/* Flechas sutiles */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(4px);
+    color: #2D405E;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.05);
+    opacity: 0; /* Ocultas por defecto */
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.product-card:hover .nav-btn {
+    opacity: 1; /* Aparecen al pasar el mouse */
+}
+
+.prev-btn { left: 8px; }
+.next-btn { right: 8px; }
+
+.nav-btn:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}    
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -190,8 +235,10 @@
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p5" data-name="Antifaz Para Dormir Hedwig - Harry Potter" data-category="USO PERSONAL"
          data-specs="Material ultra suave y acolchado,Bloqueo total de luz,Elástico ajustable universal,Diseño oficial bordado">
-        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-50 h-48">
-            <div class="flex h-full" id="track-p5">
+        <div class="carousel-container mb-4 bg-gray-50 h-48">
+            <button class="nav-btn prev-btn" onclick="moveSlide('p5', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="moveSlide('p5', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p5">
                 <img src="antifaz-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="antifaz-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="antifaz-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -210,8 +257,10 @@
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p1" data-name="Auricular Samsung Akg Tipo C con Cable" data-category="TECNOLOGÍA"
          data-specs="Sonido nítido calibrado por AKG,Conector USB Tipo-C,Micrófono con control de llamada,Cable de tela reforzado">
-        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-50 h-48">
-            <div class="flex h-full" id="track-p1">
+        <div class="carousel-container mb-4 bg-gray-50 h-48">
+            <button class="nav-btn prev-btn" onclick="moveSlide('p1', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="moveSlide('p1', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p1">
                 <img src="aur-samsung-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="aur-samsung-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="aur-samsung-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -230,8 +279,10 @@
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p2" data-name="Cabezal + Cable Tipo C Samsung 15w" data-category="TECNOLOGÍA"
          data-specs="Potencia de carga 15W,Incluye cable USB-C a USB-C,Carga rápida segura,Protección contra sobrecargas">
-        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-50 h-48">
-            <div class="flex h-full" id="track-p2">
+        <div class="carousel-container mb-4 bg-gray-50 h-48">
+            <button class="nav-btn prev-btn" onclick="moveSlide('p2', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="moveSlide('p2', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p2">
                 <img src="car-samsung-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="car-samsung-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="car-samsung-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -250,8 +301,10 @@
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p3" data-name="Cable De Carga 4 en 1 Flat Wire 65w" data-category="TECNOLOGÍA"
          data-specs="Carga ultra rápida 65W,Conectores: USB-A/C a C/Lightning,Diseño plano antienredos,Longitud de 1.2 metros">
-        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-50 h-48">
-            <div class="flex h-full" id="track-p3">
+        <div class="carousel-container mb-4 bg-gray-50 h-48">
+            <button class="nav-btn prev-btn" onclick="moveSlide('p3', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="moveSlide('p3', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p3">
                 <img src="cable-4-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="cable-4-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="cable-4-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -270,8 +323,10 @@
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p4" data-name="Cable iPhone USB-C a Lightning 2 mts" data-category="TECNOLOGÍA"
          data-specs="Conector USB-C a Lightning,Largo extra de 2 metros,Carga y sincronización de datos,Cuerpo reforzado">
-        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-50 h-48">
-            <div class="flex h-full" id="track-p4">
+        <div class="carousel-container mb-4 bg-gray-50 h-48">
+            <button class="nav-btn prev-btn" onclick="moveSlide('p4', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="moveSlide('p4', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p4">
                 <img src="cable-iphone-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="cable-iphone-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="cable-iphone-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -290,8 +345,10 @@
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p6" data-name="Cargador Para Auto + Cable 3 En 1" data-category="TECNOLOGÍA"
          data-specs="Doble puerto USB,Cable integrado 3 en 1,Voltímetro digital incorporado,Carga inteligente para 3 equipos">
-        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-50 h-48">
-            <div class="flex h-full" id="track-p6">
+        <div class="carousel-container mb-4 bg-gray-50 h-48">
+            <button class="nav-btn prev-btn" onclick="moveSlide('p6', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="moveSlide('p6', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p6">
                 <img src="car-auto-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="car-auto-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="car-auto-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -310,8 +367,10 @@
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p7" data-name="Funda de Silicona Para Joystick Ps4" data-category="TECNOLOGÍA"
          data-specs="Silicona de alta calidad,Textura antideslizante,Protección contra caídas y polvo,Fácil de colocar y lavar">
-        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-50 h-48">
-            <div class="flex h-full" id="track-p7">
+        <div class="carousel-container mb-4 bg-gray-50 h-48">
+            <button class="nav-btn prev-btn" onclick="moveSlide('p7', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="moveSlide('p7', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p7">
                 <img src="Joystick-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="Joystick-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="Joystick-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -515,6 +574,33 @@ function openSpecs(productId) {
 function closeModal() {
     document.getElementById('productModal').classList.add('hidden');
     document.body.style.overflow = 'auto'; // Libera el scroll
+}    
+// Diccionario para rastrear la posición actual de cada producto
+const sliderPositions = {};
+
+function moveSlide(productId, direction) {
+    const track = document.getElementById(`track-${productId}`);
+    const images = track.querySelectorAll('img');
+    const totalImages = images.length;
+
+    // Si es la primera vez que se mueve, inicializamos su posición en 0
+    if (sliderPositions[productId] === undefined) {
+        sliderPositions[productId] = 0;
+    }
+
+    // Actualizamos la posición
+    sliderPositions[productId] += direction;
+
+    // Lógica de bucle (si llega al final, vuelve al inicio y viceversa)
+    if (sliderPositions[productId] >= totalImages) {
+        sliderPositions[productId] = 0;
+    } else if (sliderPositions[productId] < 0) {
+        sliderPositions[productId] = totalImages - 1;
+    }
+
+    // Aplicamos el movimiento (desplazamos el 100% del ancho por cada posición)
+    const moveAmount = sliderPositions[productId] * 100;
+    track.style.transform = `translateX(-${moveAmount}%)`;
 }    
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
