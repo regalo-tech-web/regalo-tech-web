@@ -234,10 +234,10 @@
 
             <div class="w-2/4 relative">
                 <div class="relative w-full max-w-lg mx-auto">
-                    <input id="mainSearch" type="search" placeholder="¿Qué buscas hoy?" 
-                        class="w-full bg-gray-100 border border-gray-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all outline-none"
-                        autocomplete="off">
-                    <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
+                    <input id="mainSearch" type="search" placeholder="¿Qué buscas hoy?"
+       class="w-full bg-gray-100 border border-gray-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:outline-none"
+       autocomplete="off"
+       onkeypress="if(event.key === 'Enter') executeSearch()">
                 </div>
                 <div id="searchResults" class="absolute top-full left-0 right-0 mx-auto max-w-lg bg-white mt-1 rounded-xl shadow-2xl border border-gray-100 hidden z-[300] max-h-80 overflow-y-auto"></div>
             </div>
@@ -778,6 +778,62 @@ function clearCart() {
         // 4. Cerramos el modal si quieres, o simplemente mostramos que está vacío
         console.log("Carrito vaciado con éxito");
     }
+}    
+ function executeSearch() {
+    const term = document.getElementById('searchInput').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.product-card');
+    let foundCount = 0;
+
+    if (term === "") {
+        // Si busca vacío, mostramos todo
+        cards.forEach(card => card.style.display = 'flex');
+        return;
+    }
+
+    cards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        // También buscamos dentro de las specs (características)
+        const specs = card.getAttribute('data-specs') ? card.getAttribute('data-specs').toLowerCase() : "";
+        
+        if (name.includes(term) || specs.includes(term)) {
+            card.style.display = 'flex';
+            foundCount++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Cerramos el menú desplegable predictivo si estuviera abierto
+    if (typeof resultsContainer !== 'undefined') {
+        resultsContainer.classList.add('hidden');
+    }
+
+    // Opcional: Scroll al inicio de los resultados
+    window.scrollTo({ top: document.getElementById('catalogGrid').offsetTop - 100, behavior: 'smooth' });
+}   
+function executeSearch() {
+    const term = document.getElementById('mainSearch').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.product-card');
+    const resultsContainer = document.getElementById('searchResults');
+
+    // Si le da a enter, cerramos las sugerencias rapidas
+    if (resultsContainer) resultsContainer.classList.add('hidden');
+
+    cards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        const specs = card.getAttribute('data-specs') ? card.getAttribute('data-specs').toLowerCase() : "";
+        
+        // Si el término está en el nombre o en las especificaciones
+        if (name.includes(term) || specs.includes(term)) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Scroll suave hacia los resultados
+    const grid = document.getElementById('catalogGrid');
+    if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }    
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
