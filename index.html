@@ -201,7 +201,7 @@
                 <span>Total:</span>
                 <span id="cart-total">$ 0</span>
             </div>
-            <button onclick="checkout()" class="w-full bg-[#1e3a8a] text-white py-4 rounded-xl font-bold uppercase hover:bg-blue-900 transition-colors">
+            <button onclick="sendOrder()" class="w-full bg-[#1e3a8a] text-white py-4 rounded-xl font-bold uppercase hover:bg-blue-900 transition-colors">
                 Finalizar Pedido
             </button>
         </div>
@@ -682,6 +682,34 @@ function moveModalSlide(direction) {
 window.addEventListener('keydown', (e) => {
     if (e.key === "Escape") closeImageModal();
 });    
+function sendOrder() {
+    // Verificamos si hay productos (asumiendo que tu variable se llama 'cart')
+    if (typeof cart === 'undefined' || cart.length === 0) {
+        alert("El carrito está vacío");
+        return;
+    }
+
+    // Encabezado del mensaje
+    let message = "Hola RegaloTech, quisiera finalizar la compra de los siguientes productos:\n\n";
+    let total = 0;
+
+    // Recorremos los productos que el usuario agregó
+    cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        // Agregamos cada línea: Producto (Cantidad): $ Precio
+        message += `- ${item.name} (x${item.quantity}): $${subtotal.toLocaleString('es-AR')}\n`;
+        total += subtotal;
+    });
+
+    // Pie del mensaje con el total y los decimales sutiles ,00
+    message += `\nTotal del pedido: $${total.toLocaleString('es-AR')},00`;
+
+    // Codificamos para que WhatsApp entienda los saltos de línea y espacios
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Abrimos el chat con tu número
+    window.open(`https://wa.me/541139414195?text=${encodedMessage}`, '_blank');
+}    
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
@@ -711,7 +739,7 @@ window.addEventListener('keydown', (e) => {
 
     <img id="modalImg" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl transition-transform duration-300">
 </div>
-<a href="https://wa.me/541139414195?text=Hola%20RegaloTech%2C%20quisiera%20mas%20informacion%20sobre..." 
+<a href="https://wa.me/541139414195?text=Hola%20RegaloTech%2C%20quisiera%20más%20informacion%20sobre..." 
    class="whatsapp-float" 
    target="_blank" 
    rel="noopener noreferrer">
