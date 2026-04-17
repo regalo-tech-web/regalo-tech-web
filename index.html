@@ -232,7 +232,9 @@
 
         <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p5">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
+         data-id="p5" data-name="Antifaz Para Dormir Hedwig - Harry Potter" data-category="USO PERSONAL"
+         data-specs="Material ultra suave y acolchado,Bloqueo total de luz,Elástico ajustable universal,Diseño oficial bordado">
         <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
             <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p5', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
             <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p5', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
@@ -252,7 +254,9 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p1">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
+         data-id="p1" data-name="Auricular Samsung Akg Tipo C con Cable" data-category="TECNOLOGÍA"
+         data-specs="Sonido nítido calibrado por AKG,Conector USB Tipo-C,Micrófono con control de llamada,Cable de tela reforzado">
         <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
             <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p1', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
             <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p1', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
@@ -272,7 +276,9 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p2">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
+         data-id="p2" data-name="Cabezal + Cable Tipo C Samsung 15w" data-category="TECNOLOGÍA"
+         data-specs="Potencia de carga 15W,Incluye cable USB-C a USB-C,Carga rápida segura,Protección contra sobrecargas">
         <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
             <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p2', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
             <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p2', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
@@ -292,7 +298,9 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p3">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
+         data-id="p3" data-name="Cable De Carga 4 en 1 Flat Wire 65w" data-category="TECNOLOGÍA"
+         data-specs="Carga ultra rápida 65W,Conectores: USB-A/C a C/Lightning,Diseño plano antienredos,Longitud de 1.2 metros">
         <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
             <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p3', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
             <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p3', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
@@ -302,77 +310,7 @@
                 <img src="cable-4-3.png" class="w-full h-full object-contain flex-shrink-0">
             </div>
         </div>
-        <h3 class="text-[0.95rem] font-medium text-[#2D405E] mb-1">Cable Carga 4 en 1 Flat</h3>
-        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 24.499<span class="text-sm opacity-60">,00</span></p>
-        <div class="space-y-2">
-            <button onclick="addToCart({id: 'p3', name: 'Cable 4 en 1', price: 24499, image: 'cable-4-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p3')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
-                <i class="fas fa-list-ul text-[10px]"></i> Características
-            </button>
-        </div>
-    </div>
-
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p4">
-        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
-            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p4', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p4', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p4" onclick="openImageModal('p4')">
-                <img src="cable-iphone-1.png" class="w-full h-full object-contain flex-shrink-0">
-                <img src="cable-iphone-2.png" class="w-full h-full object-contain flex-shrink-0">
-                <img src="cable-iphone-3.png" class="w-full h-full object-contain flex-shrink-0">
-            </div>
-        </div>
-        <h3 class="text-[0.95rem] font-medium text-[#2D405E] mb-1">Cable iPhone 2 Metros</h3>
-        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 24.999<span class="text-sm opacity-60">,00</span></p>
-        <div class="space-y-2">
-            <button onclick="addToCart({id: 'p4', name: 'Cable iPhone 2m', price: 24999, image: 'cable-iphone-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p4')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
-                <i class="fas fa-list-ul text-[10px]"></i> Características
-            </button>
-        </div>
-    </div>
-
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p6">
-        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
-            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p6', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p6', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p6" onclick="openImageModal('p6')">
-                <img src="car-auto-1.png" class="w-full h-full object-contain flex-shrink-0">
-                <img src="car-auto-2.png" class="w-full h-full object-contain flex-shrink-0">
-                <img src="car-auto-3.png" class="w-full h-full object-contain flex-shrink-0">
-            </div>
-        </div>
-        <h3 class="text-[0.95rem] font-medium text-[#2D405E] mb-1">Cargador Auto + Cable 3 en 1</h3>
-        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 23.999<span class="text-sm opacity-60">,00</span></p>
-        <div class="space-y-2">
-            <button onclick="addToCart({id: 'p6', name: 'Cargador Auto 3-1', price: 23999, image: 'car-auto-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p6')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
-                <i class="fas fa-list-ul text-[10px]"></i> Características
-            </button>
-        </div>
-    </div>
-
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p7">
-        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
-            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p7', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p7', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p7" onclick="openImageModal('p7')">
-                <img src="Joystick-1.png" class="w-full h-full object-contain flex-shrink-0">
-                <img src="Joystick-2.png" class="w-full h-full object-contain flex-shrink-0">
-                <img src="Joystick-3.png" class="w-full h-full object-contain flex-shrink-0">
-            </div>
-        </div>
-        <h3 class="text-[0.95rem] font-medium text-[#2D405E] mb-1">Funda Silicona Joystick Ps4</h3>
-        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 7.999<span class="text-sm opacity-60">,00</span></p>
-        <div class="space-y-2">
-            <button onclick="addToCart({id: 'p7', name: 'Funda Joystick PS4', price: 7999, image: 'Joystick-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p7')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
-                <i class="fas fa-list-ul text-[10px]"></i> Características
-            </button>
-        </div>
-    </div>
-
-</div>
+        <h3 class="text-[0.95rem] font-medium
 
 </div>
     </main>
