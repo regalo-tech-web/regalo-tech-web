@@ -228,6 +228,23 @@
     </main>
 
     <script>
+        // Función para ordenar alfabéticamente
+function sortProductsAlphabetically() {
+    const grid = document.getElementById('catalogGrid');
+    const cards = Array.from(grid.querySelectorAll('.product-card'));
+
+    cards.sort((a, b) => {
+        const nameA = a.getAttribute('data-name').toLowerCase();
+        const nameB = b.getAttribute('data-name').toLowerCase();
+        return nameA.localeCompare(nameB);
+    });
+
+    // Reinsertar las tarjetas ordenadas en la grilla
+    cards.forEach(card => grid.appendChild(card));
+}
+
+// Ejecutar al cargar la página por primera vez
+document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
         let cart = [];
         const searchInput = document.getElementById('mainSearch');
         const resultsContainer = document.getElementById('searchResults');
@@ -342,19 +359,17 @@ function filterCategory(category) {
     const cards = document.querySelectorAll('.product-card');
     const titleElement = document.getElementById('categoryTitle');
     
-    // 1. Manejo del Título Dinámico
+    // 1. Actualizar el Título
     if (category === 'TODOS') {
         titleElement.innerHTML = '<span class="w-10 h-1 bg-blue-600 rounded-full"></span> Catálogo General';
     } else {
-        // Formateamos el texto (ej: TECNOLOGÍA -> Tecnología)
         const formattedTitle = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
         titleElement.innerHTML = `<span class="w-10 h-1 bg-blue-600 rounded-full"></span> ${formattedTitle}`;
     }
 
-    // 2. Lógica de visibilidad
+    // 2. Filtrar y Ordenar
     cards.forEach(card => {
         const productCat = card.getAttribute('data-category');
-        // Si es 'TODOS', mostramos todo. Si no, comparamos categorías.
         if (category === 'TODOS' || productCat === category) {
             card.style.display = 'flex';
         } else {
@@ -362,7 +377,10 @@ function filterCategory(category) {
         }
     });
 
-    // 3. Scroll suave al inicio de los productos para confirmar el cambio
+    // Llamamos a la función de ordenamiento cada vez que filtramos
+    sortProductsAlphabetically();
+
+    // 3. Scroll suave
     document.getElementById('catalogGrid').scrollIntoView({ 
         behavior: 'smooth', 
         block: 'start' 
