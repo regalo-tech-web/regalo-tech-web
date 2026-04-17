@@ -84,7 +84,7 @@ header {
         </div>
     </div>
 
-  <header class="bg-white border-b border-gray-100 py-4 shadow-sm sticky top-0 z-[100]">
+  <header class="fixed top-0 left-0 w-full bg-white border-b border-gray-100 py-4 shadow-sm z-[200]">
     <div class="container mx-auto px-8 max-w-7xl flex items-center justify-between">
         
         <div class="w-1/4 flex justify-start">
@@ -101,15 +101,16 @@ header {
 
         <div class="w-1/4 flex justify-end">
             <div class="relative">
-                <button id="cartBtn" class="p-2 text-gray-700 hover:text-rtMidBlue transition-all transform hover:scale-110 group">
-                    <i class="fas fa-shopping-cart text-2xl group-hover:scale-110 transition-transform"></i>
+                <button id="cartBtn" class="p-2 text-gray-700 hover:text-rtMidBlue transition-all">
+                    <i class="fas fa-shopping-cart text-2xl"></i>
                     <span id="cartCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm">0</span>
                 </button>
             </div>
         </div>
-
     </div>
 </header>
+
+<div class="h-[88px]"></div>
 
 <main class="container mx-auto px-6 py-10">
        <div class="w-full min-h-[350px] bg-rtDarkBlue rounded-[2.5rem] relative flex items-center justify-center overflow-hidden border border-rtMainBlue shadow-xl mb-12 p-10">
