@@ -492,26 +492,95 @@ header {
                 });
             }
         });
-    // Seleccionamos los elementos
-const cartBtn = document.getElementById('cartBtn');
+// 1. VARIABLES GLOBALES
+let cart = [];
 const cartModal = document.getElementById('cartModal');
-const closeCartBtn = document.getElementById('closeCartBtn');
-const closeCartOverlay = document.getElementById('closeCart');
+const cartItemsContainer = document.getElementById('cartItems');
+const cartTotalElement = document.getElementById('cartTotal');
+const cartCountElement = document.getElementById('cartCount');
 
-// Función para ABRIR el carrito
-cartBtn.addEventListener('click', () => {
+// 2. FUNCIONES DE APERTURA Y CIERRE
+document.getElementById('cartBtn').addEventListener('click', () => {
     cartModal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // Evita que la página se mueva atrás
 });
 
-// Función para CERRAR el carrito
-const hideCart = () => {
-    cartModal.classList.add('hidden');
-    document.body.style.overflow = 'auto'; // Devuelve el scroll a la página
-};
+document.getElementById('closeCartBtn').addEventListener('click', () => cartModal.classList.add('hidden'));
+document.getElementById('closeCart').addEventListener('click', () => cartModal.classList.add('hidden'));
 
-closeCartBtn.addEventListener('click', hideCart);
-closeCartOverlay.addEventListener('click', hideCart);
+// 3. FUNCIÓN PARA AGREGAR AL CARRITO
+// Asegúrate de que tus botones de productos tengan la clase 'add-to-cart'
+document.addEventListener('click', (e) => {
+    if (e.target && (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart'))) {
+        const btn = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+        
+        // Obtenemos los datos del producto desde los atributos del botón
+        const product = {
+            id: btn.dataset.id,
+            name: btn.dataset.name,
+            price: parseFloat(btn.dataset.price),
+            image: btn.dataset.image
+        };
+
+        addToCart(product);
+    }
+});
+
+function addToCart(product) {
+    cart.push(product);
+    updateCartUI();
+    // Abrir el carrito automáticamente al agregar algo (opcional pero recomendado)
+    cartModal.classList.remove('hidden');
+}
+
+// 4. ACTUALIZAR LA INTERFAZ
+function updateCartUI() {
+    // Limpiar contenedor
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price;
+        cartItemsContainer.innerHTML += `
+            <div class="flex items-center gap-4 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                <img src="${item.image}" class="w-12 h-12 object-cover rounded-lg">
+                <div class="flex-grow">
+                    <h4 class="text-xs font-bold text-gray-800">${item.name}</h4>
+                    <p class="text-rtMidBlue font-black">$ ${item.price.toLocaleString()}</p>
+                </div>
+                <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 p-2">
+                    <i class="fas fa-trash-alt text-xs"></i>
+                </button>
+            </div>
+        `;
+    });
+
+    // Actualizar total y contador
+    cartTotalElement.innerText = `$ ${total.toLocaleString()}`;
+    cartCountElement.innerText = cart.length;
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="text-center text-gray-400 text-xs py-10">Tu carrito está vacío</p>';
+    }
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+// 5. BOTÓN DE WHATSAPP
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+    if (cart.length === 0) return alert("¡El carrito está vacío!");
+    
+    let message = "¡Hola Regalo Tech! 👋 Me gustaría pedir:\n\n";
+    cart.forEach(item => {
+        message += `• ${item.name} ($${item.price.toLocaleString()})\n`;
+    });
+    message += `\n*Total: ${cartTotalElement.innerText}*`;
+    
+    const whatsappUrl = `https://wa.me/TUNUMERO?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+});
     </script>
     <a href="https://wa.me/5491139414195?text=¡Hola%20RegaloTech!%20👋%20Quisiera%20más%20información%20sobre..." 
        class="whatsapp-float" 
