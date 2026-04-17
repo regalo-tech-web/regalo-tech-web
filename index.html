@@ -683,31 +683,32 @@ window.addEventListener('keydown', (e) => {
     if (e.key === "Escape") closeImageModal();
 });    
 function sendOrder() {
-    // Verificamos si hay productos (asumiendo que tu variable se llama 'cart')
+    // Verificamos si el carrito existe y tiene elementos
     if (typeof cart === 'undefined' || cart.length === 0) {
         alert("El carrito está vacío");
         return;
     }
 
-    // Encabezado del mensaje
     let message = "Hola RegaloTech, quisiera finalizar la compra de los siguientes productos:\n\n";
     let total = 0;
 
-    // Recorremos los productos que el usuario agregó
     cart.forEach(item => {
-        const subtotal = item.price * item.quantity;
-        // Agregamos cada línea: Producto (Cantidad): $ Precio
-        message += `- ${item.name} (x${item.quantity}): $${subtotal.toLocaleString('es-AR')}\n`;
-        total += subtotal;
+        // Usamos Number() para asegurar que el precio y la cantidad sean números reales
+        // Si tu variable usa 'cantidad' en vez de 'quantity', cámbialo aquí
+        const qty = Number(item.quantity || item.cantidad || 1);
+        const price = Number(item.price || item.precio || 0);
+        const subtotal = qty * price;
+
+        if (subtotal > 0) {
+            message += `· ${item.name || item.titulo} (x${qty}): $${subtotal.toLocaleString('es-AR')}\n`;
+            total += subtotal;
+        }
     });
 
-    // Pie del mensaje con el total y los decimales sutiles ,00
+    // Añadimos el total con el formato de decimales sutiles
     message += `\nTotal del pedido: $${total.toLocaleString('es-AR')},00`;
 
-    // Codificamos para que WhatsApp entienda los saltos de línea y espacios
     const encodedMessage = encodeURIComponent(message);
-    
-    // Abrimos el chat con tu número
     window.open(`https://wa.me/541139414195?text=${encodedMessage}`, '_blank');
 }    
     </script>
