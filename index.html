@@ -54,6 +54,31 @@
         /* Ocultar barra de scroll del buscador */
         #searchResults::-webkit-scrollbar { width: 6px; }
         #searchResults::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    /* Aplicamos una tipografía limpia y moderna a todo el catálogo */
+.product-card {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.product-card h3 {
+    font-weight: 400; /* Peso normal, mucho más sutil que el bold */
+    color: #4b5563;   /* Un gris azulado oscuro muy elegante */
+    font-size: 0.95rem;
+    line-height: 1.25;
+}
+
+.product-card .price-tag {
+    font-weight: 500; /* Un poco más de presencia que el título, pero sin ser tosco */
+    color: #111827;   /* Casi negro, para resaltar el valor */
+    letter-spacing: -0.02em;
+    margin-top: 8px;
+}
+
+.specs-btn {
+    font-size: 11px;
+    font-weight: 500;
+    color: #9ca3af;   /* Gris claro para que pase a segundo plano */
+    letter-spacing: 0.03em;
+}
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -152,12 +177,12 @@
                 <img src="antifaz-3.png" class="w-full h-full object-contain flex-shrink-0">
             </div>
         </div>
-        <h3 class="text-sm font-bold text-gray-800 mb-1">Antifaz Para Dormir Hedwig</h3>
-        <p class="text-2xl font-black text-[#2D405E] mb-4">$ 30.499</p>
+        <h3 class="text-[0.95rem] font-normal text-gray-600 mb-1">Antifaz Para Dormir Hedwig</h3>
+        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 30.499</p>
         <div class="space-y-2">
             <button onclick="addToCart({id: 'p5', name: 'Antifaz Hedwig', price: 30499, image: 'antifaz-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p5')" class="w-full py-2 text-xs font-semibold text-slate-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2">
-                <i class="fas fa-list-ul"></i> CARACTERÍSTICAS
+            <button onclick="openSpecs('p5')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
+                <i class="fas fa-list-ul text-[10px]"></i> Características
             </button>
         </div>
     </div>
@@ -172,12 +197,12 @@
                 <img src="aur-samsung-3.png" class="w-full h-full object-contain flex-shrink-0">
             </div>
         </div>
-        <h3 class="text-sm font-bold text-gray-800 mb-1">Auricular Samsung Akg Tipo C</h3>
-        <p class="text-2xl font-black text-[#2D405E] mb-4">$ 15.299</p>
+        <h3 class="text-[0.95rem] font-normal text-gray-600 mb-1">Auricular Samsung Akg Tipo C</h3>
+        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 15.299</p>
         <div class="space-y-2">
             <button onclick="addToCart({id: 'p1', name: 'Auricular AKG', price: 15299, image: 'aur-samsung-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p1')" class="w-full py-2 text-xs font-semibold text-slate-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2">
-                <i class="fas fa-list-ul"></i> CARACTERÍSTICAS
+            <button onclick="openSpecs('p1')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
+                <i class="fas fa-list-ul text-[10px]"></i> Características
             </button>
         </div>
     </div>
@@ -192,12 +217,12 @@
                 <img src="car-samsung-3.png" class="w-full h-full object-contain flex-shrink-0">
             </div>
         </div>
-        <h3 class="text-sm font-bold text-gray-800 mb-1">Cargador Samsung 15W + Cable</h3>
-        <p class="text-2xl font-black text-[#2D405E] mb-4">$ 25.999</p>
+        <h3 class="text-[0.95rem] font-normal text-gray-600 mb-1">Cargador Samsung 15W + Cable</h3>
+        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 25.999</p>
         <div class="space-y-2">
             <button onclick="addToCart({id: 'p2', name: 'Cargador Samsung 15w', price: 25999, image: 'car-samsung-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p2')" class="w-full py-2 text-xs font-semibold text-slate-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2">
-                <i class="fas fa-list-ul"></i> CARACTERÍSTICAS
+            <button onclick="openSpecs('p2')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
+                <i class="fas fa-list-ul text-[10px]"></i> Características
             </button>
         </div>
     </div>
@@ -212,12 +237,12 @@
                 <img src="cable-4-3.png" class="w-full h-full object-contain flex-shrink-0">
             </div>
         </div>
-        <h3 class="text-sm font-bold text-gray-800 mb-1">Cable Carga 4 en 1 Flat</h3>
-        <p class="text-2xl font-black text-[#2D405E] mb-4">$ 24.499</p>
+        <h3 class="text-[0.95rem] font-normal text-gray-600 mb-1">Cable Carga 4 en 1 Flat</h3>
+        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 24.499</p>
         <div class="space-y-2">
             <button onclick="addToCart({id: 'p3', name: 'Cable 4 en 1', price: 24499, image: 'cable-4-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p3')" class="w-full py-2 text-xs font-semibold text-slate-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2">
-                <i class="fas fa-list-ul"></i> CARACTERÍSTICAS
+            <button onclick="openSpecs('p3')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
+                <i class="fas fa-list-ul text-[10px]"></i> Características
             </button>
         </div>
     </div>
@@ -232,12 +257,12 @@
                 <img src="cable-iphone-3.png" class="w-full h-full object-contain flex-shrink-0">
             </div>
         </div>
-        <h3 class="text-sm font-bold text-gray-800 mb-1">Cable iPhone 2 Metros</h3>
-        <p class="text-2xl font-black text-[#2D405E] mb-4">$ 24.999</p>
+        <h3 class="text-[0.95rem] font-normal text-gray-600 mb-1">Cable iPhone 2 Metros</h3>
+        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 24.999</p>
         <div class="space-y-2">
             <button onclick="addToCart({id: 'p4', name: 'Cable iPhone 2m', price: 24999, image: 'cable-iphone-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p4')" class="w-full py-2 text-xs font-semibold text-slate-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2">
-                <i class="fas fa-list-ul"></i> CARACTERÍSTICAS
+            <button onclick="openSpecs('p4')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
+                <i class="fas fa-list-ul text-[10px]"></i> Características
             </button>
         </div>
     </div>
@@ -252,12 +277,12 @@
                 <img src="car-auto-3.png" class="w-full h-full object-contain flex-shrink-0">
             </div>
         </div>
-        <h3 class="text-sm font-bold text-gray-800 mb-1">Cargador Auto + Cable 3 en 1</h3>
-        <p class="text-2xl font-black text-[#2D405E] mb-4">$ 23.999</p>
+        <h3 class="text-[0.95rem] font-normal text-gray-600 mb-1">Cargador Auto + Cable 3 en 1</h3>
+        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 23.999</p>
         <div class="space-y-2">
             <button onclick="addToCart({id: 'p6', name: 'Cargador Auto 3-1', price: 23999, image: 'car-auto-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p6')" class="w-full py-2 text-xs font-semibold text-slate-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2">
-                <i class="fas fa-list-ul"></i> CARACTERÍSTICAS
+            <button onclick="openSpecs('p6')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
+                <i class="fas fa-list-ul text-[10px]"></i> Características
             </button>
         </div>
     </div>
@@ -272,12 +297,12 @@
                 <img src="Joystick-3.png" class="w-full h-full object-contain flex-shrink-0">
             </div>
         </div>
-        <h3 class="text-sm font-bold text-gray-800 mb-1">Funda Silicona Joystick Ps4</h3>
-        <p class="text-2xl font-black text-[#2D405E] mb-4">$ 7.999</p>
+        <h3 class="text-[0.95rem] font-normal text-gray-600 mb-1">Funda Silicona Joystick Ps4</h3>
+        <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 7.999</p>
         <div class="space-y-2">
             <button onclick="addToCart({id: 'p7', name: 'Funda Joystick PS4', price: 7999, image: 'Joystick-1.png'})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
-            <button onclick="openSpecs('p7')" class="w-full py-2 text-xs font-semibold text-slate-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2">
-                <i class="fas fa-list-ul"></i> CARACTERÍSTICAS
+            <button onclick="openSpecs('p7')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
+                <i class="fas fa-list-ul text-[10px]"></i> Características
             </button>
         </div>
     </div>
