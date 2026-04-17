@@ -92,13 +92,17 @@ header {
             <img src="logo-regalo-tech.png" alt="Regalo Tech" class="w-52 h-auto drop-shadow-sm">
         </div>
 
-        <div class="w-2/4">
-            <div class="relative w-full max-w-lg mx-auto">
-                <input id="mainSearch" type="search" placeholder="¿Qué buscas hoy?" 
-                    class="w-full bg-gray-50 border border-gray-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-rtMidBlue/20 focus:bg-white transition-all outline-none text-gray-700">
-                <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
-            </div>
+        <div class="w-2/4 relative">
+    <div class="relative w-full max-w-lg mx-auto">
+        <input id="mainSearch" type="search" placeholder="¿Qué buscas hoy?" 
+            class="w-full bg-gray-100 border border-gray-200 rounded-full py-2.5 pl-11 pr-4 text-sm focus:ring-2 focus:ring-rtMidBlue/20 focus:bg-white transition-all outline-none text-gray-700"
+            autocomplete="off">
+        <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
+    </div>
+
+    <div id="searchResults" class="absolute top-full left-0 right-0 mx-auto max-w-lg bg-white mt-1 rounded-xl shadow-2xl border border-gray-100 hidden z-[300] max-h-80 overflow-y-auto">
         </div>
+</div>
 
         <div class="w-1/4 flex justify-end">
             <div class="relative">
@@ -630,5 +634,69 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
         </div>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('mainSearch');
+    const resultsContainer = document.getElementById('searchResults');
+
+    // Esta función detecta cuando escribes
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase().trim();
+        
+        if (term.length < 1) {
+            resultsContainer.classList.add('hidden');
+            mostrarTodosLosProductos();
+            return;
+        }
+
+        // Filtramos del array 'products' (el que usas para armar tu catálogo)
+        const matches = products.filter(product => 
+            product.name.toLowerCase().includes(term)
+        );
+
+        renderSearchResults(matches);
+        filtrarCatalogoPrincipal(matches);
+    });
+
+    // Esta función dibuja la lista desplegable
+    function renderSearchResults(matches) {
+        if (matches.length === 0) {
+            resultsContainer.innerHTML = '<div class="p-4 text-gray-500 text-sm">No hay coincidencias</div>';
+        } else {
+            resultsContainer.innerHTML = matches.map(product => `
+                <div class="flex items-center p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-50" 
+                     onclick="verProducto(${product.id})">
+                    <img src="${product.image}" class="w-10 h-10 object-cover rounded">
+                    <div class="ml-3">
+                        <div class="text-sm font-bold text-gray-800">${product.name}</div>
+                        <div class="text-xs text-blue-600">$${product.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        resultsContainer.classList.remove('hidden');
+    }
+
+    // Esta función oculta o muestra las cards grandes del catálogo
+    function filtrarCatalogoPrincipal(matches) {
+        const productCards = document.querySelectorAll('.product-card');
+        const matchIds = matches.map(m => m.id);
+
+        productCards.forEach(card => {
+            const productId = parseInt(card.getAttribute('data-id'));
+            card.style.display = matchIds.includes(productId) ? 'block' : 'none';
+        });
+    }
+
+    function mostrarTodosLosProductos() {
+        document.querySelectorAll('.product-card').forEach(card => card.style.display = 'block');
+    }
+
+    // Cerrar si haces clic afuera
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target)) resultsContainer.classList.add('hidden');
+    });
+});
+</script>
 </body>
 </html>
