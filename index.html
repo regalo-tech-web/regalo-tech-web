@@ -464,11 +464,26 @@ document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
         }
 
         function addToCart(product) {
-            cart.push(product);
-            updateCartUI();
-            toggleCart();
-            
-        }
+    // 1. Buscamos si el producto ya está en el carrito
+    const existingProduct = cart.find(item => item.id === product.id);
+
+    if (existingProduct) {
+        // 2. Si ya existe, le sumamos 1 a la cantidad
+        existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+    } else {
+        // 3. Si no existe, lo agregamos con cantidad inicial de 1
+        cart.push({ ...product, quantity: 1 });
+    }
+
+    // 4. GUARDAR: Para que no se borre al actualizar (F5)
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // 5. ACTUALIZAR VISTA
+    updateCartUI();
+    
+    // Si quieres que el carrito se abra solo al agregar, deja esta línea:
+    // toggleCart(); 
+}
 
         function updateCartUI() {
             const itemsContainer = document.getElementById('cart-items');
@@ -739,6 +754,8 @@ function clearCart() {
         console.log("Carrito vaciado con éxito");
     }
 }    
+    // Al cargar la página, dibuja el contenido del carrito guardado
+document.addEventListener('DOMContentLoaded', updateCartUI);
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
