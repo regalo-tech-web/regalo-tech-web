@@ -452,7 +452,7 @@ function sortProductsAlphabetically() {
 
 // Ejecutar al cargar la página por primera vez
 document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
-        let cart = [];
+         =let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const searchInput = document.getElementById('mainSearch');
         const resultsContainer = document.getElementById('searchResults');
         const cards = document.querySelectorAll('.product-card');
