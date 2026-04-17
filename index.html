@@ -557,27 +557,38 @@ document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
         }
 
         window.goTo = (id) => {
-    const el = document.querySelector(`[data-id="${id}"]`);
+    // 1. Identificamos todas las tarjetas
+    const allCards = document.querySelectorAll('.product-card');
+    const selectedCard = document.querySelector(`[data-id="${id}"]`);
     
-    if (el) {
-        // 1. Nos desplazamos al producto
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (selectedCard) {
+        // 2. ESCONDEMOS todas las tarjetas primero
+        allCards.forEach(card => {
+            card.style.display = 'none';
+        });
 
-        // 2. Agregamos una clase de resaltado
-        el.classList.add('highlight-card');
+        // 3. MOSTRAR solo la tarjeta seleccionada
+        selectedCard.style.display = 'flex';
 
-        // 3. Quitamos el resaltado después de 2 segundos
+        // 4. Scroll suave hacia el producto (ahora estará arriba de todo)
+        selectedCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // 5. Opcional: Aplicar el resaltado que configuramos antes
+        selectedCard.classList.add('highlight-card');
         setTimeout(() => {
-            el.classList.remove('highlight-card');
+            selectedCard.classList.remove('highlight-card');
         }, 2000);
     }
 
+    // 6. Limpiar buscador y cerrar lista
     resultsContainer.classList.add('hidden');
     searchInput.value = "";
     
-    // Mostramos todas las tarjetas de nuevo por si estaban filtradas
-    const cards = document.querySelectorAll('.product-card');
-    cards.forEach(c => c.style.display = 'flex');
+    // 7. Cambiar el título de la categoría (opcional, para dar contexto)
+    const categoryTitle = document.getElementById('categoryTitle');
+    if (categoryTitle) {
+        categoryTitle.innerHTML = '<span class="w-10 h-1- bg-blue-600 rounded-full"></span> Resultado de búsqueda';
+    }
 };
 
         // Cerrar lista al hacer clic fuera
