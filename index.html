@@ -181,6 +181,18 @@
         font-size: 25px;
     }
 }    
+    @keyframes highlightPulse {
+    0% { box-shadow: 0 0 0px rgba(45, 64, 94, 0); transform: scale(1); }
+    50% { box-shadow: 0 0 20px rgba(45, 64, 94, 0.5); transform: scale(1.03); border-color: #2D405E; }
+    100% { box-shadow: 0 0 0px rgba(45, 64, 94, 0); transform: scale(1); }
+}
+
+.highlight-card {
+    animation: highlightPulse 1s ease-in-out 2; /* Hace el pulso 2 veces */
+    z-index: 10;
+    position: relative;
+    border: 2px solid #2D405E !important;
+}
     </style>
 </head>
 <body class="font-sans text-slate-900">
