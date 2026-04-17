@@ -126,6 +126,10 @@
                 <div class="flex flex-wrap justify-center gap-3">
                     <button onclick="filterCategory('USO PERSONAL')" class="bg-transparent hover:bg-white/10 px-8 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all border border-white/60 uppercase">USO PERSONAL</button>
                     <button onclick="filterCategory('OTROS')" class="bg-transparent hover:bg-white/10 px-8 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all border border-white/60 uppercase">OTROS</button>
+                <button onclick="filterCategory('TODOS')" 
+        class="bg-white/20 hover:bg-white/30 px-8 py-2.5 rounded-full text-xs font-black tracking-wider transition-all border-2 border-white uppercase">
+    <i class="fas fa-grid-2 mr-2"></i> VER TODO EL CATÁLOGO
+</button>
                 </div>
             </div>
         </div>
@@ -338,19 +342,19 @@ function filterCategory(category) {
     const cards = document.querySelectorAll('.product-card');
     const titleElement = document.getElementById('categoryTitle');
     
-    // 1. Actualiza el título dinámicamente según la categoría elegida
+    // 1. Manejo del Título Dinámico
     if (category === 'TODOS') {
         titleElement.innerHTML = '<span class="w-10 h-1 bg-blue-600 rounded-full"></span> Catálogo General';
     } else {
-        // Convierte el texto a formato Título (ej: TECNOLOGÍA -> Tecnología)
+        // Formateamos el texto (ej: TECNOLOGÍA -> Tecnología)
         const formattedTitle = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
         titleElement.innerHTML = `<span class="w-10 h-1 bg-blue-600 rounded-full"></span> ${formattedTitle}`;
     }
 
-    // 2. Filtra los productos en la grilla
+    // 2. Lógica de visibilidad
     cards.forEach(card => {
         const productCat = card.getAttribute('data-category');
-        
+        // Si es 'TODOS', mostramos todo. Si no, comparamos categorías.
         if (category === 'TODOS' || productCat === category) {
             card.style.display = 'flex';
         } else {
@@ -358,15 +362,11 @@ function filterCategory(category) {
         }
     });
 
-    // 3. Desplazamiento suave hacia la sección para mostrar el resultado
+    // 3. Scroll suave al inicio de los productos para confirmar el cambio
     document.getElementById('catalogGrid').scrollIntoView({ 
         behavior: 'smooth', 
         block: 'start' 
     });
-
-    // Limpia el buscador para evitar conflictos visuales
-    const searchInput = document.getElementById('mainSearch');
-    if(searchInput) searchInput.value = "";
 }
     </script>
 </body>
