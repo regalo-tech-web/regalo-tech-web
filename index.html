@@ -84,33 +84,27 @@ header {
         </div>
     </div>
 
-   <header class="relative bg-white py-16 overflow-hidden">
+  <header class="relative bg-white py-6 border-b border-gray-50">
         
-        <div class="absolute inset-0 opacity-[0.15]" 
-             style="background-image: radial-gradient(#2563eb 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+        <div class="absolute inset-0 opacity-[0.1]" 
+             style="background-image: radial-gradient(#2563eb 0.5px, transparent 0.5px); background-size: 20px 20px;"></div>
 
         <div class="container mx-auto px-6 relative z-10 flex flex-col items-center">
             
-            <div class="mb-12 relative">
-                <span class="absolute -top-6 -left-8 text-[10px] text-gray-300 font-mono tracking-tighter">ID: RT-2026</span>
-                <div class="absolute -top-2 -right-6 w-1.5 h-1.5 rounded-full bg-rtMidBlue/40"></div>
-                
+            <div class="mb-5 relative">
                 <img src="logo-regalo-tech.png" alt="Regalo Tech" 
-                     class="w-72 h-auto object-contain mx-auto relative z-10">
-                
-                <div class="w-1/2 h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent mx-auto mt-4"></div>
+                     class="w-40 h-auto object-contain mx-auto">
+                <span class="absolute -top-2 -right-10 text-[8px] text-gray-300 font-mono tracking-widest opacity-70">RT-2026</span>
             </div>
 
-            <div class="relative w-full max-w-xl">
-                <div class="absolute -left-6 top-1/2 -translate-y-1/2 text-[8px] text-gray-300 rotate-90 tracking-[0.5em] font-bold">SEARCH</div>
-                
-                <div class="relative">
-                    <input id="mainSearch" type="search" placeholder="¿Qué tecnología buscas hoy?" 
-                        class="w-full bg-white border border-gray-200 rounded-none py-4 pl-12 pr-4 text-sm focus:outline-none focus:border-rtMidBlue transition-all shadow-sm">
+            <div class="relative w-full max-w-md">
+                <div class="relative group">
+                    <input id="mainSearch" type="search" placeholder="¿Qué buscas hoy?" 
+                        class="w-full bg-gray-50/50 border border-gray-200 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-rtMidBlue focus:bg-white transition-all shadow-sm">
                     
-                    <i class="fas fa-search absolute left-4 top-4.5 text-gray-400 text-sm"></i>
+                    <i class="fas fa-search absolute left-3.5 top-2.5 text-gray-400 text-xs group-focus-within:text-rtMidBlue"></i>
                     
-                    <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-rtMidBlue"></div>
+                    <div class="absolute -bottom-0.5 -right-0.5 w-2 h-2 border-b border-r border-rtMidBlue/40"></div>
                 </div>
             </div>
 
