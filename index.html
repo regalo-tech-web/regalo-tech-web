@@ -464,39 +464,11 @@ document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
         }
 
         function addToCart(product) {
-    // 1. Verificación básica por si el botón tiene errores de sintaxis
-    if (!product || !product.id) {
-        console.error("No se pudo agregar: faltan datos del producto.");
-        return;
-    }
-
-    // 2. Buscamos si ya está en el carrito
-    const existingProduct = cart.find(item => item.id === product.id);
-
-    if (existingProduct) {
-        // 3. Si ya existe, SUMAMOS (así no se repiten líneas en el mensaje de WhatsApp)
-        existingProduct.quantity = Number(existingProduct.quantity || 1) + 1;
-        console.log(`Cantidad actualizada: ${existingProduct.name} ahora tiene ${existingProduct.quantity}`);
-    } else {
-        // 4. Si es nuevo, lo agregamos con cantidad 1
-        cart.push({
-            id: product.id,
-            name: product.name,
-            price: Number(product.price),
-            image: product.image,
-            quantity: 1
-        });
-        console.log(`Producto nuevo agregado: ${product.name}`);
-    }
-
-    // 5. GUARDAR: Esto es lo que hace que no se borre al actualizar (F5)
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    // 6. ACTUALIZAR: Dibuja los cambios en el carrito
-    if (typeof updateCartUI === 'function') {
-        updateCartUI();
-    }
-}
+            cart.push(product);
+            updateCartUI();
+            toggleCart();
+            
+        }
 
         function updateCartUI() {
             const itemsContainer = document.getElementById('cart-items');
@@ -765,14 +737,8 @@ function clearCart() {
         
         // 4. Cerramos el modal si quieres, o simplemente mostramos que está vacío
         console.log("Carrito vaciado con éxito");
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartUI();
     }
 }    
-    // Esto fuerza a la web a dibujar lo que haya en la memoria al cargar
-document.addEventListener('DOMContentLoaded', () => {
-    updateCartUI();
-});
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
