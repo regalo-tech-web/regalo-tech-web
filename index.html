@@ -464,22 +464,21 @@ document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
         }
 
         function addToCart(product) {
-    // 1. Verificación de seguridad: si no hay producto, no hace nada
+    // 1. Verificación básica por si el botón tiene errores de sintaxis
     if (!product || !product.id) {
-        console.error("Error: Datos del producto incompletos", product);
+        console.error("No se pudo agregar: faltan datos del producto.");
         return;
     }
 
-    // 2. Buscamos si el producto ya existe en el carrito por su ID
+    // 2. Buscamos si ya está en el carrito
     const existingProduct = cart.find(item => item.id === product.id);
 
     if (existingProduct) {
-        // 3. Si ya está, le sumamos 1 a la cantidad
-        // Usamos Number() por seguridad para que no concatene como texto
+        // 3. Si ya existe, SUMAMOS (así no se repiten líneas en el mensaje de WhatsApp)
         existingProduct.quantity = Number(existingProduct.quantity || 1) + 1;
+        console.log(`Cantidad actualizada: ${existingProduct.name} ahora tiene ${existingProduct.quantity}`);
     } else {
-        // 4. Si es nuevo, lo agregamos con cantidad inicial de 1
-        // Nos aseguramos de que el objeto tenga todas las propiedades necesarias
+        // 4. Si es nuevo, lo agregamos con cantidad 1
         cart.push({
             id: product.id,
             name: product.name,
@@ -487,19 +486,16 @@ document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
             image: product.image,
             quantity: 1
         });
-    }
+        console.log(`Producto nuevo agregado: ${product.name}`);
     }
 
-    // 5. Guardamos en la memoria del navegador (LocalStorage)
+    // 5. GUARDAR: Esto es lo que hace que no se borre al actualizar (F5)
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // 6. Actualizamos la visualización del carrito
+    // 6. ACTUALIZAR: Dibuja los cambios en el carrito
     if (typeof updateCartUI === 'function') {
         updateCartUI();
     }
-    
-    // Opcional: una pequeña alerta visual para saber que funcionó
-    console.log("Producto añadido:", product.name);
 }
 
         function updateCartUI() {
