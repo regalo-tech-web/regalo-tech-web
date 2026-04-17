@@ -206,6 +206,11 @@
             </button>
         </div>
     </div>
+    <div class="text-right mb-2">
+    <button onclick="clearCart()" class="text-[11px] font-medium text-gray-400 hover:text-red-500 transition-colors uppercase flex items-center justify-end gap-1 ml-auto">
+        <i class="fas fa-trash-alt text-[10px]"></i> Vaciar carrito
+    </button>
+</div>
 
     <header class="w-full bg-white shadow-sm border-b border-gray-100 py-4 relative z-50">
         <div class="container mx-auto px-6 max-w-7xl flex items-center justify-between">
@@ -710,6 +715,27 @@ function sendOrder() {
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/541139414195?text=${encodedMessage}`, '_blank');
+}    
+function clearCart() {
+    // Confirmación para evitar errores accidentales
+    if (confirm("¿Estás seguro de que quieres vaciar todo el carrito?")) {
+        // 1. Limpiamos el array (usa 'cart' o el nombre de tu variable)
+        cart = [];
+
+        // 2. Actualizamos la interfaz (llama a tu función que dibuja el carrito)
+        // Normalmente se llama updateCartUI() o renderCart()
+        if (typeof updateCartUI === 'function') {
+            updateCartUI();
+        } else if (typeof renderCart === 'function') {
+            renderCart();
+        }
+
+        // 3. Si usas LocalStorage para que no se borre al refrescar, lo limpiamos también
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // 4. Cerramos el modal si quieres, o simplemente mostramos que está vacío
+        console.log("Carrito vaciado con éxito");
+    }
 }    
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
