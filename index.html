@@ -131,10 +131,10 @@
         </div>
     </div>
 
-        <h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
-            <span class="w-10 h-1 bg-blue-600 rounded-full"></span>
-            Nuestro Catálogo
-        </h2>
+        <h2 id="categoryTitle" class="text-2xl font-bold mb-8 flex items-center gap-3">
+    <span class="w-10 h-1 bg-blue-600 rounded-full"></span>
+    Catálogo General
+</h2>
 
         <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
@@ -336,24 +336,37 @@
     // UBICACIÓN: Dentro de tu etiqueta <script> al final del archivo
 function filterCategory(category) {
     const cards = document.querySelectorAll('.product-card');
+    const titleElement = document.getElementById('categoryTitle');
     
-    // Desplazamiento suave hacia la sección de productos
-    document.getElementById('catalogGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 1. Actualiza el título dinámicamente según la categoría elegida
+    if (category === 'TODOS') {
+        titleElement.innerHTML = '<span class="w-10 h-1 bg-blue-600 rounded-full"></span> Catálogo General';
+    } else {
+        // Convierte el texto a formato Título (ej: TECNOLOGÍA -> Tecnología)
+        const formattedTitle = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+        titleElement.innerHTML = `<span class="w-10 h-1 bg-blue-600 rounded-full"></span> ${formattedTitle}`;
+    }
 
+    // 2. Filtra los productos en la grilla
     cards.forEach(card => {
         const productCat = card.getAttribute('data-category');
         
-        if (category === 'TODOS') {
-            card.style.display = 'flex';
-        } else if (productCat === category) {
+        if (category === 'TODOS' || productCat === category) {
             card.style.display = 'flex';
         } else {
             card.style.display = 'none';
         }
     });
 
-    // Limpiamos el buscador para que no haya conflictos
-    document.getElementById('mainSearch').value = "";
+    // 3. Desplazamiento suave hacia la sección para mostrar el resultado
+    document.getElementById('catalogGrid').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+    });
+
+    // Limpia el buscador para evitar conflictos visuales
+    const searchInput = document.getElementById('mainSearch');
+    if(searchInput) searchInput.value = "";
 }
     </script>
 </body>
