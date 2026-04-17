@@ -545,11 +545,28 @@ document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
         }
 
         window.goTo = (id) => {
-            const el = document.querySelector(`[data-id="${id}"]`);
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            resultsContainer.classList.add('hidden');
-            searchInput.value = "";
-        };
+    const el = document.querySelector(`[data-id="${id}"]`);
+    
+    if (el) {
+        // 1. Nos desplazamos al producto
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // 2. Agregamos una clase de resaltado
+        el.classList.add('highlight-card');
+
+        // 3. Quitamos el resaltado después de 2 segundos
+        setTimeout(() => {
+            el.classList.remove('highlight-card');
+        }, 2000);
+    }
+
+    resultsContainer.classList.add('hidden');
+    searchInput.value = "";
+    
+    // Mostramos todas las tarjetas de nuevo por si estaban filtradas
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(c => c.style.display = 'flex');
+};
 
         // Cerrar lista al hacer clic fuera
         document.addEventListener('click', (e) => {
