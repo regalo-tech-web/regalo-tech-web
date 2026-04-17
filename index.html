@@ -780,37 +780,40 @@ function clearCart() {
     }
 }    
  function executeSearch() {
-    const term = document.getElementById('searchInput').value.toLowerCase().trim();
+    // 1. Tomamos el texto y lo limpiamos bien
+    const term = document.getElementById('mainSearch').value
+        .toLowerCase()
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Quita tildes (ej: cargadór -> cargador)
+        .trim();
+        
     const cards = document.querySelectorAll('.product-card');
-    let foundCount = 0;
+    const resultsContainer = document.getElementById('searchResults');
 
-    if (term === "") {
-        // Si busca vacío, mostramos todo
-        cards.forEach(card => card.style.display = 'flex');
-        return;
-    }
+    if (resultsContainer) resultsContainer.classList.add('hidden');
 
     cards.forEach(card => {
-        const name = card.getAttribute('data-name').toLowerCase();
-        // También buscamos dentro de las specs (características)
-        const specs = card.getAttribute('data-specs') ? card.getAttribute('data-specs').toLowerCase() : "";
-        
-        if (name.includes(term) || specs.includes(term)) {
-            card.style.display = 'flex';
-            foundCount++;
+        // 2. Buscamos el nombre en el atributo Y en el texto visible por si acaso
+        const nameAttr = card.getAttribute('data-name') || "";
+        const titleText = card.querySelector('h3') ? card.querySelector('h3').innerText : "";
+        const specs = card.getAttribute('data-specs') || "";
+
+        // Unificamos todo el texto del producto para buscar en un solo lugar
+        const searchableText = `${nameAttr} ${titleText} ${specs}`
+            .toLowerCase()
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+        // 3. Comparamos
+        if (searchableText.includes(term)) {
+            card.style.setProperty('display', 'flex', 'important');
         } else {
-            card.style.display = 'none';
+            card.style.setProperty('display', 'none', 'important');
         }
     });
 
-    // Cerramos el menú desplegable predictivo si estuviera abierto
-    if (typeof resultsContainer !== 'undefined') {
-        resultsContainer.classList.add('hidden');
-    }
-
-    // Opcional: Scroll al inicio de los resultados
-    window.scrollTo({ top: document.getElementById('catalogGrid').offsetTop - 100, behavior: 'smooth' });
-}   
+    // 4. Scroll al inicio de los resultados
+    const grid = document.getElementById('catalogGrid');
+    if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 function executeSearch() {
     const term = document.getElementById('mainSearch').value.toLowerCase().trim();
     const cards = document.querySelectorAll('.product-card');
