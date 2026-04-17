@@ -467,6 +467,8 @@ document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
             cart.push(product);
             updateCartUI();
             toggleCart();
+            localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
         }
 
         function updateCartUI() {
@@ -736,8 +738,14 @@ function clearCart() {
         
         // 4. Cerramos el modal si quieres, o simplemente mostramos que está vacío
         console.log("Carrito vaciado con éxito");
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartUI();
     }
 }    
+    // Esto fuerza a la web a dibujar lo que haya en la memoria al cargar
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartUI();
+});
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
