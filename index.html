@@ -144,6 +144,43 @@
     background: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }    
+/* Estilos del Botón de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #2D405E; /* Tu azul característico */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease; /* Transición suave */
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #25d366; /* Verde oficial de WhatsApp */
+    transform: scale(1.1);      /* Crece un poquito al pasar el mouse */
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Ajuste para móviles para que no estorbe */
+@media screen and (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+}    
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -674,5 +711,12 @@ window.addEventListener('keydown', (e) => {
 
     <img id="modalImg" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl transition-transform duration-300">
 </div>
+<a href="https://wa.me/541139414195" 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   title="Chatea con nosotros">
+    <i class="fab fa-whatsapp"></i>
+</a>
 </body>
 </html>
