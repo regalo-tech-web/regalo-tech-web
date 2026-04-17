@@ -232,13 +232,11 @@
 
         <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
-         data-id="p5" data-name="Antifaz Para Dormir Hedwig - Harry Potter" data-category="USO PERSONAL"
-         data-specs="Material ultra suave y acolchado,Bloqueo total de luz,Elástico ajustable universal,Diseño oficial bordado">
-        <div class="carousel-container mb-4 bg-gray-50 h-48">
-            <button class="nav-btn prev-btn" onclick="moveSlide('p5', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="moveSlide('p5', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p5">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p5">
+        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
+            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p5', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p5', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p5" onclick="openImageModal('p5')">
                 <img src="antifaz-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="antifaz-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="antifaz-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -254,13 +252,11 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
-         data-id="p1" data-name="Auricular Samsung Akg Tipo C con Cable" data-category="TECNOLOGÍA"
-         data-specs="Sonido nítido calibrado por AKG,Conector USB Tipo-C,Micrófono con control de llamada,Cable de tela reforzado">
-        <div class="carousel-container mb-4 bg-gray-50 h-48">
-            <button class="nav-btn prev-btn" onclick="moveSlide('p1', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="moveSlide('p1', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p1">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p1">
+        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
+            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p1', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p1', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p1" onclick="openImageModal('p1')">
                 <img src="aur-samsung-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="aur-samsung-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="aur-samsung-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -276,13 +272,11 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
-         data-id="p2" data-name="Cabezal + Cable Tipo C Samsung 15w" data-category="TECNOLOGÍA"
-         data-specs="Potencia de carga 15W,Incluye cable USB-C a USB-C,Carga rápida segura,Protección contra sobrecargas">
-        <div class="carousel-container mb-4 bg-gray-50 h-48">
-            <button class="nav-btn prev-btn" onclick="moveSlide('p2', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="moveSlide('p2', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p2">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p2">
+        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
+            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p2', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p2', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p2" onclick="openImageModal('p2')">
                 <img src="car-samsung-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="car-samsung-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="car-samsung-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -298,13 +292,11 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
-         data-id="p3" data-name="Cable De Carga 4 en 1 Flat Wire 65w" data-category="TECNOLOGÍA"
-         data-specs="Carga ultra rápida 65W,Conectores: USB-A/C a C/Lightning,Diseño plano antienredos,Longitud de 1.2 metros">
-        <div class="carousel-container mb-4 bg-gray-50 h-48">
-            <button class="nav-btn prev-btn" onclick="moveSlide('p3', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="moveSlide('p3', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p3">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p3">
+        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
+            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p3', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p3', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p3" onclick="openImageModal('p3')">
                 <img src="cable-4-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="cable-4-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="cable-4-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -320,13 +312,11 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
-         data-id="p4" data-name="Cable iPhone USB-C a Lightning 2 mts" data-category="TECNOLOGÍA"
-         data-specs="Conector USB-C a Lightning,Largo extra de 2 metros,Carga y sincronización de datos,Cuerpo reforzado">
-        <div class="carousel-container mb-4 bg-gray-50 h-48">
-            <button class="nav-btn prev-btn" onclick="moveSlide('p4', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="moveSlide('p4', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p4">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p4">
+        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
+            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p4', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p4', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p4" onclick="openImageModal('p4')">
                 <img src="cable-iphone-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="cable-iphone-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="cable-iphone-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -342,13 +332,11 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
-         data-id="p6" data-name="Cargador Para Auto + Cable 3 En 1" data-category="TECNOLOGÍA"
-         data-specs="Doble puerto USB,Cable integrado 3 en 1,Voltímetro digital incorporado,Carga inteligente para 3 equipos">
-        <div class="carousel-container mb-4 bg-gray-50 h-48">
-            <button class="nav-btn prev-btn" onclick="moveSlide('p6', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="moveSlide('p6', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p6">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p6">
+        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
+            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p6', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p6', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p6" onclick="openImageModal('p6')">
                 <img src="car-auto-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="car-auto-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="car-auto-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -364,13 +352,11 @@
         </div>
     </div>
 
-    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
-         data-id="p7" data-name="Funda de Silicona Para Joystick Ps4" data-category="TECNOLOGÍA"
-         data-specs="Silicona de alta calidad,Textura antideslizante,Protección contra caídas y polvo,Fácil de colocar y lavar">
-        <div class="carousel-container mb-4 bg-gray-50 h-48">
-            <button class="nav-btn prev-btn" onclick="moveSlide('p7', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
-            <button class="nav-btn next-btn" onclick="moveSlide('p7', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
-            <div class="track-container h-full" id="track-p7">
+    <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" data-id="p7">
+        <div class="carousel-container mb-4 bg-gray-50 h-48 cursor-zoom-in">
+            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); moveSlide('p7', -1)"><i class="fas fa-chevron-left text-xs"></i></button>
+            <button class="nav-btn next-btn" onclick="event.stopPropagation(); moveSlide('p7', 1)"><i class="fas fa-chevron-right text-xs"></i></button>
+            <div class="track-container h-full" id="track-p7" onclick="openImageModal('p7')">
                 <img src="Joystick-1.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="Joystick-2.png" class="w-full h-full object-contain flex-shrink-0">
                 <img src="Joystick-3.png" class="w-full h-full object-contain flex-shrink-0">
@@ -602,6 +588,49 @@ function moveSlide(productId, direction) {
     const moveAmount = sliderPositions[productId] * 100;
     track.style.transform = `translateX(-${moveAmount}%)`;
 }    
+let currentModalProductId = '';
+let currentModalIndex = 0;
+
+function openImageModal(productId) {
+    currentModalProductId = productId;
+    // Obtenemos el índice actual de la imagen que está viendo el usuario en la tarjeta
+    currentModalIndex = sliderPositions[productId] || 0;
+    
+    updateModalImage();
+    document.getElementById('imageModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
+}
+
+function closeImageModal() {
+    document.getElementById('imageModal').classList.add('hidden');
+    document.body.style.overflow = 'auto'; // Libera el scroll
+}
+
+function updateModalImage() {
+    const track = document.getElementById(`track-${currentModalProductId}`);
+    const images = track.querySelectorAll('img');
+    const modalImg = document.getElementById('modalImg');
+    
+    // Cambiamos la fuente del modal por la imagen correspondiente
+    modalImg.src = images[currentModalIndex].src;
+}
+
+function moveModalSlide(direction) {
+    const track = document.getElementById(`track-${currentModalProductId}`);
+    const totalImages = track.querySelectorAll('img').length;
+
+    currentModalIndex += direction;
+
+    if (currentModalIndex >= totalImages) currentModalIndex = 0;
+    if (currentModalIndex < 0) currentModalIndex = totalImages - 1;
+
+    updateModalImage();
+}
+
+// Cerrar modal con la tecla Escape
+window.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") closeImageModal();
+});    
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
@@ -616,6 +645,20 @@ function moveSlide(productId, direction) {
             <button onclick="closeModal()" class="w-full bg-[#2D405E] text-white py-4 rounded-2xl font-bold uppercase tracking-widest hover:bg-slate-800 transition-all">Entendido</button>
         </div>
     </div>
+</div>
+<div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm">
+    <button onclick="closeImageModal()" class="absolute top-6 right-6 text-white text-3xl hover:text-gray-300 transition-colors">
+        <i class="fas fa-times"></i>
+    </button>
+    
+    <button onclick="moveModalSlide(-1)" class="absolute left-4 text-white text-4xl hover:text-gray-300 p-4">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button onclick="moveModalSlide(1)" class="absolute right-4 text-white text-4xl hover:text-gray-300 p-4">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <img id="modalImg" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl transition-transform duration-300">
 </div>
 </body>
 </html>
