@@ -507,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${item.image}" class="w-12 h-12 object-contain bg-white rounded">
                 <div>
                     <p class="text-sm font-bold">${item.name}</p>
-                    <p class="text-xs text-blue-600">$ ${(item.price * (item.quantity || 1)).toLocaleString()}</p>
+<p class="text-xs text-blue-600">$ ${(item.price * (item.quantity || 1)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     
                     <div class="flex items-center gap-2 mt-1">
                         <button onclick="changeQuantity(${index}, -1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-xs hover:bg-gray-300">-</button>
@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Calculamos el total multiplicando precio por cantidad
     const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
-    totalElement.innerText = `$ ${total.toLocaleString()}`;
+    totalElement.innerText = `$ ${total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     
     // El contador de la burbuja ahora suma todas las cantidades
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
@@ -785,10 +785,10 @@ function sendOrder() {
         const qty = item.quantity || 1;
         const subtotal = item.price * qty;
         totalGlobal += subtotal;
-        message += `· ${item.name} (x${qty}): $${subtotal.toLocaleString()}\n`;
+        message += `· ${item.name} (x${qty}): $${subtotal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n`;
     });
 
-    message += `\n*Total del pedido: $${totalGlobal.toLocaleString()}*`;
+    message += `\n*Total del pedido: $${totalGlobal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}*`;
     
     const whatsappUrl = `https://wa.me/5491139414195?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
