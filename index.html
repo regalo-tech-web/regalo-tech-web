@@ -510,9 +510,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function removeItem(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
+    cart.splice(index, 1);
+    // GUARDAMOS:
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
+}
 
         // LÓGICA DE BÚSQUEDA PREDICTIVA
         searchInput.addEventListener('input', (e) => {
