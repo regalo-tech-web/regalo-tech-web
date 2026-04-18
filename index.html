@@ -983,27 +983,27 @@ function changeQuantity(index, delta) {
         function checkout() {
     if (cart.length === 0) return alert("El carrito está vacío");
 
-    // 1. Calculamos el total usando la matemática del ,99
-    // Sumamos (precio + 0.99) por cada cantidad
-    const totalNumerico = cart.reduce((sum, item) => sum + ((item.price + 0.99) * (item.quantity || 1)), 0);
-    
-    // 2. Convertimos el total a texto con formato de puntos, pero le pegamos los decimales a mano
-    // Usamos Math.floor para asegurarnos de tener solo la parte entera
-    const totalEntero = Math.floor(totalNumerico).toLocaleString('es-AR');
-    // Obtenemos los decimales reales de la suma (ej: 97 o 98)
-    const totalDecimales = (totalNumerico % 1).toFixed(2).split('.')[1];
+    let totalSuma = 0;
+    let textoProductos = "";
 
-    // 3. Armamos la lista de productos FORZANDO el texto ",99"
-    const listaProductos = cart.map(item => {
-        const precioConPuntos = item.price.toLocaleString('es-AR');
-        return `• ${item.name} (x${item.quantity || 1}): $${precioConPuntos},99`;
-    }).join("\n");
+    cart.forEach(item => {
+        const cantidad = item.quantity || 1;
+        const precioBase = item.price;
+        // Sumamos el precio con los 0.99 para el total
+        totalSuma += (precioBase + 0.99) * cantidad;
+        
+        // Armamos el texto de cada producto FORZANDO el ,99 a mano
+        const precioFormateado = precioBase.toLocaleString('es-AR');
+        textoProductos += `· ${item.name} (x${cantidad}): $${precioFormateado},99 `;
+    });
 
-    // 4. Mensaje final
-    const mensaje = `TEST: hola RegaloTech! Quisiera finalizar la compra de:\n\n${listaProductos}\n\n*Total del pedido: $${totalEntero},${totalDecimales}*`;
+    // Formateamos el total final con sus decimales correctos (,97, ,98, etc)
+    const totalFinalTexto = totalSuma.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    // 5. Abrir WhatsApp
-    window.open(`https://wa.me/TU_NUMERO?text=${encodeURIComponent(mensaje)}`);
+    const mensaje = `Hola RegaloTech, quisiera finalizar la compra de los siguientes productos: ${textoProductos} *Total del pedido: $${totalFinalTexto}*`;
+
+    const url = `https://wa.me/TU_NUMERO?text=${encodeURIComponent(mensaje)}`;
+    window.open(url);
 }
     // UBICACIÓN: Dentro de tu etiqueta <script> al final del archivo
 function filterCategory(category) {
