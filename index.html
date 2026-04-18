@@ -252,51 +252,58 @@
     color: #2D405E !important;
     font-weight: 800 !important;
 }  
-/* Ajustes para Celulares */
+/* --- ESTILO MINIMALISTA 2 COLUMNAS (TIPO EMPRETIENDA) --- */
 @media (max-width: 768px) {
-    /* Hacemos que los botones sean un poco más chicos y con menos margen */
-    .category-btn {
-        padding: 8px 16px !important;
-        font-size: 10px !important;
-    }
-
-    /* El título de la categoría (Tecnología, etc.) */
-    #categoryTitle {
-        font-size: 1.5rem !important;
-        margin-left: 1rem;
-    }
-
-    /* El carrito flotante lo movemos un poco más al borde para que no estorbe */
-    #floating-cart {
-        right: 15px;
-        bottom: 80px;
-    }
-}    
-/* Ajustes para que en móvil se vea perfecto */
-@media (max-width: 600px) {
+    /* Quitamos bordes y sombras para que se vea limpio */
     .product-card {
-        margin: 0 auto;
-        width: 100%; /* Que ocupe todo el ancho disponible */
-        max-width: 350px; /* Pero que no sea gigante */
+        border: none !important;
+        box-shadow: none !important;
+        padding: 5px !important;
+        background: transparent !important;
+        text-align: center;
     }
 
-    .product-card h3 {
-        font-size: 1.1rem !important; /* Título legible */
-        height: auto !important; /* Que crezca si el nombre es largo */
-        margin-bottom: 10px;
-    }
-
-    .product-card .price {
-        font-size: 1.5rem !important; /* Precio claro */
-        display: block;
-        margin-bottom: 15px;
-    }
-
-    /* El botón de agregar, que sea cómodo para el dedo */
-    .product-card button {
+    /* La imagen bien grande y redondeada */
+    .product-card img {
         width: 100%;
-        padding: 12px !important;
-        font-size: 14px !important;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 8px;
+    }
+
+    /* Títulos simples y en minúsculas */
+    .product-card h3 {
+        font-size: 0.85rem !important;
+        font-weight: 400 !important;
+        text-transform: lowercase;
+        color: #333;
+        margin-bottom: 2px !important;
+        height: auto !important;
+    }
+
+    /* Precio bien visible */
+    .product-card .price {
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        color: #000;
+        margin-bottom: 8px !important;
+        display: block;
+    }
+
+    /* Botón azul ajustado para 2 columnas */
+    .product-card button {
+        width: 100% !important;
+        padding: 8px 2px !important;
+        font-size: 10px !important;
+        background-color: #2D405E !important;
+        border-radius: 6px !important;
+    }
+
+    /* Ocultamos las características para que no ocupen lugar */
+    .product-card .features-link, 
+    .product-card i.fa-list {
+        display: none !important;
     }
 }    
     </style>
@@ -391,7 +398,7 @@
     Catálogo General
 </h2>
 
-        <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+        <div id="catalogGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-2">
 
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p5" data-name="Antifaz Para Dormir Hedwig - Harry Potter" data-category="USO PERSONAL"
