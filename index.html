@@ -440,7 +440,7 @@
             </button>
         </div>
     </div>
-    
+
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
      data-id="p8" data-name="Funda Asiento Alcochada Para Bicicleta" 
      data-category="USO PERSONAL OTROS"
@@ -690,7 +690,7 @@ function filterCategory(category) {
     // 2. Filtrar y Ordenar
     cards.forEach(card => {
         const productCat = card.getAttribute('data-category');
-        if (category === 'TODOS' || productCat.split(' ').includes(category)) {
+        if (category === 'TODOS' || productCat.toUpperCase().includes(category.toUpperCase())) {
             card.style.display = 'flex';
         } else {
             card.style.display = 'none';
