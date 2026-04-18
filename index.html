@@ -876,21 +876,18 @@ function filterCategory(category) {
     const titleElement = document.getElementById('categoryTitle');
     const buttons = document.querySelectorAll('.category-btn');
 
-    // 1. Manejo de estado visual de los botones
+    // 1. Marcar el botón activo
     buttons.forEach(btn => {
         btn.classList.remove('active');
         
-        // Convertimos a mayúsculas para comparar sin errores
-        const btnText = btn.innerText.toUpperCase();
-        const catUpper = category.toUpperCase();
-
-        // Si el texto del botón contiene la categoría o es el botón de "VER TODO"
-        if (btnText.includes(catUpper) || (category === 'TODOS' && btnText.includes('TODO'))) {
+        // Obtenemos el texto del atributo onclick para comparar mejor
+        const onClickAttr = btn.getAttribute('onclick');
+        if (onClickAttr && onClickAttr.includes(`'${category}'`)) {
             btn.classList.add('active');
         }
     });
 
-    // 2. Actualizar el Título (Como ya lo tenías)
+    // 2. Actualizar el Título del catálogo
     if (category === 'TODOS') {
         titleElement.innerHTML = '<span class="w-10 h-1 bg-blue-600 rounded-full"></span> Catálogo General';
     } else {
@@ -898,19 +895,21 @@ function filterCategory(category) {
         titleElement.innerHTML = `<span class="w-10 h-1 bg-blue-600 rounded-full"></span> ${formattedTitle}`;
     }
 
-    // 3. Filtrar Productos
+    // 3. Filtrar las tarjetas de productos
     cards.forEach(card => {
         const productCat = card.getAttribute('data-category');
-        if (category === 'TODOS' || productCat.toUpperCase().includes(category.toUpperCase())) {
+        if (category === 'TODOS' || (productCat && productCat.toUpperCase().includes(category.toUpperCase()))) {
             card.style.display = 'flex';
         } else {
             card.style.display = 'none';
         }
     });
 
-    sortProductsAlphabetically();
+    if (typeof sortProductsAlphabetically === "function") {
+        sortProductsAlphabetically();
+    }
 
-    // 4. Scroll suave con compensación
+    // 4. Scroll suave con la compensación que querías
     const headerOffset = 100; 
     const elementPosition = titleElement.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
