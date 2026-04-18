@@ -222,6 +222,20 @@
     transform: scale(1.05);
     opacity: 1 !important;
 }    
+/* Estilo para el carrito flotante */
+#floating-cart {
+    position: fixed;
+    bottom: 100px; /* Ajustado para que quede arriba de WhatsApp */
+    right: 24px;
+    z-index: 9999; /* Para que siempre esté al frente */
+}
+
+/* El estilo de botón activo que ya teníamos (asegúrate de mantenerlo) */
+.category-btn.active {
+    background-color: white !important;
+    color: #2D405E !important;
+    font-weight: 800 !important;
+}    
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -750,6 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // El contador de la burbuja ahora suma todas las cantidades
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
     countElement.innerText = totalItems;
+    updateFloatingCart();
 }
 function changeQuantity(index, delta) {
     const item = cart[index];
@@ -1113,6 +1128,22 @@ function executeSearch() {
     const grid = document.getElementById('catalogGrid');
     if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }    
+function updateFloatingCart() {
+    const floatingCart = document.getElementById('floating-cart');
+    const floatingCount = document.getElementById('floating-cart-count');
+    
+    if (!floatingCart || !floatingCount) return;
+
+    // Sumamos la cantidad total de productos en el array cart
+    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+
+    if (totalItems > 0) {
+        floatingCount.innerText = totalItems;
+        floatingCart.style.display = 'block'; // Lo mostramos
+    } else {
+        floatingCart.style.display = 'none'; // Lo ocultamos
+    }
+}    
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
@@ -1189,5 +1220,11 @@ function executeSearch() {
 
     </div>
 </section>
+<div id="floating-cart" style="display: none;" class="fixed bottom-24 right-6 z-50">
+    <button onclick="toggleCart(true)" class="bg-[#2D405E] text-white p-4 rounded-full shadow-2xl flex items-center justify-center relative hover:scale-110 transition-transform border-2 border-white">
+        <i class="fas fa-shopping-cart text-xl"></i>
+        <span id="floating-cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+    </button>
+</div>
 </body>
 </html>
