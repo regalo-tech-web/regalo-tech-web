@@ -751,23 +751,20 @@ window.addEventListener('keydown', (e) => {
 });    
 function sendOrder() {
     let message = "Hola RegaloTech, quisiera finalizar la compra de los siguientes productos:\n\n";
-    let total = 0;
+    let totalGlobal = 0;
 
     cart.forEach(item => {
         const qty = item.quantity || 1;
-        const price = item.price;
-        const subtotal = price * qty;
-        
-        // Formato: · Nombre (xCantidad) - Unit: $Precio -> Subtotal: $Subtotal
-        message += `· ${item.name} (x${qty}) - Unit: $${price.toLocaleString()} -> Subtotal: $${subtotal.toLocaleString()}\n`;
-        
-        total += subtotal;
+        const subtotal = item.price * qty;
+        totalGlobal += subtotal;
+        message += `· ${item.name} (x${qty}): $${subtotal.toLocaleString()}\n`;
     });
 
-    message += `\n*Total del pedido: $${total.toLocaleString()}*`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/541139414195?text=${encodedMessage}`, '_blank');
-}    
+    message += `\n*Total del pedido: $${totalGlobal.toLocaleString()}*`;
+    
+    const whatsappUrl = `https://wa.me/5491139414195?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}   
 function clearCart() {
     // Confirmación para evitar errores accidentales
     if (confirm("¿Estás seguro de que quieres vaciar todo el carrito?")) {
