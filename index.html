@@ -981,11 +981,26 @@ function changeQuantity(index, delta) {
         });
 
         function checkout() {
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            if(total === 0) return alert("El carrito está vacío");
-            const mensaje = `Hola! Quiero realizar un pedido de $${total}. Productos: ${cart.map(i => i.name).join(", ")}`;
-            window.open(`https://wa.me/TUNUMERO?text=${encodeURIComponent(mensaje)}`);
-        }
+    // 1. Calculamos el total exacto (Precio + 0.99 por cada unidad)
+    const total = cart.reduce((sum, item) => sum + ((item.price + 0.99) * (item.quantity || 1)), 0);
+    
+    if (total === 0) return alert("El carrito está vacío");
+
+    // 2. Formateamos el total para que tenga coma en vez de punto (ej: 65497,97)
+    const totalFormateado = total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // 3. Armamos la lista de productos con su precio individual terminado en ,99
+    const listaProductos = cart.map(item => {
+        const subtotalItem = ((item.price + 0.99) * (item.quantity || 1)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        return `• ${item.name} (x${item.quantity || 1}): $${subtotalItem}`;
+    }).join("\n");
+
+    // 4. Construimos el mensaje final
+    const mensaje = `¡Hola! Quisiera realizar la compra de los siguientes productos:\n\n${listaProductos}\n\n*Total del pedido: $${totalFormateado}*`;
+
+    // 5. Abrimos WhatsApp (Recuerda reemplazar TU_NUMERO si aún no lo hiciste)
+    window.open(`https://wa.me/TU_NUMERO?text=${encodeURIComponent(mensaje)}`);
+}
     // UBICACIÓN: Dentro de tu etiqueta <script> al final del archivo
 function filterCategory(category) {
     const cards = document.querySelectorAll('.product-card');
