@@ -222,20 +222,21 @@
     transform: scale(1.05);
     opacity: 1 !important;
 }    
-/* Estilo para el carrito flotante */
+/* Nuevo diseño para el carrito flotante (solo ícono) */
 #floating-cart {
     position: fixed;
-    bottom: 100px; /* Ajustado para que quede arriba de WhatsApp */
-    right: 24px;
-    z-index: 9999; /* Para que siempre esté al frente */
+    bottom: 85px; /* Ajuste para que quede justo arriba de WhatsApp */
+    right: 28px;   /* Pequeño ajuste horizontal para centrarlo visualmente */
+    z-index: 9999; 
+    transition: all 0.3s ease; /* Animación de aparición suave */
 }
 
-/* El estilo de botón activo que ya teníamos (asegúrate de mantenerlo) */
+/* Mantenemos el estilo de categoría activa que ya teníamos (importante) */
 .category-btn.active {
     background-color: white !important;
     color: #2D405E !important;
     font-weight: 800 !important;
-}    
+}   
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -1221,9 +1222,9 @@ function updateFloatingCart() {
     </div>
 </section>
 <div id="floating-cart" style="display: none;" class="fixed bottom-24 right-6 z-50">
-    <button onclick="toggleCart(true)" class="bg-[#2D405E] text-white p-4 rounded-full shadow-2xl flex items-center justify-center relative hover:scale-110 transition-transform border-2 border-white">
-        <i class="fas fa-shopping-cart text-xl"></i>
-        <span id="floating-cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+    <button onclick="toggleCart(true)" class="relative p-2 group hover:scale-110 transition-transform">
+        <i class="fas fa-shopping-cart text-[#2D405E] text-2xl group-hover:text-blue-600 transition-colors"></i>
+        <span id="floating-cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white">0</span>
     </button>
 </div>
 </body>
