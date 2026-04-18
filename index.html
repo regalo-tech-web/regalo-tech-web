@@ -506,13 +506,38 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="flex items-center gap-3">
                 <img src="${item.image}" class="w-12 h-12 object-contain bg-white rounded">
                 <div>
-                    <p class="text-sm font-bold">${item.name} (x${item.quantity || 1})</p>
+                    <p class="text-sm font-bold">${item.name}</p>
                     <p class="text-xs text-blue-600">$ ${(item.price * (item.quantity || 1)).toLocaleString()}</p>
+                    
+                    <div class="flex items-center gap-2 mt-1">
+                        <button onclick="changeQuantity(${index}, -1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-xs hover:bg-gray-300">-</button>
+                        <span class="text-xs font-bold">${item.quantity || 1}</span>
+                        <button onclick="changeQuantity(${index}, 1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-xs hover:bg-gray-300">+</button>
+                    </div>
                 </div>
             </div>
-            <button onclick="removeItem(${index})" class="text-red-400 hover:text-red-600"><i class="fas fa-trash"></i></button>
+            <button onclick="removeItem(${index})" class="text-red-400 hover:text-red-600 ml-2">
+                <i class="fas fa-trash"></i>
+            </button>
         </div>
     `).join('');
+    function changeQuantity(index, delta) {
+    // Delta puede ser 1 (sumar) o -1 (restar)
+    const newQuantity = (cart[index].quantity || 1) + delta;
+
+    if (newQuantity > 0) {
+        cart[index].quantity = newQuantity;
+    } else {
+        // Si la cantidad llega a 0, mejor le preguntamos si quiere eliminarlo
+        if (confirm("¿Deseas eliminar este producto del carrito?")) {
+            cart.splice(index, 1);
+        }
+    }
+
+    // Guardamos los cambios y refrescamos la vista
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
+}
 
     // Calculamos el total multiplicando precio por cantidad
     const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
