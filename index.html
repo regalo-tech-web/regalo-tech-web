@@ -193,6 +193,25 @@
     position: relative;
     border: 2px solid #2D405E !important;
 }
+.stock-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ef4444; /* Rojo suave */
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Para que el badge funcione, la card debe ser relativa */
+.product-card {
+    position: relative;
+}    
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -503,21 +522,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function addToCart(product) {
-    // Buscamos si el producto ya existe en el carrito usando su ID
     const existingProduct = cart.find(item => item.id === product.id);
 
     if (existingProduct) {
-        // Si ya existe, solo aumentamos la cantidad
-        existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+        // Si ya existe, verificamos si hay stock para sumar uno más
+        if (product.stock && existingProduct.quantity >= product.stock) {
+            alert("¡Ups! Solo nos queda una unidad de este producto por el momento.");
+            return; // Bloquea el agregado
+        }
+        existingProduct.quantity++;
     } else {
-        // Si no existe, lo agregamos con cantidad inicial de 1
+        // Si es nuevo, lo agregamos con cantidad 1
         cart.push({ ...product, quantity: 1 });
     }
 
-    // Guardamos en memoria y actualizamos la vista
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
-    toggleCart();
+    toggleCart(true);
 }
 
         function updateCartUI() {
@@ -555,22 +576,23 @@ document.addEventListener('DOMContentLoaded', () => {
     countElement.innerText = totalItems;
 }
 function changeQuantity(index, delta) {
-    // 1. Calculamos la nueva cantidad
-    const currentQty = cart[index].quantity || 1;
-    const newQuantity = currentQty + delta;
+    const item = cart[index];
+    const newQuantity = (item.quantity || 1) + delta;
 
-    // 2. Si es mayor a 0, actualizamos
     if (newQuantity > 0) {
-        cart[index].quantity = newQuantity;
+        // Verificamos stock al intentar sumar con el botón "+"
+        if (delta > 0 && item.stock && newQuantity > item.stock) {
+            alert("Lo sentimos, no hay más stock disponible de este producto.");
+            return;
+        }
+        item.quantity = newQuantity;
     } else {
-        // 3. Si llega a 0, usamos tu función removeItem que ya sabemos que funciona
         if (confirm("¿Deseas eliminar este producto?")) {
             removeItem(index);
-            return; // Salimos de la función para no repetir el guardado
+            return;
         }
     }
 
-    // 4. Guardamos en la memoria y refrescamos la pantalla
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartUI();
 }
