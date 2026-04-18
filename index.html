@@ -214,10 +214,13 @@
 }    
 /* Clase para resaltar el botón de la categoría actual */
 .category-btn.active {
-    background-color: #2d405e !important; /* Azul oscuro */
-    color: white !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: white !important;
+    color: #2D405E !important; /* El color oscuro de tu banner */
+    border-color: white !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    transform: scale(1.05);
+    opacity: 1 !important;
 }    
     </style>
 </head>
@@ -876,18 +879,16 @@ function filterCategory(category) {
     const titleElement = document.getElementById('categoryTitle');
     const buttons = document.querySelectorAll('.category-btn');
 
-    // 1. Marcar el botón activo
+    // 1. Marcar el botón activo comparando el valor exacto
     buttons.forEach(btn => {
         btn.classList.remove('active');
-        
-        // Obtenemos el texto del atributo onclick para comparar mejor
-        const onClickAttr = btn.getAttribute('onclick');
-        if (onClickAttr && onClickAttr.includes(`'${category}'`)) {
+        // Buscamos si el onclick del botón contiene la categoría elegida
+        if (btn.getAttribute('onclick').includes(`'${category}'`)) {
             btn.classList.add('active');
         }
     });
 
-    // 2. Actualizar el Título del catálogo
+    // 2. Actualizar el Título (con el span azul que ya tenías)
     if (category === 'TODOS') {
         titleElement.innerHTML = '<span class="w-10 h-1 bg-blue-600 rounded-full"></span> Catálogo General';
     } else {
@@ -895,7 +896,7 @@ function filterCategory(category) {
         titleElement.innerHTML = `<span class="w-10 h-1 bg-blue-600 rounded-full"></span> ${formattedTitle}`;
     }
 
-    // 3. Filtrar las tarjetas de productos
+    // 3. Filtrar las tarjetas
     cards.forEach(card => {
         const productCat = card.getAttribute('data-category');
         if (category === 'TODOS' || (productCat && productCat.toUpperCase().includes(category.toUpperCase()))) {
@@ -909,7 +910,7 @@ function filterCategory(category) {
         sortProductsAlphabetically();
     }
 
-    // 4. Scroll suave con la compensación que querías
+    // 4. Scroll suave con la compensación para que se vea el título
     const headerOffset = 100; 
     const elementPosition = titleElement.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
