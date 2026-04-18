@@ -222,21 +222,36 @@
     transform: scale(1.05);
     opacity: 1 !important;
 }    
-/* Nuevo diseño para el carrito flotante (solo ícono) */
+/* --- CARRITO FLOTANTE (VERSIÓN FINAL CENTRADA) --- */
 #floating-cart {
     position: fixed;
-    bottom: 85px; /* Ajuste para que quede justo arriba de WhatsApp */
-    right: 28px;   /* Pequeño ajuste horizontal para centrarlo visualmente */
+    bottom: 95px;      /* Altura sobre WhatsApp */
+    right: 31px;       /* Ajuste fino para alinear centros */
     z-index: 9999; 
-    transition: all 0.3s ease; /* Animación de aparición suave */
+    width: 40px;       /* Ancho controlado para centrar el ícono */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
 }
 
-/* Mantenemos el estilo de categoría activa que ya teníamos (importante) */
+/* Estilo del contador para que no se deforme */
+#floating-cart-count {
+    line-height: 1;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mantenemos el de las categorías activo (NO LO BORRES) */
 .category-btn.active {
     background-color: white !important;
     color: #2D405E !important;
     font-weight: 800 !important;
-}   
+}  
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -1221,10 +1236,14 @@ function updateFloatingCart() {
 
     </div>
 </section>
-<div id="floating-cart" style="display: none;" class="fixed bottom-24 right-6 z-50">
-    <button onclick="toggleCart(true)" class="relative p-2 group hover:scale-110 transition-transform">
-        <i class="fas fa-shopping-cart text-[#2D405E] text-2xl group-hover:text-blue-600 transition-colors"></i>
-        <span id="floating-cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white">0</span>
+<div id="floating-cart" style="display: none;" class="fixed z-50">
+    <button onclick="toggleCart(true)" class="relative flex items-center justify-center p-2 hover:scale-110 transition-transform focus:outline-none">
+        <i class="fas fa-shopping-cart text-[#2D405E] text-2xl"></i>
+        
+        <span id="floating-cart-count" 
+              class="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 bg-red-600 text-white text-[10px] font-bold min-w-[18px] h-[18px] flex items-center justify-center rounded-full border border-white shadow-sm">
+            0
+        </span>
     </button>
 </div>
 </body>
