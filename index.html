@@ -252,6 +252,26 @@
     color: #2D405E !important;
     font-weight: 800 !important;
 }  
+/* Ajustes para Celulares */
+@media (max-width: 768px) {
+    /* Hacemos que los botones sean un poco más chicos y con menos margen */
+    .category-btn {
+        padding: 8px 16px !important;
+        font-size: 10px !important;
+    }
+
+    /* El título de la categoría (Tecnología, etc.) */
+    #categoryTitle {
+        font-size: 1.5rem !important;
+        margin-left: 1rem;
+    }
+
+    /* El carrito flotante lo movemos un poco más al borde para que no estorbe */
+    #floating-cart {
+        right: 15px;
+        bottom: 80px;
+    }
+}    
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -344,7 +364,7 @@
     Catálogo General
 </h2>
 
-        <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="catalogGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
 
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p5" data-name="Antifaz Para Dormir Hedwig - Harry Potter" data-category="USO PERSONAL"
@@ -944,7 +964,7 @@ function filterCategory(category) {
     }
 
     // 4. Scroll suave con la compensación que querías
-    const headerOffset = 100; 
+    const headerOffset = window.innerWidth < 768 ? 70 : 100; 
     const elementPosition = titleElement.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
