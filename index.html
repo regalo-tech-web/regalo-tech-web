@@ -272,6 +272,32 @@
         bottom: 80px;
     }
 }    
+@media (max-width: 480px) {
+    /* Achicamos un poco el texto para que no se amontone */
+    .product-card h3 {
+        font-size: 0.85rem !important;
+        line-height: 1.2;
+        height: 38px; /* Esto ayuda a que todos los títulos midan lo mismo */
+        overflow: hidden;
+    }
+
+    .product-card .price {
+        font-size: 1.1rem !important;
+    }
+
+    /* Ajustamos el botón para que no sea tan gigante */
+    .product-card button {
+        padding: 8px 4px !important;
+        font-size: 10px !important;
+    }
+    
+    /* El contenedor de productos: si ves que 2 columnas son mucho, 
+       podés probar que sea 1 sola columna mas ancha */
+    #catalogGrid {
+        gap: 10px !important;
+        padding: 10px !important;
+    }
+}    
     </style>
 </head>
 <body class="font-sans text-slate-900">
