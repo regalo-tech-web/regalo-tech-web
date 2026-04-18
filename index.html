@@ -222,16 +222,6 @@
     transform: scale(1.05);
     opacity: 1 !important;
 }    
-#floating-cart {
-    /* Ajustamos la posición para que no tape al de WhatsApp */
-    bottom: 90px; /* Si tu WhatsApp está a 20px, este queda a una distancia cómoda arriba */
-}
-
-/* Clase para mostrar/ocultar con animación */
-#floating-cart.visible {
-    transform: translate-y(0);
-    opacity: 1;
-}    
     </style>
 </head>
 <body class="font-sans text-slate-900">
@@ -760,19 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // El contador de la burbuja ahora suma todas las cantidades
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
     countElement.innerText = totalItems;
-const floatingCart = document.getElementById('floating-cart');
-    const floatingCount = document.getElementById('floating-cart-count');
-    
-    // Contamos total de productos
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-    if (totalItems > 0) {
-        floatingCount.innerText = totalItems;
-        floatingCart.classList.add('visible');
-    } else {
-        floatingCart.classList.remove('visible');
-    }
-}    
+}
 function changeQuantity(index, delta) {
     const item = cart[index];
     const newQuantity = (item.quantity || 1) + delta;
@@ -901,16 +879,18 @@ function filterCategory(category) {
     const titleElement = document.getElementById('categoryTitle');
     const buttons = document.querySelectorAll('.category-btn');
 
-    // 1. Marcar el botón activo comparando el valor exacto
+    // 1. Marcar el botón activo
     buttons.forEach(btn => {
         btn.classList.remove('active');
-        // Buscamos si el onclick del botón contiene la categoría elegida
-        if (btn.getAttribute('onclick').includes(`'${category}'`)) {
+        
+        // Obtenemos el texto del atributo onclick para comparar mejor
+        const onClickAttr = btn.getAttribute('onclick');
+        if (onClickAttr && onClickAttr.includes(`'${category}'`)) {
             btn.classList.add('active');
         }
     });
 
-    // 2. Actualizar el Título (con el span azul que ya tenías)
+    // 2. Actualizar el Título del catálogo
     if (category === 'TODOS') {
         titleElement.innerHTML = '<span class="w-10 h-1 bg-blue-600 rounded-full"></span> Catálogo General';
     } else {
@@ -918,7 +898,7 @@ function filterCategory(category) {
         titleElement.innerHTML = `<span class="w-10 h-1 bg-blue-600 rounded-full"></span> ${formattedTitle}`;
     }
 
-    // 3. Filtrar las tarjetas
+    // 3. Filtrar las tarjetas de productos
     cards.forEach(card => {
         const productCat = card.getAttribute('data-category');
         if (category === 'TODOS' || (productCat && productCat.toUpperCase().includes(category.toUpperCase()))) {
@@ -932,7 +912,7 @@ function filterCategory(category) {
         sortProductsAlphabetically();
     }
 
-    // 4. Scroll suave con la compensación para que se vea el título
+    // 4. Scroll suave con la compensación que querías
     const headerOffset = 100; 
     const elementPosition = titleElement.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -1161,12 +1141,6 @@ function executeSearch() {
     </button>
 
     <img id="modalImg" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl transition-transform duration-300">
-</div>
-<div id="floating-cart" class="fixed bottom-24 right-6 z-50 transition-all transform translate-y-20 opacity-0">
-    <button onclick="toggleCart(true)" class="bg-[#2D405E] text-white p-4 rounded-full shadow-2xl flex items-center justify-center relative hover:scale-110 transition-transform">
-        <i class="fas fa-shopping-cart text-xl"></i>
-        <span id="floating-cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
-    </button>
 </div>
 <a href="https://wa.me/541139414195?text=Hola%20RegaloTech%2C%20quisiera%20más%20informacion%20sobre..." 
    class="whatsapp-float" 
