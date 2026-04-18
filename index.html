@@ -272,30 +272,31 @@
         bottom: 80px;
     }
 }    
-@media (max-width: 480px) {
-    /* Achicamos un poco el texto para que no se amontone */
+/* Ajustes para que en móvil se vea perfecto */
+@media (max-width: 600px) {
+    .product-card {
+        margin: 0 auto;
+        width: 100%; /* Que ocupe todo el ancho disponible */
+        max-width: 350px; /* Pero que no sea gigante */
+    }
+
     .product-card h3 {
-        font-size: 0.85rem !important;
-        line-height: 1.2;
-        height: 38px; /* Esto ayuda a que todos los títulos midan lo mismo */
-        overflow: hidden;
+        font-size: 1.1rem !important; /* Título legible */
+        height: auto !important; /* Que crezca si el nombre es largo */
+        margin-bottom: 10px;
     }
 
     .product-card .price {
-        font-size: 1.1rem !important;
+        font-size: 1.5rem !important; /* Precio claro */
+        display: block;
+        margin-bottom: 15px;
     }
 
-    /* Ajustamos el botón para que no sea tan gigante */
+    /* El botón de agregar, que sea cómodo para el dedo */
     .product-card button {
-        padding: 8px 4px !important;
-        font-size: 10px !important;
-    }
-    
-    /* El contenedor de productos: si ves que 2 columnas son mucho, 
-       podés probar que sea 1 sola columna mas ancha */
-    #catalogGrid {
-        gap: 10px !important;
-        padding: 10px !important;
+        width: 100%;
+        padding: 12px !important;
+        font-size: 14px !important;
     }
 }    
     </style>
@@ -390,7 +391,7 @@
     Catálogo General
 </h2>
 
-        <div id="catalogGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
 
     <div class="product-card bg-white p-5 rounded-2xl border border-gray-100 flex flex-col shadow-sm" 
          data-id="p5" data-name="Antifaz Para Dormir Hedwig - Harry Potter" data-category="USO PERSONAL"
