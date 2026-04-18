@@ -981,25 +981,28 @@ function changeQuantity(index, delta) {
         });
 
         function checkout() {
-    // 1. Calculamos el total exacto (Precio + 0.99 por cada unidad)
+    // 1. Validar si hay productos
+    if (cart.length === 0) return alert("El carrito está vacío");
+
+    // 2. Calculamos el total sumando (Precio + 0.99) por cada unidad
     const total = cart.reduce((sum, item) => sum + ((item.price + 0.99) * (item.quantity || 1)), 0);
     
-    if (total === 0) return alert("El carrito está vacío");
-
-    // 2. Formateamos el total para que tenga coma en vez de punto (ej: 65497,97)
+    // 3. Formateamos el Total para el mensaje (ej: 65.497,97)
     const totalFormateado = total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    // 3. Armamos la lista de productos con su precio individual terminado en ,99
+    // 4. Creamos la lista de productos terminando CADA UNO en ,99
     const listaProductos = cart.map(item => {
-        const subtotalItem = ((item.price + 0.99) * (item.quantity || 1)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        return `• ${item.name} (x${item.quantity || 1}): $${subtotalItem}`;
+        // Calculamos el subtotal de este producto (precio+0.99 * cantidad)
+        const subtotalIndividual = ((item.price + 0.99) * (item.quantity || 1)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        return `• ${item.name} (x${item.quantity || 1}): $${subtotalIndividual}`;
     }).join("\n");
 
-    // 4. Construimos el mensaje final
-    const mensaje = `¡Hola! Quisiera realizar la compra de los siguientes productos:\n\n${listaProductos}\n\n*Total del pedido: $${totalFormateado}*`;
+    // 5. Armamos el cuerpo del mensaje
+    const mensaje = `¡Hola! Quisiera finalizar la compra de los siguientes productos:\n\n${listaProductos}\n\n*Total del pedido: $${totalFormateado}*`;
 
-    // 5. Abrimos WhatsApp (Recuerda reemplazar TU_NUMERO si aún no lo hiciste)
-    window.open(`https://wa.me/TU_NUMERO?text=${encodeURIComponent(mensaje)}`);
+    // 6. Abrir WhatsApp (REEMPLAZA TU_NUMERO por tu número real, ej: 5491122334455)
+    const url = `https://wa.me/TU_NUMERO?text=${encodeURIComponent(mensaje)}`;
+    window.open(url);
 }
     // UBICACIÓN: Dentro de tu etiqueta <script> al final del archivo
 function filterCategory(category) {
