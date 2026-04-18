@@ -521,23 +521,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </button>
         </div>
     `).join('');
-    function changeQuantity(index, delta) {
-    // Delta puede ser 1 (sumar) o -1 (restar)
-    const newQuantity = (cart[index].quantity || 1) + delta;
-
-    if (newQuantity > 0) {
-        cart[index].quantity = newQuantity;
-    } else {
-        // Si la cantidad llega a 0, mejor le preguntamos si quiere eliminarlo
-        if (confirm("¿Deseas eliminar este producto del carrito?")) {
-            cart.splice(index, 1);
-        }
-    }
-
-    // Guardamos los cambios y refrescamos la vista
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartUI();
-}
 
     // Calculamos el total multiplicando precio por cantidad
     const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
@@ -546,6 +529,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // El contador de la burbuja ahora suma todas las cantidades
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
     countElement.innerText = totalItems;
+}
+function changeQuantity(index, delta) {
+    // 1. Calculamos la nueva cantidad
+    const currentQty = cart[index].quantity || 1;
+    const newQuantity = currentQty + delta;
+
+    // 2. Si es mayor a 0, actualizamos
+    if (newQuantity > 0) {
+        cart[index].quantity = newQuantity;
+    } else {
+        // 3. Si llega a 0, usamos tu función removeItem que ya sabemos que funciona
+        if (confirm("¿Deseas eliminar este producto?")) {
+            removeItem(index);
+            return; // Salimos de la función para no repetir el guardado
+        }
+    }
+
+    // 4. Guardamos en la memoria y refrescamos la pantalla
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
 }
 
         function removeItem(index) {
