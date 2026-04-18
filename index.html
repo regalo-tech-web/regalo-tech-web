@@ -858,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Calculamos el total multiplicando precio por cantidad
     const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
-    totalElement.innerText = `$ ${total.toLocaleString('es-AR', { maximumFractionDigits: 0 })},99`;
+    totalElement.innerText = `$ ${total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     
     // El contador de la burbuja ahora suma todas las cantidades
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
