@@ -463,7 +463,10 @@ function sortProductsAlphabetically() {
 }
 
 // Ejecutar al cargar la página por primera vez
-document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
+document.addEventListener('DOMContentLoaded', () => {
+    sortProductsAlphabetically();
+    updateCartUI();
+});
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const searchInput = document.getElementById('mainSearch');
         const resultsContainer = document.getElementById('searchResults');
@@ -479,6 +482,7 @@ document.addEventListener('DOMContentLoaded', sortProductsAlphabetically);
             cart.push(product);
             updateCartUI();
             toggleCart();
+            localStorage.setItem('cart', JSON.stringify(cart));
             
         }
 
