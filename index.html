@@ -841,7 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${item.image}" class="w-12 h-12 object-contain bg-white rounded">
                 <div>
                     <p class="text-sm font-bold">${item.name}</p>
-<p class="text-xs text-blue-600">$ ${(item.price * (item.quantity || 1)).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+<p class="text-xs text-blue-600">$ ${(item.price * (item.quantity || 1)).toLocaleString('es-AR', { maximumFractionDigits: 0 })},99</p>
                     
                     <div class="flex items-center gap-2 mt-1">
                         <button onclick="changeQuantity(${index}, -1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-xs hover:bg-gray-300">-</button>
