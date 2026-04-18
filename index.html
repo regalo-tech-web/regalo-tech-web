@@ -889,11 +889,15 @@ function filterCategory(category) {
     // Llamamos a la función de ordenamiento cada vez que filtramos
     sortProductsAlphabetically();
 
-    // 3. Scroll suave
-    document.getElementById('catalogGrid').scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-    });
+    // 3. Scroll suave con compensación para ver el título
+const headerOffset = 100; // Ajusta este número (píxeles) según el alto de tu menú
+const elementPosition = titleElement.getBoundingClientRect().top;
+const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+});
 }
 function openSpecs(productId) {
     const card = document.querySelector(`[data-id="${productId}"]`);
