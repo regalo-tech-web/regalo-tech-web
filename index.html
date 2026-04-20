@@ -1266,13 +1266,17 @@ function changeQuantity(index, delta) {
     const totalNumerico = cart.reduce((sum, item) => sum + ((item.price + 0.99) * (item.quantity || 1)), 0);
     const totalTexto = totalNumerico.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    // 2. Armamos la lista de productos (Forzamos el ,99 en el texto)
+    // 2. Armamos la lista de productos multiplicando precio por cantidad
     const listaProductos = cart.map(item => {
-        const precioBaseConPuntos = item.price.toLocaleString('es-AR');
-        return `• ${item.name} (x${item.quantity || 1}): $${precioBaseConPuntos},99`;
+        const cantidad = item.quantity || 1;
+        // Calculamos el subtotal de este producto específico
+        const subtotalItem = (item.price + 0.99) * cantidad;
+        const subtotalFormateado = subtotalItem.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        
+        return `• ${item.name} (x${cantidad}): $${subtotalFormateado}`;
     }).join("\n");
 
-    // 3. Construimos el cuerpo del mensaje
+    // 3. Construimos el cuerpo del mensaje (Cambié el emoji del camión para evitar el error del rombo)
     const mensaje = `¡Hola RegaloTech! Quisiera finalizar la compra de los siguientes productos:\n\n${listaProductos}\n\n🚚 *Envío: A COTIZAR*\n\n*Total del pedido: $${totalTexto}*`;
 
     // 4. Abrir WhatsApp
