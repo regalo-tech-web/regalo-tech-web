@@ -1091,14 +1091,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalElement = document.getElementById('cart-total');
     const countElement = document.getElementById('cartCount');
 
-    // Generamos el HTML de los productos
+    // 1. Generamos el HTML de los productos
     const productosHTML = cart.map((item, index) => `
         <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg mb-2">
             <div class="flex items-center gap-3">
                 <img src="${item.image}" class="w-12 h-12 object-contain bg-white rounded">
                 <div>
                     <p class="text-sm font-bold">${item.name}</p>
-                    <p class="text-xs text-blue-600">$ ${(item.price).toLocaleString('es-AR')},99</p>
+                    <p class="text-xs text-blue-600">$ ${item.price.toLocaleString('es-AR')},99</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
@@ -1114,51 +1114,35 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `).join('');
 
-    // Definimos el bloque de envío (solo si hay productos)
+    // 2. Definimos el bloque de envío (solo si hay algo en el carrito)
     const envioHTML = cart.length > 0 ? `
         <div class="flex justify-between items-center p-3 border-t border-dashed border-gray-300 bg-gray-50 mt-4 rounded-lg">
             <div class="flex items-center gap-2">
                 <span class="text-lg">🚚</span>
                 <div>
-                    <p class="font-bold text-[10px] uppercase text-gray-700">Envío</p>
-                    <p class="text-[9px] text-gray-500">Se coordina por WhatsApp</p>
+                    <p class="font-bold text-[10px] uppercase text-gray-700 leading-tight">Envío</p>
+                    <p class="text-[9px] text-gray-500 leading-tight">Se coordina por WhatsApp</p>
                 </div>
             </div>
             <p class="text-xs font-bold text-orange-600">A COTIZAR</p>
         </div>
     ` : '';
 
-    // INYECTAMOS AMBOS: Productos y luego el Envío
+    // 3. Metemos todo en el contenedor
     itemsContainer.innerHTML = productosHTML + envioHTML;
 
-    const itemsHTML = cart.map((item, index) => {
-        // ... (tu código actual del map se mantiene igual arriba)
-    }).join('');
-
-    // Definimos el bloque del envío
-    const envioHTML = cart.length > 0 ? `
-        <div class="flex justify-between items-center p-3 border-t border-dashed border-gray-300 bg-gray-50 mt-4 rounded-lg">
-            <div class="flex items-center gap-2">
-                <span class="text-lg">🚚</span>
-                <div>
-                    <p class="font-bold text-[10px] uppercase text-gray-700">Envío</p>
-                    <p class="text-[9px] text-gray-500">Se coordina por WhatsApp</p>
-                </div>
-            </div>
-            <p class="text-xs font-bold text-orange-600">A COTIZAR</p>
-        </div>
-    ` : '';
-
-    // Inyectamos los productos + el envío
-    itemsContainer.innerHTML = itemsHTML + envioHTML;
-
-    // Calculamos el total (esto ya lo tenés en la línea 1116)
+    // 4. Calculamos el total con la matemática del ,99
     const total = cart.reduce((sum, item) => sum + ((item.price + 0.99) * (item.quantity || 1)), 0);
     totalElement.innerText = `$ ${total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
+    // 5. Actualizamos el contador de la burbuja
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
     countElement.innerText = totalItems;
-    updateFloatingCart();
+
+    // 6. Refrescamos el carrito flotante
+    if (typeof updateFloatingCart === 'function') {
+        updateFloatingCart();
+    }
 }
 function changeQuantity(index, delta) {
     const item = cart[index];
