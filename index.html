@@ -1112,11 +1112,31 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `).join('');
 
-    // Calculamos el total multiplicando precio por cantidad
+    const itemsHTML = cart.map((item, index) => {
+        // ... (tu código actual del map se mantiene igual arriba)
+    }).join('');
+
+    // Definimos el bloque del envío
+    const envioHTML = cart.length > 0 ? `
+        <div class="flex justify-between items-center p-3 border-t border-dashed border-gray-300 bg-gray-50 mt-4 rounded-lg">
+            <div class="flex items-center gap-2">
+                <span class="text-lg">🚚</span>
+                <div>
+                    <p class="font-bold text-[10px] uppercase text-gray-700">Envío</p>
+                    <p class="text-[9px] text-gray-500">Se coordina por WhatsApp</p>
+                </div>
+            </div>
+            <p class="text-xs font-bold text-orange-600">A COTIZAR</p>
+        </div>
+    ` : '';
+
+    // Inyectamos los productos + el envío
+    itemsContainer.innerHTML = itemsHTML + envioHTML;
+
+    // Calculamos el total (esto ya lo tenés en la línea 1116)
     const total = cart.reduce((sum, item) => sum + ((item.price + 0.99) * (item.quantity || 1)), 0);
     totalElement.innerText = `$ ${total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    
-    // El contador de la burbuja ahora suma todas las cantidades
+
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
     countElement.innerText = totalItems;
     updateFloatingCart();
