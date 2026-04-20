@@ -1092,29 +1092,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const countElement = document.getElementById('cartCount');
 
     // 1. Generamos el HTML de los productos
-    const productosHTML = cart.map((item, index) => `
-        <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg mb-2">
-            <div class="flex items-center gap-3">
-                <img src="${item.image}" class="w-12 h-12 object-contain bg-white rounded">
-                <div>
-                    <p class="text-sm font-bold">${item.name}</p>
-                    <p class="text-xs text-blue-600">$ ${item.price.toLocaleString('es-AR')},99</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-2">
-                <div class="flex items-center gap-2 mt-1">
-                    <button onclick="changeQuantity(${index}, -1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-xs">-</button>
-                    <span class="text-xs font-bold">${item.quantity || 1}</span>
-                    <button onclick="changeQuantity(${index}, 1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-xs">+</button>
-                </div>
-                <button onclick="removeItem(${index})" class="text-red-400 hover:text-red-600 ml-2">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
-        </div>
-    `).join('');
+    const productosHTML = cart.map((item, index) => {
+        const cantidad = item.quantity || 1;
+        // Calculamos el subtotal de este producto (Precio + 0.99) * cantidad
+        const subtotalIndividual = (item.price + 0.99) * cantidad;
+        const subtotalFormateado = subtotalIndividual.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    // 2. Definimos el bloque de envío (solo si hay algo en el carrito)
+        return `
+            <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg mb-2">
+                <div class="flex items-center gap-3">
+                    <img src="${item.image}" class="w-12 h-12 object-contain bg-white rounded">
+                    <div>
+                        <p class="text-sm font-bold">${item.name}</p>
+                        <p class="text-xs text-blue-600">$ ${subtotalFormateado}</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-2 mt-1">
+                        <button onclick="changeQuantity(${index}, -1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-xs">-</button>
+                        <span class="text-xs font-bold">${cantidad}</span>
+                        <button onclick="changeQuantity(${index}, 1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-xs">+</button>
+                    </div>
+                    <button onclick="removeItem(${index})" class="text-red-400 hover:text-red-600 ml-2">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    // 2. Bloque de envío
     const envioHTML = cart.length > 0 ? `
         <div class="flex justify-between items-center p-3 border-t border-dashed border-gray-300 bg-gray-50 mt-4 rounded-lg">
             <div class="flex items-center gap-2">
@@ -1128,18 +1135,16 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     ` : '';
 
-    // 3. Metemos todo en el contenedor
     itemsContainer.innerHTML = productosHTML + envioHTML;
 
-    // 4. Calculamos el total con la matemática del ,99
+    // 3. Total general del carrito
     const total = cart.reduce((sum, item) => sum + ((item.price + 0.99) * (item.quantity || 1)), 0);
     totalElement.innerText = `$ ${total.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-    // 5. Actualizamos el contador de la burbuja
+    // 4. Contador de la burbuja
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
     countElement.innerText = totalItems;
 
-    // 6. Refrescamos el carrito flotante
     if (typeof updateFloatingCart === 'function') {
         updateFloatingCart();
     }
