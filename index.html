@@ -1262,27 +1262,28 @@ function changeQuantity(index, delta) {
         function checkout() {
     if (cart.length === 0) return alert("El carrito está vacío");
 
-    let totalSuma = 0;
-    let textoProductos = "";
+    // 1. Calculamos el total exacto (Matemática real de centavos)
+    const totalNumerico = cart.reduce((sum, item) => sum + ((item.price + 0.99) * (item.quantity || 1)), 0);
+    const totalTexto = totalNumerico.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    cart.forEach(item => {
-        const cantidad = item.quantity || 1;
-        const precioBase = item.price;
-        // Sumamos el precio con los 0.99 para el total
-        totalSuma += (precioBase + 0.99) * cantidad;
-        
-        // Armamos el texto de cada producto FORZANDO el ,99 a mano
-        const precioFormateado = precioBase.toLocaleString('es-AR');
-        textoProductos += `· ${item.name} (x${cantidad}): $${precioFormateado},99 `;
-    });
+    // 2. Armamos la lista de productos (Forzamos el ,99 en el texto)
+    const listaProductos = cart.map(item => {
+        const precioBaseConPuntos = item.price.toLocaleString('es-AR');
+        return `• ${item.name} (x${item.quantity || 1}): $${precioBaseConPuntos},99`;
+    }).join("\n");
 
-    // Formateamos el total final con sus decimales correctos (,97, ,98, etc)
-    const totalFinalTexto = totalSuma.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    // 3. Construimos el cuerpo del mensaje
+    const mensaje = `¡Hola RegaloTech! Quisiera realizar el siguiente pedido:
 
-    const mensaje = `Hola RegaloTech, quisiera finalizar la compra de los siguientes productos: ${textoProductos} *Total del pedido: $${totalFinalTexto}*`;
+${listaProductos}
 
-    const url = `https://wa.me/TU_NUMERO?text=${encodeURIComponent(mensaje)}`;
-    window.open(url);
+🚚 *Envío: A COTIZAR*
+
+*Total del pedido: $${totalTexto}*`;
+
+    // 4. Abrir WhatsApp con el número: 5491139414195
+    const numeroTelefono = "5491139414195"; 
+    window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`);
 }
     // UBICACIÓN: Dentro de tu etiqueta <script> al final del archivo
 function filterCategory(category) {
