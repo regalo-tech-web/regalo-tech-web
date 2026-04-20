@@ -337,7 +337,7 @@
             <button onclick="toggleCart()" class="w-full mt-2 py-3 px-4 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors uppercase text-sm tracking-wider">
     Seguir Comprando
 </button>
-            <button onclick="sendOrder()" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-sm hover:bg-slate-700 transition-colors mt-4">
+            <button onclick="checkout()" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-sm hover:bg-slate-700 transition-colors mt-4">
     FINALIZAR PEDIDO
 </button>
 
@@ -1273,17 +1273,11 @@ function changeQuantity(index, delta) {
     }).join("\n");
 
     // 3. Construimos el cuerpo del mensaje
-    const mensaje = `¡Hola RegaloTech! Quisiera realizar el siguiente pedido:
+    const mensaje = `¡Hola RegaloTech! Quisiera finalizar la compra de los siguientes productos:\n\n${listaProductos}\n\n🚚 *Envío: A COTIZAR*\n\n*Total del pedido: $${totalTexto}*`;
 
-${listaProductos}
-
-🚚 *Envío: A COTIZAR*
-
-*Total del pedido: $${totalTexto}*`;
-
-    // 4. Abrir WhatsApp con el número: 5491139414195
+    // 4. Abrir WhatsApp
     const numeroTelefono = "5491139414195"; 
-    window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`);
+    window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
 }
 
     // UBICACIÓN: Dentro de tu etiqueta <script> al final del archivo
@@ -1430,22 +1424,7 @@ function moveModalSlide(direction) {
 window.addEventListener('keydown', (e) => {
     if (e.key === "Escape") closeImageModal();
 });    
-function sendOrder() {
-    let message = "Hola RegaloTech, quisiera finalizar la compra de los siguientes productos:\n\n";
-    let totalGlobal = 0;
-
-    cart.forEach(item => {
-        const qty = item.quantity || 1;
-        const subtotal = item.price * qty;
-        totalGlobal += subtotal;
-        message += `· ${item.name} (x${qty}): $${subtotal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n`;
-    });
-
-    message += `\n*Total del pedido: $${totalGlobal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}*`;
-    
-    const whatsappUrl = `https://wa.me/5491139414195?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-}   
+   
 function clearCart() {
     // Confirmación para evitar errores accidentales
     if (confirm("¿Estás seguro de que quieres vaciar todo el carrito?")) {
