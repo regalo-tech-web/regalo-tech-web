@@ -1091,26 +1091,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalElement = document.getElementById('cart-total');
     const countElement = document.getElementById('cartCount');
 
-    itemsContainer.innerHTML = cart.map((item, index) => `
-        <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+    // Generamos el HTML de los productos
+    const productosHTML = cart.map((item, index) => `
+        <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg mb-2">
             <div class="flex items-center gap-3">
                 <img src="${item.image}" class="w-12 h-12 object-contain bg-white rounded">
                 <div>
                     <p class="text-sm font-bold">${item.name}</p>
-<p class="text-xs text-blue-600">$ ${(item.price * (item.quantity || 1)).toLocaleString('es-AR', { maximumFractionDigits: 0 })},99</p>
-                    
-                    <div class="flex items-center gap-2 mt-1">
-                        <button onclick="changeQuantity(${index}, -1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-xs hover:bg-gray-300">-</button>
-                        <span class="text-xs font-bold">${item.quantity || 1}</span>
-                        <button onclick="changeQuantity(${index}, 1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-xs hover:bg-gray-300">+</button>
-                    </div>
+                    <p class="text-xs text-blue-600">$ ${(item.price).toLocaleString('es-AR')},99</p>
                 </div>
             </div>
-            <button onclick="removeItem(${index})" class="text-red-400 hover:text-red-600 ml-2">
-                <i class="fas fa-trash"></i>
-            </button>
+            <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 mt-1">
+                    <button onclick="changeQuantity(${index}, -1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-xs">-</button>
+                    <span class="text-xs font-bold">${item.quantity || 1}</span>
+                    <button onclick="changeQuantity(${index}, 1)" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-xs">+</button>
+                </div>
+                <button onclick="removeItem(${index})" class="text-red-400 hover:text-red-600 ml-2">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
         </div>
     `).join('');
+
+    // Definimos el bloque de envío (solo si hay productos)
+    const envioHTML = cart.length > 0 ? `
+        <div class="flex justify-between items-center p-3 border-t border-dashed border-gray-300 bg-gray-50 mt-4 rounded-lg">
+            <div class="flex items-center gap-2">
+                <span class="text-lg">🚚</span>
+                <div>
+                    <p class="font-bold text-[10px] uppercase text-gray-700">Envío</p>
+                    <p class="text-[9px] text-gray-500">Se coordina por WhatsApp</p>
+                </div>
+            </div>
+            <p class="text-xs font-bold text-orange-600">A COTIZAR</p>
+        </div>
+    ` : '';
+
+    // INYECTAMOS AMBOS: Productos y luego el Envío
+    itemsContainer.innerHTML = productosHTML + envioHTML;
 
     const itemsHTML = cart.map((item, index) => {
         // ... (tu código actual del map se mantiene igual arriba)
