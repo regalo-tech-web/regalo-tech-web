@@ -1430,7 +1430,22 @@ function moveModalSlide(direction) {
 window.addEventListener('keydown', (e) => {
     if (e.key === "Escape") closeImageModal();
 });    
-   
+function sendOrder() {
+    let message = "Hola RegaloTech, quisiera finalizar la compra de los siguientes productos:\n\n";
+    let totalGlobal = 0;
+
+    cart.forEach(item => {
+        const qty = item.quantity || 1;
+        const subtotal = item.price * qty;
+        totalGlobal += subtotal;
+        message += `· ${item.name} (x${qty}): $${subtotal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n`;
+    });
+
+    message += `\n*Total del pedido: $${totalGlobal.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}*`;
+    
+    const whatsappUrl = `https://wa.me/5491139414195?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}   
 function clearCart() {
     // Confirmación para evitar errores accidentales
     if (confirm("¿Estás seguro de que quieres vaciar todo el carrito?")) {
