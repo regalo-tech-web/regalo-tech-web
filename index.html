@@ -1380,24 +1380,24 @@ function sortProductsAlphabetically() {
     const cards = Array.from(grid.querySelectorAll('.product-card'));
 
     cards.sort((a, b) => {
-        // 1. Detectamos si tienen stock buscando el texto "stock: 0" en sus botones
-        // (Esto es lo que garantiza que se vayan al final)
-        const noStockA = a.querySelector('button[onclick*="stock: 0"]') || a.querySelector('button[onclick*="stock:0"]');
-        const noStockB = b.querySelector('button[onclick*="stock: 0"]') || b.querySelector('button[onclick*="stock:0"]');
-
-        // Lógica de orden:
-        if (noStockA && !noStockB) return 1;  // A no tiene stock, B sí -> A va después
-        if (!noStockA && noStockB) return -1; // A tiene stock, B no -> A va antes
-
-        // 2. Si ambos tienen stock (o ambos no tienen), ordenamos por nombre (tu código original)
         const nameA = a.getAttribute('data-name').toLowerCase();
         const nameB = b.getAttribute('data-name').toLowerCase();
         return nameA.localeCompare(nameB);
     });
 
-    // Reinsertar las tarjetas ya ordenadas (Primero con stock A-Z, luego sin stock A-Z)
+    // Reinsertar las tarjetas ordenadas en la grilla
     cards.forEach(card => grid.appendChild(card));
 }
+
+// Ejecutar al cargar la página por primera vez
+document.addEventListener('DOMContentLoaded', () => {
+    sortProductsAlphabetically();
+    updateCartUI();
+});
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const searchInput = document.getElementById('mainSearch');
+        const resultsContainer = document.getElementById('searchResults');
+        const cards = document.querySelectorAll('.product-card');
 
         // LÓGICA DEL CARRITO
         function toggleCart() {
