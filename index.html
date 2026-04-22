@@ -1887,6 +1887,53 @@ function updateFloatingCart() {
         floatingCart.style.display = 'none'; // Lo ocultamos
     }
 }    
+
+function checkStockStatus() {
+    // Buscamos todos los botones que tengan la función addToCart
+    const buttons = document.querySelectorAll('button[onclick*="addToCart"]');
+
+    buttons.forEach(btn => {
+        const attr = btn.getAttribute('onclick');
+        
+        // Esta línea es la clave: busca "stock: 0" o "stock:0" sin importar espacios
+        if (/stock:\s*0/.test(attr)) {
+            const card = btn.closest('.product-card');
+            if (!card) return;
+
+            // 1. Evitar que se agregue el badge dos veces
+            if (!card.querySelector('.no-stock-badge')) {
+                const badge = document.createElement('div');
+                badge.className = "no-stock-badge absolute top-4 left-4 z-20 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase";
+                badge.innerText = "Sin Stock";
+                card.style.position = 'relative';
+                card.prepend(badge);
+            }
+
+            // 2. Imagen en gris
+            const track = card.querySelector('.track-container');
+            if (track) {
+                track.classList.add('grayscale', 'opacity-50');
+            }
+
+            // 3. Matar el botón
+            btn.innerText = "AGOTADO";
+            btn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            };
+            btn.removeAttribute('onclick'); // Por las dudas lo borramos
+            btn.className = "w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-bold uppercase text-xs cursor-not-allowed pointer-events-none";
+        }
+    });
+}
+
+// Ejecutar al cargar la página
+document.addEventListener("DOMContentLoaded", checkStockStatus);
+// Ejecutar un par de veces más tarde por si los productos tardan en cargar
+setTimeout(checkStockStatus, 500);
+setTimeout(checkStockStatus, 1500);
+
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
@@ -1973,50 +2020,6 @@ function updateFloatingCart() {
         </span>
     </button>
 </div>
-function checkStockStatus() {
-    // Buscamos todos los botones que tengan la función addToCart
-    const buttons = document.querySelectorAll('button[onclick*="addToCart"]');
 
-    buttons.forEach(btn => {
-        const attr = btn.getAttribute('onclick');
-        
-        // Esta línea es la clave: busca "stock: 0" o "stock:0" sin importar espacios
-        if (/stock:\s*0/.test(attr)) {
-            const card = btn.closest('.product-card');
-            if (!card) return;
-
-            // 1. Evitar que se agregue el badge dos veces
-            if (!card.querySelector('.no-stock-badge')) {
-                const badge = document.createElement('div');
-                badge.className = "no-stock-badge absolute top-4 left-4 z-20 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase";
-                badge.innerText = "Sin Stock";
-                card.style.position = 'relative';
-                card.prepend(badge);
-            }
-
-            // 2. Imagen en gris
-            const track = card.querySelector('.track-container');
-            if (track) {
-                track.classList.add('grayscale', 'opacity-50');
-            }
-
-            // 3. Matar el botón
-            btn.innerText = "AGOTADO";
-            btn.onclick = (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
-            };
-            btn.removeAttribute('onclick'); // Por las dudas lo borramos
-            btn.className = "w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-bold uppercase text-xs cursor-not-allowed pointer-events-none";
-        }
-    });
-}
-
-// Ejecutar al cargar la página
-document.addEventListener("DOMContentLoaded", checkStockStatus);
-// Ejecutar un par de veces más tarde por si los productos tardan en cargar
-setTimeout(checkStockStatus, 500);
-setTimeout(checkStockStatus, 1500);
 </body>
 </html>
