@@ -1929,6 +1929,14 @@ function updateFloatingCart() {
     setTimeout(checkStockStatus, 500);
     setTimeout(checkStockStatus, 1500);
 
+    // Escuchar cuando el usuario hace clic en el menú o categorías
+document.addEventListener("click", function(event) {
+    // Si el clic fue en un botón o link (donde suelen estar las categorías)
+    // esperamos un pelín a que el sistema cargue los productos y ejecutamos de nuevo
+    setTimeout(checkStockStatus, 200); 
+    setTimeout(checkStockStatus, 1000); 
+});
+
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
