@@ -1894,7 +1894,6 @@ function checkAndRearrangeStock() {
     buttons.forEach(btn => {
         const attr = btn.getAttribute('onclick');
         
-        // Buscamos stock: 0 o stock:0
         if (/stock:\s*0/.test(attr)) {
             const card = btn.closest('.product-card');
             if (!card) return;
@@ -1915,25 +1914,31 @@ function checkAndRearrangeStock() {
             btn.removeAttribute('onclick');
             btn.className = "w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-bold uppercase text-xs cursor-not-allowed pointer-events-none";
 
-            // 2. Mover al final (La clave para las categorías)
-            const container = card.parentNode;
-            if (container && container.lastElementChild !== card) {
-                container.appendChild(card);
+            // 2. LA SOLUCIÓN DEFINITIVA: Usar orden de Flex/Grid
+            // Forzamos al contenedor a ser un flex/grid y al producto a ir al final
+            if (card.parentNode) {
+                card.parentNode.style.display = 'flex';
+                card.parentNode.style.flexWrap = 'wrap';
+                card.style.order = '999'; 
             }
+        } else {
+            // Si tiene stock, nos aseguramos que tenga orden 1
+            const card = btn.closest('.product-card');
+            if (card) card.style.order = '1';
         }
     });
 }
 
-// Escuchamos cualquier cambio en la página (clics en categorías o carga de productos)
+// Observador para cambios de categoría
 const observer = new MutationObserver(() => {
     checkAndRearrangeStock();
 });
 
-// Iniciamos el sistema
+// Iniciar
 checkAndRearrangeStock();
 observer.observe(document.body, { childList: true, subtree: true });
 
-// Refuerzo por si el filtrado de categorías es lento
+// Refuerzo para clics
 document.addEventListener("click", () => {
     setTimeout(checkAndRearrangeStock, 100);
 });
