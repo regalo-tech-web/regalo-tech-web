@@ -1374,47 +1374,6 @@
     </main>
 
     <script>
-function checkStockStatus() {
-        const buttons = document.querySelectorAll('button[onclick*="addToCart"]');
-        // Buscamos el contenedor que guarda todas las tarjetas de productos
-        const container = document.querySelector('.grid'); // O el nombre de la clase que use tu contenedor de productos
-
-        buttons.forEach(btn => {
-            const attr = btn.getAttribute('onclick');
-            
-            if (/stock:\s*0/.test(attr)) {
-                const card = btn.closest('.product-card');
-                if (!card) return;
-
-                // 1. Efectos visuales (Lo que ya funcionaba)
-                if (!card.querySelector('.no-stock-badge')) {
-                    const badge = document.createElement('div');
-                    badge.className = "no-stock-badge absolute top-4 left-4 z-20 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase";
-                    badge.innerText = "Sin Stock";
-                    card.style.position = 'relative';
-                    card.prepend(badge);
-                }
-
-                const track = card.querySelector('.track-container');
-                if (track) { track.classList.add('grayscale', 'opacity-50'); }
-
-                btn.innerText = "AGOTADO";
-                btn.removeAttribute('onclick');
-                btn.className = "w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-bold uppercase text-xs cursor-not-allowed pointer-events-none";
-
-                // 2. LA MAGIA: Mandar al final
-                // Esto mueve la tarjeta al final de su contenedor padre
-                if (card.parentNode) {
-                    card.parentNode.appendChild(card);
-                }
-            }
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", checkStockStatus);
-    setTimeout(checkStockStatus, 500);
-    setTimeout(checkStockStatus, 1500);
-
         // Función para ordenar alfabéticamente
 function sortProductsAlphabetically() {
     const grid = document.getElementById('catalogGrid');
@@ -1929,7 +1888,46 @@ function updateFloatingCart() {
     }
 }    
 
-    
+    function checkStockStatus() {
+        const buttons = document.querySelectorAll('button[onclick*="addToCart"]');
+        // Buscamos el contenedor que guarda todas las tarjetas de productos
+        const container = document.querySelector('.grid'); // O el nombre de la clase que use tu contenedor de productos
+
+        buttons.forEach(btn => {
+            const attr = btn.getAttribute('onclick');
+            
+            if (/stock:\s*0/.test(attr)) {
+                const card = btn.closest('.product-card');
+                if (!card) return;
+
+                // 1. Efectos visuales (Lo que ya funcionaba)
+                if (!card.querySelector('.no-stock-badge')) {
+                    const badge = document.createElement('div');
+                    badge.className = "no-stock-badge absolute top-4 left-4 z-20 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase";
+                    badge.innerText = "Sin Stock";
+                    card.style.position = 'relative';
+                    card.prepend(badge);
+                }
+
+                const track = card.querySelector('.track-container');
+                if (track) { track.classList.add('grayscale', 'opacity-50'); }
+
+                btn.innerText = "AGOTADO";
+                btn.removeAttribute('onclick');
+                btn.className = "w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-bold uppercase text-xs cursor-not-allowed pointer-events-none";
+
+                // 2. LA MAGIA: Mandar al final
+                // Esto mueve la tarjeta al final de su contenedor padre
+                if (card.parentNode) {
+                    card.parentNode.appendChild(card);
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", checkStockStatus);
+    setTimeout(checkStockStatus, 500);
+    setTimeout(checkStockStatus, 1500);
 
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
