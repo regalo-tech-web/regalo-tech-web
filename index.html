@@ -1888,9 +1888,9 @@ function updateFloatingCart() {
     }
 }    
 
-function checkStockStatus() {
+function checkAndRearrangeStock() {
     const buttons = document.querySelectorAll('button[onclick*="addToCart"]');
-
+    
     buttons.forEach(btn => {
         const attr = btn.getAttribute('onclick');
         
@@ -1898,7 +1898,7 @@ function checkStockStatus() {
             const card = btn.closest('.product-card');
             if (!card) return;
 
-            // 1. Aplicar diseño de Sin Stock (si no lo tiene)
+            // 1. Aplicar diseño (Etiqueta, Gris, Botón)
             if (!card.querySelector('.no-stock-badge')) {
                 const badge = document.createElement('div');
                 badge.className = "no-stock-badge absolute top-4 left-4 z-20 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase";
@@ -1908,33 +1908,43 @@ function checkStockStatus() {
             }
 
             const track = card.querySelector('.track-container');
-            if (track) { track.classList.add('grayscale', 'opacity-50'); }
+            if (track) track.classList.add('grayscale', 'opacity-50');
 
             btn.innerText = "AGOTADO";
             btn.removeAttribute('onclick');
             btn.className = "w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-bold uppercase text-xs cursor-not-allowed pointer-events-none";
 
-            // 2. Mover al final (incluso en categorías)
-            if (card.parentNode) {
-                card.parentNode.appendChild(card);
+            // 2. Mover al final del contenedor actual
+            const container = card.parentNode;
+            if (container && container.lastChild !== card) {
+                container.appendChild(card);
             }
         }
     });
 }
 
-// 1. Ejecutar al cargar la página
-document.addEventListener("DOMContentLoaded", checkStockStatus);
-
-// 2. LA CLAVE: Ejecutar cada vez que el usuario haga clic en algo
-// Esto detecta clics en los botones de categorías
-document.addEventListener("click", function() {
-    // Le damos un mini respiro de 50ms para que la página 
-    // termine de filtrar los productos antes de reordenarlos
-    setTimeout(checkStockStatus, 50);
+// ESTA ES LA CLAVE: El observador de cambios
+const observer = new MutationObserver((mutations) => {
+    // Si algo cambió en los productos, re-ejecutamos la lógica
+    checkAndRearrangeStock();
 });
 
-// Por si las moscas, un chequeo extra al inicio
-setTimeout(checkStockStatus, 500);
+// Iniciamos el guardia cuando la página carga
+document.addEventListener("DOMContentLoaded", () => {
+    checkAndRearrangeStock();
+    
+    // Buscamos dónde se guardan los productos (el contenedor principal)
+    const productGrid = document.querySelector('.grid') || document.body;
+    
+    observer.observe(productGrid, {
+        childList: true, // Avisame si agregan o sacan productos
+        subtree: true    // Avisame si cambia algo adentro de los productos
+    });
+});
+
+// Por las dudas, un par de disparos manuales
+setTimeout(checkAndRearrangeStock, 500);
+setTimeout(checkAndRearrangeStock, 1500);
 
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
