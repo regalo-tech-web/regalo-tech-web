@@ -1894,11 +1894,12 @@ function checkAndRearrangeStock() {
     buttons.forEach(btn => {
         const attr = btn.getAttribute('onclick');
         
+        // Buscamos stock: 0 o stock:0
         if (/stock:\s*0/.test(attr)) {
             const card = btn.closest('.product-card');
             if (!card) return;
 
-            // 1. Aplicar diseño (Etiqueta, Gris, Botón)
+            // 1. Diseño (Etiqueta, Gris, Botón)
             if (!card.querySelector('.no-stock-badge')) {
                 const badge = document.createElement('div');
                 badge.className = "no-stock-badge absolute top-4 left-4 z-20 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase";
@@ -1914,37 +1915,28 @@ function checkAndRearrangeStock() {
             btn.removeAttribute('onclick');
             btn.className = "w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-bold uppercase text-xs cursor-not-allowed pointer-events-none";
 
-            // 2. Mover al final del contenedor actual
+            // 2. Mover al final (La clave para las categorías)
             const container = card.parentNode;
-            if (container && container.lastChild !== card) {
+            if (container && container.lastElementChild !== card) {
                 container.appendChild(card);
             }
         }
     });
 }
 
-// ESTA ES LA CLAVE: El observador de cambios
-const observer = new MutationObserver((mutations) => {
-    // Si algo cambió en los productos, re-ejecutamos la lógica
+// Escuchamos cualquier cambio en la página (clics en categorías o carga de productos)
+const observer = new MutationObserver(() => {
     checkAndRearrangeStock();
 });
 
-// Iniciamos el guardia cuando la página carga
-document.addEventListener("DOMContentLoaded", () => {
-    checkAndRearrangeStock();
-    
-    // Buscamos dónde se guardan los productos (el contenedor principal)
-    const productGrid = document.querySelector('.grid') || document.body;
-    
-    observer.observe(productGrid, {
-        childList: true, // Avisame si agregan o sacan productos
-        subtree: true    // Avisame si cambia algo adentro de los productos
-    });
-});
+// Iniciamos el sistema
+checkAndRearrangeStock();
+observer.observe(document.body, { childList: true, subtree: true });
 
-// Por las dudas, un par de disparos manuales
-setTimeout(checkAndRearrangeStock, 500);
-setTimeout(checkAndRearrangeStock, 1500);
+// Refuerzo por si el filtrado de categorías es lento
+document.addEventListener("click", () => {
+    setTimeout(checkAndRearrangeStock, 100);
+});
 
     </script>
 <div id="productModal" class="fixed inset-0 z-[1000] hidden flex items-center justify-center p-4">
