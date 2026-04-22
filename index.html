@@ -559,7 +559,7 @@
         <h3 class="text-[0.95rem] font-medium text-[#2D405E] mb-1">Funda Asiento Alcochada Para Bicicleta</h3>
         <p class="price-tag text-2xl font-medium text-gray-900 mb-4">$ 19.999<span class="text-sm opacity-60">,99</span></p>
         <div class="space-y-2">
-            <button onclick="addToCart({id: 'p8', name: 'Funda Alcochada Para Bicicleta', price: 19999, image: 'asiento-bici-1.png', stock: 1})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
+            <button onclick="addToCart({id: 'p8', name: 'Funda Alcochada Para Bicicleta', price: 19999, image: 'asiento-bici-1.png', stock: 0})" class="w-full bg-[#2D405E] text-white py-3 rounded-xl font-bold uppercase text-xs hover:bg-slate-700 transition-colors">AGREGAR AL CARRITO</button>
             <button onclick="openSpecs('p8')" class="specs-btn w-full py-2 text-[11px] font-medium text-gray-400 hover:text-[#2D405E] transition-colors flex items-center justify-center gap-2 uppercase border-t border-gray-50 mt-1">
                 <i class="fas fa-list-ul text-[10px]"></i> Características
             </button>
@@ -1973,5 +1973,37 @@ function updateFloatingCart() {
         </span>
     </button>
 </div>
+document.addEventListener("DOMContentLoaded", function() {
+    // Buscamos todos los botones de "Agregar al carrito"
+    const buttons = document.querySelectorAll('button[onclick^="addToCart"]');
+
+    buttons.forEach(btn => {
+        // Extraemos los datos que pusiste dentro del onclick
+        const clickFunc = btn.getAttribute('onclick');
+        
+        // Si el texto del botón contiene "stock: 0"
+        if (clickFunc.includes('stock: 0')) {
+            const card = btn.closest('.product-card'); // Buscamos la tarjeta padre
+            
+            // 1. Agregamos la etiqueta roja de "Sin Stock"
+            const badge = document.createElement('div');
+            badge.className = "absolute top-4 left-4 z-20 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm uppercase";
+            badge.innerText = "Sin Stock";
+            card.style.position = 'relative'; // Nos aseguramos que sea relativa
+            card.prepend(badge);
+
+            // 2. Ponemos la imagen en gris
+            const track = card.querySelector('.track-container');
+            if (track) {
+                track.classList.add('grayscale', 'opacity-50');
+            }
+
+            // 3. Modificamos el botón
+            btn.innerText = "AGOTADO";
+            btn.removeAttribute('onclick'); // Quitamos la función de compra
+            btn.className = "w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-bold uppercase text-xs cursor-not-allowed";
+        }
+    });
+});
 </body>
 </html>
