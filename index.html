@@ -1936,7 +1936,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (existingProduct) {
         // Solo bloqueamos si ya tiene el producto y quiere sumarlo de nuevo desde el catálogo
         if (product.stock && existingProduct.quantity >= product.stock) {
-            alert("¡Ups! Solo nos queda una unidad de este producto por el momento.");
+            alert("¡Ups! Por el momento no hay más stock disponible.");
             return;
         }
         existingProduct.quantity++;
