@@ -2214,9 +2214,10 @@ function filterCategory(category) {
         top: offsetPosition,
         behavior: 'smooth'
     });
-}
 function openSpecs(productId) {
     const card = document.querySelector(`[data-id="${productId}"]`);
+    if (!card) return;
+    
     const title = card.getAttribute('data-name');
     const specs = card.getAttribute('data-specs').split(','); // Convertimos el texto en lista
     
@@ -2234,6 +2235,8 @@ function openSpecs(productId) {
     
     document.getElementById('productModal').classList.remove('hidden');
     document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
+}
+
 function openDescription(id) {
     const card = document.querySelector(`.product-card[data-id="${id}"]`);
     if (!card) return;
@@ -2259,7 +2262,6 @@ function openDescription(id) {
     `;
     document.body.appendChild(modal);
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-}
 }
 
 function closeModal() {
